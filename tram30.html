@@ -1,0 +1,1902 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trạm 30 — Lộ trình AI Marketing Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F4F6F8;
+  --card:#FFFFFF;
+  --ink:#16202B;
+  --muted:#5B7186;
+  --faint:#8899A8;
+  --line:#DBE3E9;
+  --line-soft:#EAF0F4;
+
+  --panel:#0C1F2A;
+  --panel-2:#12303F;
+  --panel-line:#25485C;
+
+  --signal:#12A594;
+  --signal-dark:#0B7A6E;
+  --signal-soft:#E4F5F2;
+
+  --pulse:#F26B3A;
+  --pulse-soft:#FDEDE6;
+
+  --ok:#2E9E6B;
+  --ok-soft:#E8F5EE;
+  --stop:#D9534F;
+  --stop-soft:#FBEBEA;
+  --warn-soft:#FEF6E3;
+  --warn-line:#E8CE8E;
+
+  --radius:12px;
+  --radius-sm:8px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:'IBM Plex Sans',system-ui,sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.72;
+  font-size:16.5px;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,.logo,.dnum,.stat-num{font-family:'Lexend',system-ui,sans-serif;letter-spacing:-.015em}
+code,pre,textarea.code,.mono{font-family:'IBM Plex Mono',monospace}
+a{color:var(--signal-dark)}
+
+/* ===== Layout ===== */
+.wrap{display:flex;min-height:100vh}
+.sidebar{
+  width:292px;flex-shrink:0;
+  border-right:1px solid var(--line);
+  background:#EDF2F5;
+  position:sticky;top:0;height:100vh;overflow-y:auto;
+  padding:20px 14px 48px;
+}
+main{flex:1;min-width:0;padding:0 26px 96px}
+.content{max-width:800px;margin:0 auto}
+
+/* ===== Sidebar ===== */
+.logo{font-weight:800;font-size:19px;margin:0 8px 3px;display:flex;align-items:center;gap:10px}
+.logo .mark{
+  display:inline-flex;width:32px;height:32px;border-radius:9px;
+  background:var(--panel);color:var(--signal);
+  align-items:center;justify-content:center;
+  font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:600;
+}
+.logo-sub{font-size:12.5px;color:var(--muted);margin:0 8px 16px;line-height:1.5}
+
+.navtrack{
+  font-family:'Lexend',sans-serif;
+  font-size:11.5px;text-transform:uppercase;letter-spacing:1.5px;
+  color:var(--panel);font-weight:700;
+  margin:22px 8px 8px;padding-top:14px;border-top:1px solid #D8E1E7;
+}
+.navtrack:first-of-type{border-top:none;padding-top:0}
+.navgroup{font-size:11px;text-transform:uppercase;letter-spacing:1.3px;color:var(--faint);margin:14px 8px 5px;font-weight:600}
+.lesson-link{
+  display:flex;align-items:center;gap:10px;
+  padding:7px 10px;border-radius:8px;
+  color:var(--ink);text-decoration:none;font-size:14.5px;
+  border:none;background:none;width:100%;text-align:left;cursor:pointer;
+  font-family:inherit;line-height:1.4;
+}
+.lesson-link:hover{background:#E1E9EE}
+.lesson-link.active{background:var(--panel);color:#fff}
+.lesson-link.active .lnum{background:var(--signal);color:var(--panel)}
+.lnum{
+  flex-shrink:0;width:25px;height:25px;border-radius:7px;
+  background:#DCE5EB;color:var(--ink);
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:11.5px;font-weight:600;font-family:'IBM Plex Mono',monospace;
+}
+.lesson-link .tick{margin-left:auto;color:var(--ok);font-weight:800;font-size:14px;visibility:hidden}
+.lesson-link.done .tick{visibility:visible}
+.lesson-link.today .lnum{background:var(--pulse);color:#fff}
+
+/* progress mini */
+.sb-progress{margin:4px 8px 14px;padding:11px 12px;background:#fff;border:1px solid var(--line);border-radius:var(--radius-sm)}
+.sb-progress .lab{font-size:11px;text-transform:uppercase;letter-spacing:1.1px;color:var(--faint);font-weight:600}
+.sb-progress .val{font-family:'Lexend',sans-serif;font-size:19px;font-weight:700;color:var(--panel);line-height:1.3}
+.sb-bar{height:6px;border-radius:99px;background:#E1E9EE;overflow:hidden;margin-top:7px}
+.sb-bar i{display:block;height:100%;background:var(--signal);width:0;transition:width .4s ease}
+
+/* ===== Mobile ===== */
+.menu-btn{
+  display:none;position:fixed;top:13px;left:13px;z-index:60;
+  background:var(--panel);color:#fff;border:none;border-radius:9px;
+  padding:9px 13px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;
+}
+.scrim{display:none;position:fixed;inset:0;background:rgba(12,31,42,.45);z-index:40}
+@media(max-width:900px){
+  .sidebar{position:fixed;left:0;top:0;z-index:50;transform:translateX(-104%);transition:transform .22s ease;box-shadow:0 0 40px rgba(0,0,0,.2)}
+  .sidebar.open{transform:none}
+  .menu-btn{display:block}
+  .scrim.show{display:block}
+  main{padding:62px 16px 90px}
+  body{font-size:16px}
+}
+
+/* ===== Sections ===== */
+.lesson{display:none;animation:fade .22s ease}
+.lesson.show{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;letter-spacing:1.6px;text-transform:uppercase;
+  color:var(--signal-dark);font-weight:600;margin:30px 0 6px;
+}
+h2{font-size:30px;line-height:1.24;margin:0 0 16px;font-weight:700}
+h3{font-size:19.5px;margin:30px 0 10px;font-weight:600}
+h4{font-size:16.5px;margin:22px 0 8px;font-weight:600;color:var(--panel)}
+p{margin:0 0 14px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin-bottom:6px}
+code.inline{background:#E7EEF2;padding:2px 6px;border-radius:5px;font-size:14px;color:#0A3C4A}
+strong{font-weight:600}
+
+/* ===== Day header ===== */
+.dayhead{
+  display:flex;align-items:center;gap:16px;
+  background:var(--panel);border-radius:var(--radius);
+  padding:18px 20px;margin:8px 0 22px;color:#fff;
+}
+.dnum{
+  flex-shrink:0;width:56px;height:56px;border-radius:14px;
+  background:var(--signal);color:var(--panel);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-weight:800;line-height:1;
+}
+.dnum b{font-size:22px}
+.dnum span{font-size:9.5px;letter-spacing:1.2px;text-transform:uppercase;font-weight:600;opacity:.75;margin-top:2px}
+.dayhead .dt{flex:1;min-width:0}
+.dayhead .dt h2{color:#fff;font-size:23px;margin:0 0 3px}
+.dayhead .dt p{margin:0;font-size:13.5px;color:#9DB6C4}
+.daymeta{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:20px}
+.chip{
+  font-size:12.5px;font-weight:500;padding:4px 11px;border-radius:99px;
+  background:#fff;border:1px solid var(--line);color:var(--muted);
+}
+.chip b{color:var(--ink);font-weight:600}
+.chip.hot{background:var(--pulse-soft);border-color:#F5C4AE;color:#A8401A}
+
+/* ===== Boxes ===== */
+.goal,.note,.warn,.pitfall,.think,.chk,.doing{border-radius:var(--radius);padding:15px 18px;margin:16px 0}
+.goal{background:var(--signal-soft);border:1px solid #B9E3DC;border-left:4px solid var(--signal)}
+.goal b{color:var(--signal-dark)}
+.note{background:#EEF4F8;border:1px solid #D3E2EC;border-left:4px solid #4A87A8}
+.warn{background:var(--warn-soft);border:1px solid var(--warn-line);border-left:4px solid #D9A429}
+.chk{background:var(--ok-soft);border:1px solid #C2E4D2;border-left:4px solid var(--ok)}
+.chk ul{margin:8px 0 0}
+.doing{background:var(--pulse-soft);border:1px solid #F6C9B4;border-left:4px solid var(--pulse)}
+.doing b{color:#A8401A}
+
+details.pitfall{background:#FCF3F2;border:1px solid #EFCFCD;border-left:4px solid var(--stop);padding:0}
+details.think{background:#F3F0FA;border:1px solid #D9D2ED;border-left:4px solid #6B5CA8;padding:0}
+details.decode{background:#EEF4F8;border:1px solid #D3E2EC;border-left:4px solid #4A87A8;padding:0;border-radius:var(--radius);margin:16px 0}
+details>summary{cursor:pointer;padding:13px 18px;font-weight:600;font-size:15px;list-style:none;user-select:none}
+details>summary::-webkit-details-marker{display:none}
+details>summary::before{content:"▸ ";color:var(--muted)}
+details[open]>summary::before{content:"▾ "}
+details .dbody{padding:0 18px 15px}
+details.pitfall .dbody p:last-child,details.think .dbody p:last-child{margin-bottom:0}
+.think-key{background:#fff;border-radius:var(--radius-sm);padding:11px 14px;margin-top:12px;font-size:14.5px}
+
+/* ===== Steps ===== */
+ol.steps{counter-reset:st;padding-left:0;list-style:none;margin:14px 0 18px}
+ol.steps>li{counter-increment:st;position:relative;padding-left:40px;margin-bottom:13px}
+ol.steps>li::before{
+  content:counter(st);position:absolute;left:0;top:0;
+  width:27px;height:27px;border-radius:8px;background:var(--panel);color:var(--signal);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;
+}
+ol.steps>li b{color:var(--panel)}
+
+/* ===== Tables ===== */
+table.cmp{width:100%;border-collapse:collapse;margin:16px 0;font-size:14.8px;background:#fff;border-radius:var(--radius);overflow:hidden}
+table.cmp th{background:var(--panel);color:#fff;text-align:left;padding:9px 13px;font-weight:600;font-size:13.5px}
+table.cmp td{padding:9px 13px;border-top:1px solid var(--line-soft);vertical-align:top}
+table.cmp tr:nth-child(even) td{background:#FAFCFD}
+table.cmp code{background:#E7EEF2;padding:1px 5px;border-radius:4px;font-size:13px}
+
+/* ===== Links out ===== */
+.linkout{
+  display:inline-flex;align-items:center;gap:7px;
+  background:#fff;border:1px solid var(--line);border-radius:99px;
+  padding:5px 14px 5px 11px;font-size:14px;font-weight:500;
+  text-decoration:none;color:var(--signal-dark);margin:3px 4px 3px 0;
+}
+.linkout:hover{border-color:var(--signal);background:var(--signal-soft)}
+.linkout::before{content:"↗";font-size:13px;opacity:.7}
+.linkbox{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:13px 16px;margin:14px 0}
+.linkbox .lb-lab{font-size:11px;text-transform:uppercase;letter-spacing:1.2px;color:var(--faint);font-weight:600;margin-bottom:7px}
+
+/* ===== Code runner ===== */
+.runner{background:var(--panel);border-radius:var(--radius);overflow:hidden;margin:16px 0;border:1px solid var(--panel-line)}
+.runner-bar{display:flex;align-items:center;gap:9px;padding:8px 13px;background:var(--panel-2);border-bottom:1px solid var(--panel-line)}
+.dots{display:flex;gap:5px}
+.dots span{width:9px;height:9px;border-radius:50%;background:#2E5468}
+.runner-title{font-family:'IBM Plex Mono',monospace;font-size:12px;color:#89A6B6}
+textarea.code{
+  width:100%;background:transparent;border:none;color:#D6E6EE;
+  padding:13px 15px;font-size:14px;line-height:1.68;resize:vertical;outline:none;display:block;
+}
+.runner-actions{display:flex;align-items:center;gap:9px;padding:9px 13px;border-top:1px solid var(--panel-line);flex-wrap:wrap}
+.btn{
+  border:none;border-radius:7px;padding:6px 14px;font-size:13.5px;font-weight:600;
+  cursor:pointer;font-family:inherit;
+}
+.btn-run{background:var(--signal);color:#04262A}
+.btn-run:hover{background:#15BAA8}
+.btn-reset{background:transparent;color:#89A6B6;border:1px solid var(--panel-line)}
+.btn-reset:hover{color:#D6E6EE}
+.kbd-hint{margin-left:auto;font-size:11.5px;color:#5E7E90;font-family:'IBM Plex Mono',monospace}
+pre.out{
+  margin:0;padding:0 15px;max-height:0;overflow:auto;
+  font-family:'IBM Plex Mono',monospace;font-size:13.5px;line-height:1.66;
+  color:#B6E8DF;white-space:pre-wrap;word-break:break-word;transition:max-height .2s,padding .2s;
+}
+pre.out.has{max-height:420px;padding:12px 15px;border-top:1px solid var(--panel-line)}
+pre.out .err{color:#FF9E9E}
+.sysmsg{color:#7E9AAA;font-style:italic}
+
+/* ===== Exercise ===== */
+.exercise{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;margin:18px 0}
+.ex-label{
+  display:inline-block;font-family:'IBM Plex Mono',monospace;
+  font-size:11px;letter-spacing:1.3px;text-transform:uppercase;
+  background:var(--panel);color:var(--signal);padding:3px 10px;border-radius:6px;margin-bottom:10px;font-weight:600;
+}
+
+/* ===== Quiz ===== */
+.quiz{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;margin:18px 0}
+.qz-item{padding-bottom:15px;margin-bottom:15px;border-bottom:1px solid var(--line-soft)}
+.qz-q{font-weight:600;margin-bottom:9px}
+.qz-item label{display:block;padding:8px 12px;border:1px solid var(--line);border-radius:var(--radius-sm);margin-bottom:6px;cursor:pointer;font-size:15px}
+.qz-item label:hover{border-color:var(--signal);background:var(--signal-soft)}
+.qz-item input{margin-right:9px}
+.qz-item label.right{border-color:var(--ok);background:var(--ok-soft)}
+.qz-item label.wrong{border-color:var(--stop);background:var(--stop-soft)}
+.qz-why{display:none;margin-top:9px;font-size:14.3px;background:#F2F6F9;border-radius:var(--radius-sm);padding:10px 13px;color:var(--muted)}
+.qz-why.show{display:block}
+.qz-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.qz-score{font-weight:700;font-family:'Lexend',sans-serif}
+.btn.qz-grade{background:var(--panel);color:#fff}
+.btn.qz-retry{background:#fff;border:1px solid var(--line);color:var(--muted)}
+
+/* ===== PIPELINE (chữ ký của app) ===== */
+.pipe{
+  background:var(--panel);border-radius:var(--radius);padding:20px 18px 16px;margin:18px 0;
+  overflow-x:auto;
+}
+.pipe-lab{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#6E8E9E;font-weight:600;margin-bottom:14px;font-family:'IBM Plex Mono',monospace}
+.pipe-rail{display:flex;align-items:center;min-width:max-content;padding-bottom:4px}
+.pnode{
+  flex-shrink:0;width:27px;height:27px;border-radius:8px;
+  background:#193C4D;border:1.5px solid #2B5468;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#7B9DAD;font-weight:600;
+  cursor:pointer;position:relative;
+}
+.pnode:hover{border-color:var(--signal)}
+.pnode.done{background:var(--signal);border-color:var(--signal);color:#04262A}
+.pnode.now{border-color:var(--pulse);background:#2A2118;color:var(--pulse);box-shadow:0 0 0 3px rgba(242,107,58,.18)}
+.pwire{flex-shrink:0;width:14px;height:2px;background:#2B5468}
+.pwire.on{background:var(--signal)}
+.pipe-legend{display:flex;gap:16px;margin-top:14px;font-size:12px;color:#7B9DAD;flex-wrap:wrap}
+.pipe-legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+
+/* ===== Node simulator ===== */
+.nodesim{background:var(--panel);border:1px solid var(--panel-line);border-radius:var(--radius);margin:16px 0;overflow:hidden}
+.ns-bar{display:flex;align-items:center;gap:9px;padding:8px 13px;background:var(--panel-2);border-bottom:1px solid var(--panel-line)}
+.ns-title{font-family:'IBM Plex Mono',monospace;font-size:12px;color:#89A6B6;flex:1}
+.ns-canvas{padding:20px 16px;min-height:110px;display:flex;align-items:center;gap:0;overflow-x:auto}
+.ns-empty{color:#5E7E90;font-size:14px;font-style:italic;margin:auto}
+.nsn{
+  flex-shrink:0;width:118px;background:#173A4B;border:1.5px solid #2B5468;border-radius:10px;
+  padding:9px 10px;cursor:pointer;position:relative;
+}
+.nsn:hover{border-color:var(--signal)}
+.nsn.sel{border-color:var(--signal);box-shadow:0 0 0 3px rgba(18,165,148,.18)}
+.nsn.trig{border-color:#C4772E;background:#2E2417}
+.nsn .ic{font-size:17px;line-height:1}
+.nsn .nm{font-size:12.3px;color:#D6E6EE;font-weight:600;margin-top:5px;line-height:1.3}
+.nsn .ct{font-size:10.5px;color:#7B9DAD;font-family:'IBM Plex Mono',monospace;margin-top:3px}
+.nsn.ran .ct{color:var(--signal)}
+.nsn .x{position:absolute;top:-7px;right:-7px;width:19px;height:19px;border-radius:50%;background:#2B5468;color:#C6DCE6;border:none;font-size:12px;line-height:1;cursor:pointer;display:none}
+.nsn:hover .x{display:block}
+.nswire{flex-shrink:0;width:26px;height:2px;background:#2B5468;position:relative}
+.nswire.on{background:var(--signal)}
+.nswire::after{content:"";position:absolute;right:-1px;top:-3px;border-left:6px solid #2B5468;border-top:4px solid transparent;border-bottom:4px solid transparent}
+.nswire.on::after{border-left-color:var(--signal)}
+.ns-pal{display:flex;gap:7px;padding:10px 13px;border-top:1px solid var(--panel-line);flex-wrap:wrap;align-items:center}
+.ns-add{background:#1B4257;color:#C6DCE6;border:1px solid #2B5468;border-radius:7px;padding:5px 11px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.ns-add:hover{border-color:var(--signal);color:#fff}
+.ns-out{border-top:1px solid var(--panel-line);padding:12px 15px;font-family:'IBM Plex Mono',monospace;font-size:12.8px;color:#B6E8DF;white-space:pre-wrap;max-height:230px;overflow:auto}
+.ns-out .dim{color:#6E8E9E}
+.ns-out .warnx{color:#FFC98A}
+
+/* ===== Tools ===== */
+.toolcard{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px;margin:16px 0}
+.stat-row{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0}
+.stat{flex:1;min-width:130px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px}
+.stat .lab{font-size:11px;text-transform:uppercase;letter-spacing:1.1px;color:var(--faint);font-weight:600}
+.stat-num{font-size:27px;font-weight:700;color:var(--panel);line-height:1.25}
+.stat .sub{font-size:12.5px;color:var(--muted)}
+
+/* flashcards */
+.fc-stage{background:var(--panel);border-radius:var(--radius);padding:28px 22px;text-align:center;min-height:190px;display:flex;flex-direction:column;justify-content:center;cursor:pointer}
+.fc-front{font-family:'IBM Plex Mono',monospace;font-size:25px;color:var(--signal);font-weight:600}
+.fc-hint{font-size:12.5px;color:#5E7E90;margin-top:12px}
+.fc-back{display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--panel-line)}
+.fc-back.show{display:block}
+.fc-mean{font-size:17px;color:#E4EFF4;font-weight:500}
+.fc-ex{font-size:14px;color:#9DB6C4;font-style:italic;margin-top:8px}
+.fc-rate{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;justify-content:center}
+.fc-btn{border:none;border-radius:8px;padding:8px 16px;font-size:13.5px;font-weight:600;cursor:pointer;font-family:inherit}
+.fc-again{background:#7A3030;color:#FFD9D9}
+.fc-hard{background:#7A5B22;color:#FFEDC4}
+.fc-good{background:var(--signal);color:#04262A}
+.fc-meta{display:flex;gap:14px;justify-content:center;margin-top:14px;font-size:12.5px;color:var(--muted);flex-wrap:wrap}
+
+/* journal */
+.jr-grid{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border-radius:var(--radius);overflow:hidden}
+.jr-grid th{background:var(--panel);color:#fff;padding:8px 10px;font-size:12.5px;text-align:left;font-weight:600}
+.jr-grid td{padding:5px 8px;border-top:1px solid var(--line-soft)}
+.jr-grid input[type=number]{width:62px;padding:4px 7px;border:1px solid var(--line);border-radius:6px;font-family:inherit;font-size:13.5px}
+.jr-grid input[type=text]{width:100%;padding:4px 7px;border:1px solid var(--line);border-radius:6px;font-family:inherit;font-size:13.5px}
+.jr-grid input:focus{outline:2px solid var(--signal);border-color:transparent}
+.jr-day{font-family:'IBM Plex Mono',monospace;font-weight:600;color:var(--panel);width:42px}
+.jr-grid tr.filled td{background:#F5FBFA}
+.chartbox{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px;margin:16px 0;overflow-x:auto}
+
+/* timer */
+.tm-face{font-family:'Lexend',sans-serif;font-size:62px;font-weight:700;text-align:center;color:var(--panel);line-height:1.1;letter-spacing:-.03em}
+.tm-face.run{color:var(--signal-dark)}
+.tm-row{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+.tm-btn{border:1px solid var(--line);background:#fff;border-radius:8px;padding:7px 15px;font-size:14px;cursor:pointer;font-family:inherit;font-weight:500}
+.tm-btn.on{background:var(--panel);color:#fff;border-color:var(--panel)}
+.tm-btn.go{background:var(--signal);color:#04262A;border-color:var(--signal);font-weight:600}
+
+/* self review */
+.sr-item{display:flex;align-items:flex-start;gap:11px;padding:10px 0;border-bottom:1px solid var(--line-soft)}
+.sr-item input{margin-top:5px;width:17px;height:17px;accent-color:var(--signal);flex-shrink:0}
+.sr-item .txt{flex:1}
+.sr-item .std{font-size:12.8px;color:var(--faint)}
+
+.lesson-nav{display:flex;justify-content:space-between;gap:12px;margin:44px 0 0;padding-top:22px;border-top:1px solid var(--line)}
+.btn-nav{background:#fff;border:1px solid var(--line);border-radius:9px;padding:10px 17px;font-size:14.5px;cursor:pointer;font-family:inherit;color:var(--ink);font-weight:500}
+.btn-nav:hover{border-color:var(--signal);color:var(--signal-dark)}
+.btn-nav.primary{background:var(--panel);color:#fff;border-color:var(--panel)}
+.btn-nav:disabled{opacity:.35;cursor:not-allowed}
+
+#pystatus{
+  position:fixed;right:16px;bottom:16px;z-index:70;
+  background:var(--panel);color:#C6DCE6;border-radius:10px;
+  padding:9px 15px;font-size:13px;display:none;align-items:center;gap:9px;
+  box-shadow:0 6px 24px rgba(12,31,42,.28);
+}
+#pystatus.show{display:flex}
+.spinner{width:13px;height:13px;border:2px solid #2B5468;border-top-color:var(--signal);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.toast{
+  position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(90px);
+  background:var(--panel);color:#fff;padding:11px 20px;border-radius:99px;
+  font-size:14px;z-index:80;transition:transform .25s ease;box-shadow:0 8px 26px rgba(12,31,42,.3);
+}
+.toast.show{transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<button class="menu-btn" id="menuBtn">☰ Mục lục</button>
+<div class="scrim" id="scrim"></div>
+<div class="wrap">
+<nav class="sidebar" id="sidebar" aria-label="Mục lục">
+  <div class="logo"><span class="mark">T30</span> Trạm 30</div>
+  <div class="logo-sub">Lộ trình trở thành AI Marketing Engineer — từ con số 0</div>
+
+  <div class="sb-progress">
+    <div class="lab">Tiến độ 30 ngày</div>
+    <div class="val" id="sbVal">0 / 30 ngày</div>
+    <div class="sb-bar"><i id="sbBar"></i></div>
+  </div>
+
+  <div class="navtrack">🧭 Bắt đầu</div>
+  <button class="lesson-link" data-goto="start"><span class="lnum">◆</span> Đọc cái này trước <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="rules"><span class="lnum">!</span> Bảy nguyên tắc <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="words"><span class="lnum">Aa</span> Mười từ phải thuộc <span class="tick">✓</span></button>
+
+  <div class="navtrack">🧠 Kiến thức nền</div>
+  <div class="navgroup">Đọc khi bài học dẫn tới</div>
+  <button class="lesson-link" data-goto="k1"><span class="lnum">K1</span> Automation là cái gì <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="k2"><span class="lnum">K2</span> n8n hoạt động thế nào <span class="tick">✓</span></button>
+
+  <div class="navtrack">📅 Tuần 1 — Nhìn thấy tận mắt</div>
+  <button class="lesson-link" data-goto="d1"><span class="lnum">1</span> Dựng chỗ học <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="d2"><span class="lnum">2</span> Làm thử trước, đọc sau <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="d3"><span class="lnum">3</span> Học mười từ khoá <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="d4"><span class="lnum">4</span> Tự dựng workflow <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="d5"><span class="lnum">5</span> Nền marketing <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="d6"><span class="lnum">6</span> Cho máy tự chạy <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="d7"><span class="lnum">7</span> Nhìn lại tuần 1 <span class="tick">✓</span></button>
+
+  <div class="navtrack">🛠️ Công cụ</div>
+  <button class="lesson-link" data-goto="tcards"><span class="lnum">▣</span> Thẻ ghi nhớ <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="tjournal"><span class="lnum">▤</span> Nhật ký &amp; tiến độ <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="ttimer"><span class="lnum">◷</span> Đồng hồ học <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="treview"><span class="lnum">✓</span> Tự chấm cuối tháng <span class="tick">✓</span></button>
+
+  <div class="navtrack">🗺️ Đường dài</div>
+  <button class="lesson-link" data-goto="map"><span class="lnum">∞</span> Toàn cảnh 36 tháng <span class="tick">✓</span></button>
+</nav>
+<main>
+<div class="content">
+<!-- ==================== BẮT ĐẦU ==================== -->
+<section class="lesson" id="start">
+  <div class="eyebrow">Trạm 30</div>
+  <h2>Ba mươi ngày để biết mình có đi tiếp được không</h2>
+
+  <div class="pipe">
+    <div class="pipe-lab">đường ống 30 ngày — mỗi ô là một ngày</div>
+    <div class="pipe-rail" id="pipeMain"></div>
+    <div class="pipe-legend">
+      <span><i style="background:#12A594"></i>đã xong</span>
+      <span><i style="background:#2A2118;border:1.5px solid #F26B3A"></i>hôm nay</span>
+      <span><i style="background:#193C4D;border:1.5px solid #2B5468"></i>chưa tới</span>
+      <span style="color:#5E7E90">bấm vào ô bất kỳ để nhảy tới ngày đó</span>
+    </div>
+  </div>
+
+  <p>App này không dạy anh thành AI Marketing Engineer trong một tháng. Không ai làm được điều đó. Nó chỉ làm đúng một việc: <b>biến một lộ trình ba năm mơ hồ thành ba mươi việc cụ thể, mỗi ngày một việc, không phải đoán hôm nay học gì.</b></p>
+
+  <div class="goal"><b>🎯 Cách dùng đơn giản nhất</b> Mỗi ngày mở app, bấm vào ngày tương ứng ở cột trái, làm hết các bước, rồi bấm nút <b>Đánh dấu hoàn thành</b> ở cuối trang. Xong. Đừng đọc trước nhiều ngày — sẽ rối.</div>
+
+  <h3>Tháng này KHÔNG nhằm mục tiêu gì</h3>
+  <p>Kỳ vọng sai là lý do bỏ cuộc số một. Nói thẳng trước:</p>
+  <table class="cmp">
+    <tr><th>Điều nhiều người tưởng</th><th>Sự thật</th></tr>
+    <tr><td>Một tháng là biết lập trình</td><td>Không. Tháng này chưa động tới lập trình, và cũng chưa cần.</td></tr>
+    <tr><td>Một tháng là đọc được tài liệu tiếng Anh</td><td>Không. Chỉ nhằm <b>bắt đầu chịu đựng được</b> việc đọc tiếng Anh mà không dịch cả trang.</td></tr>
+    <tr><td>Một tháng là kiếm được tiền</td><td>Không. Mốc thu nhập đầu tiên vào khoảng tháng thứ 10–14.</td></tr>
+  </table>
+
+  <h3>Tháng này chỉ nhằm bốn mục tiêu</h3>
+  <table class="cmp">
+    <tr><th style="width:38%">Mục tiêu</th><th>Biết là đạt khi nào</th></tr>
+    <tr><td><b>1. Tạo được thói quen học đều</b></td><td>Học tối thiểu 24 trên 30 ngày. Nghỉ được, nhưng đứt ba ngày liên tiếp là hỏng.</td></tr>
+    <tr><td><b>2. Hiểu automation là cái gì</b></td><td>Tự dựng được ba quy trình tự động chạy thật, không cần xem hướng dẫn.</td></tr>
+    <tr><td><b>3. Phá rào tâm lý tiếng Anh</b></td><td>Đọc hết một trang tài liệu mới trong hai mươi phút mà không dịch cả trang.</td></tr>
+    <tr><td><b>4. Để lại dấu vết công khai</b></td><td>Một trang GitHub công khai và một bài viết tiếng Anh trên LinkedIn.</td></tr>
+  </table>
+
+  <h3>Bốn công cụ nằm sẵn trong app</h3>
+  <p>Anh không cần cài Anki, không cần tạo Google Sheet. Mọi thứ ở ngay đây, dữ liệu lưu trong trình duyệt máy anh.</p>
+  <table class="cmp">
+    <tr><th style="width:30%">Công cụ</th><th>Dùng để làm gì</th></tr>
+    <tr><td><b>▣ Thẻ ghi nhớ</b></td><td>Học thuộc từ vựng kỹ thuật tiếng Anh. Có sẵn bộ thẻ, tự lặp lại theo mức độ nhớ.</td></tr>
+    <tr><td><b>▤ Nhật ký &amp; tiến độ</b></td><td>Ghi số phút học mỗi ngày. Có biểu đồ để cuối tháng nhìn ra mình hỏng ở đâu.</td></tr>
+    <tr><td><b>◷ Đồng hồ học</b></td><td>Bấm giờ một buổi học, hết giờ tự nhắc. Xong bấm một nút là ghi thẳng vào nhật ký.</td></tr>
+    <tr><td><b>✓ Tự chấm cuối tháng</b></td><td>Mười ba hạng mục, tự tick, app tự kết luận nên làm gì tháng sau.</td></tr>
+  </table>
+
+  <div class="warn"><b>⚠️ Dữ liệu lưu ở đâu</b> Toàn bộ tiến độ, nhật ký và thẻ ghi nhớ lưu trong <b>trình duyệt của máy này</b>. Xoá lịch sử duyệt web hoặc dùng chế độ ẩn danh là mất sạch. Cuối mỗi tuần nên bấm <b>Xuất dữ liệu</b> ở trang Nhật ký để tải file dự phòng về máy.</div>
+
+  <div class="doing"><b>▶ Việc của hôm nay</b> Nếu đây là lần đầu anh mở app: đọc tiếp trang <b>Bảy nguyên tắc</b>, rồi vào <b>Ngày 1</b>. Tổng cộng khoảng 20 phút.</div>
+</section>
+
+<!-- ==================== NGUYÊN TẮC ==================== -->
+<section class="lesson" id="rules">
+  <div class="eyebrow">Bắt đầu</div>
+  <h2>Bảy nguyên tắc</h2>
+  <p>Bảy điều này quan trọng hơn nội dung học. Nếu buộc phải bỏ bớt thứ gì, hãy bỏ bài học chứ đừng bỏ nguyên tắc.</p>
+
+  <ol class="steps">
+    <li><b>Làm trước, đọc sau.</b><br>Bấm thử, thấy nó chạy, <i>rồi</i> mới đọc giải thích. Đọc mô tả về một thứ mình chưa từng thấy là cách chắc chắn nhất để không hiểu gì. Toàn bộ app này được xếp theo thứ tự đó.</li>
+    <li><b>Hết giờ thì dừng.</b><br>Hết 60 phút thì dừng, kể cả đang dở. Đừng học bốn tiếng một hôm rồi nghỉ năm ngày. Đều đặn thắng cường độ — đây là điều não bộ hoạt động, không phải lời khuyên đạo đức.</li>
+    <li><b>Ghi nhật ký mỗi ngày.</b><br>Kể cả hôm bỏ học cũng ghi "0 phút — lý do". Cuối tháng nhìn biểu đồ mới biết mình hỏng vào thứ mấy, vì lý do gì.</li>
+    <li><b>Cấm dịch cả trang.</b><br>Chỉ tra từ nào thực sự chặn hiểu. Đau ba tuần đầu, sau đó thành phản xạ. Đây là nguyên tắc bị vi phạm nhiều nhất, và cũng là nguyên tắc quyết định anh có ra được thị trường quốc tế hay không.</li>
+    <li><b>Mỗi tuần một thứ chạy được.</b><br>Không có sản phẩm cuối tuần thì tuần đó thất bại, bất kể học bao nhiêu giờ. Kiến thức không kiểm chứng được là kiến thức chưa có.</li>
+    <li><b>Tự viết trước, AI sửa sau.</b><br>Với mọi đoạn tiếng Anh. Để AI viết hộ thì anh không học được gì, và đi phỏng vấn sẽ lộ trong ba mươi giây.</li>
+    <li><b>Không đổi công cụ giữa chừng.</b><br>Tháng này chỉ n8n. Thấy quảng cáo công cụ khác hay hơn thì kệ. Đổi công cụ là cái bẫy trì hoãn tinh vi nhất — nó cho cảm giác đang tiến bộ trong khi thực chất đang quay về vạch xuất phát.</li>
+  </ol>
+
+  <details class="think"><summary>🧭 Vì sao nguyên tắc 4 lại quan trọng đến thế — bấm để xem</summary><div class="dbody">
+    <p>Anh đang nhắm thị trường làm việc từ xa cho công ty nước ngoài. Trong thị trường đó, tiếng Anh không phải là "điểm cộng" — nó là <b>điều kiện tối thiểu để được xét</b>.</p>
+    <p>Toàn bộ tài liệu chất lượng của lĩnh vực này chỉ có tiếng Anh, và thay đổi hàng tháng nên không kịp có bản dịch. Nếu anh học kỹ thuật trước và để tiếng Anh sau, hai năm nữa anh sẽ giỏi automation nhưng không đọc nổi tin tuyển dụng, không họp được, không viết nổi tin nhắn cho đồng nghiệp khác múi giờ.</p>
+    <p class="think-key">🔑 <b>Chốt lại:</b> mỗi lần anh bật Google Dịch cả trang, anh tiết kiệm 10 phút hôm nay và trả giá bằng 10 tháng ở cuối lộ trình.</p>
+  </div></details>
+
+  <h3>Cách xử lý khi gặp tiếng Anh không hiểu</h3>
+  <table class="cmp">
+    <tr><th style="width:50%">❌ Đừng làm thế này</th><th>✅ Hãy làm thế này</th></tr>
+    <tr>
+      <td>Bật Google Dịch cả trang rồi chỉ đọc bản tiếng Việt.<br><br><i>Hiểu nhanh hôm nay, nhưng vĩnh viễn không tự đọc được.</i></td>
+      <td>Đọc bản tiếng Anh trước. Chỗ nào tắc mới copy <b>đoạn đó</b> đi hỏi AI, rồi quay lại đọc lại bản gốc.<br><br><i>Chậm hơn, nhưng ba tháng sau anh không cần ai dịch nữa.</i></td>
+    </tr>
+  </table>
+  <div class="note">💡 <b>Mẹo:</b> trang tài liệu n8n có nút <b>"Chat with the docs"</b> ở đầu trang — gõ câu hỏi tiếng Anh đơn giản vào đó, nó trả lời dựa trên chính tài liệu. Cuối mỗi trang cũng có dòng <b>"available as Markdown"</b> để copy toàn bộ nội dung mang đi hỏi AI.</div>
+</section>
+
+<!-- ==================== TỪ KHOÁ ==================== -->
+<section class="lesson" id="words">
+  <div class="eyebrow">Bắt đầu</div>
+  <h2>Mười từ phải thuộc</h2>
+  <div class="goal"><b>🎯 Vì sao chỉ mười từ</b> Anh không thiếu link, anh thiếu <b>biết từ nào quan trọng</b>. Thuộc mười từ này thôi là đọc được phần lớn tài liệu n8n — không cần giỏi tiếng Anh.</div>
+
+  <table class="cmp">
+    <tr><th style="width:20%">Từ</th><th style="width:40%">Nghĩa trong n8n</th><th>Ví von cho dễ nhớ</th></tr>
+    <tr><td><code>workflow</code></td><td>Một quy trình tự động hoàn chỉnh</td><td>Cả dây chuyền sản xuất</td></tr>
+    <tr><td><code>node</code></td><td>Một bước trong quy trình</td><td>Một cái máy trong dây chuyền</td></tr>
+    <tr><td><code>trigger</code></td><td>Bước đầu tiên, thứ khởi động quy trình</td><td>Nút bấm khởi động</td></tr>
+    <tr><td><code>connection</code></td><td>Đường nối giữa hai node</td><td>Băng chuyền nối hai máy</td></tr>
+    <tr><td><code>execution</code></td><td>Một lần workflow chạy</td><td>Một ca sản xuất</td></tr>
+    <tr><td><code>credential</code></td><td>Thông tin đăng nhập để n8n vào Gmail, Sheet…</td><td>Chìa khoá</td></tr>
+    <tr><td><code>canvas</code></td><td>Màn hình trắng để kéo thả các node</td><td>Bàn làm việc</td></tr>
+    <tr><td><code>item</code></td><td>Một dòng dữ liệu chạy qua node</td><td>Một sản phẩm trên băng chuyền</td></tr>
+    <tr><td><code>expression</code></td><td>Công thức nhỏ để lấy dữ liệu từ node trước</td><td>Công thức trong Excel</td></tr>
+    <tr><td><code>webhook</code></td><td>Địa chỉ để hệ thống khác gửi dữ liệu vào</td><td>Hòm thư nhận hàng</td></tr>
+  </table>
+
+  <div class="doing"><b>▶ Đừng chỉ đọc bảng này.</b> Mười từ trên đã nạp sẵn vào <b>Thẻ ghi nhớ</b>. Mở công cụ đó và học ba phút mỗi ngày — hiệu quả hơn đọc bảng này mười lần.</div>
+  <p><button class="btn btn-run" data-jump="tcards" style="padding:9px 18px">▣ Mở Thẻ ghi nhớ</button></p>
+
+  <details class="decode"><summary>🔍 Ba từ hay bị nhầm lẫn nhất</summary><div class="dbody">
+    <p><b>node vs workflow</b> — Nhiều người mới gọi cả quy trình là "node". Sai. Một <code class="inline">workflow</code> chứa <b>nhiều</b> <code class="inline">node</code>. Giống như một bài hát chứa nhiều nốt nhạc.</p>
+    <p><b>trigger vs node thường</b> — <code class="inline">trigger</code> cũng là node, nhưng là node <b>đầu tiên</b> và nó quyết định <i>khi nào</i> quy trình chạy. Một workflow không có trigger thì chỉ chạy được khi anh bấm tay.</p>
+    <p><b>item vs execution</b> — Một <code class="inline">execution</code> (một lần chạy) có thể xử lý <b>nhiều</b> <code class="inline">item</code>. Ví dụ: một lần chạy đọc 50 dòng từ Google Sheet = 1 execution, 50 items. Nhầm hai từ này là nguyên nhân số một khiến người mới không hiểu vì sao workflow chạy 50 lần.</p>
+  </div></details>
+</section>
+
+<!-- ==================== K1 ==================== -->
+<section class="lesson" id="k1">
+  <div class="eyebrow">Kiến thức nền K1</div>
+  <h2>Automation là cái gì</h2>
+  <div class="goal"><b>🎯 Sau bài này bạn sẽ</b> Nhận ra được việc nào trong công việc hằng ngày <b>đáng</b> tự động hoá và việc nào không — đây là kỹ năng quan trọng hơn biết dùng công cụ.</div>
+
+  <h3>Định nghĩa ngắn nhất</h3>
+  <p>Automation là <b>bảo máy tính làm thay một chuỗi thao tác mà con người vẫn đang làm bằng tay, theo đúng một quy tắc cố định.</b></p>
+  <p>Chú ý ba chữ quan trọng: <b>chuỗi</b> (nhiều bước, không phải một bước), <b>lặp lại</b> (làm hoài), và <b>quy tắc cố định</b> (không cần suy nghĩ sáng tạo).</p>
+
+  <h3>Ba câu hỏi để biết việc gì đáng tự động hoá</h3>
+  <ol class="steps">
+    <li><b>Việc này có lặp lại không?</b> Làm một lần rồi thôi thì tự động hoá là lãng phí. Làm mỗi ngày, mỗi tuần thì đáng.</li>
+    <li><b>Quy tắc có rõ ràng không?</b> "Nếu email có chữ 'hoá đơn' thì chuyển vào thư mục Kế toán" — rõ ràng, tự động được. "Trả lời khách sao cho họ vui" — không rõ ràng, chưa tự động được hoàn toàn.</li>
+    <li><b>Tốn bao nhiêu thời gian mỗi lần?</b> Một việc tốn 2 phút, làm 5 lần/tuần = 8 tiếng/năm. Dựng automation mất 3 tiếng. Đáng. Nhưng việc tốn 10 giây thì đừng.</li>
+  </ol>
+
+  <div class="note">💡 <b>Quy tắc ngón tay cái:</b> nếu thời gian dựng automation lớn hơn thời gian nó tiết kiệm trong <b>một năm</b>, đừng dựng. Rất nhiều người mới dành cả tuần tự động hoá một việc tốn 5 phút mỗi tháng.</div>
+
+  <h3>Bốn mảnh của mọi automation</h3>
+  <p>Bất kỳ quy trình tự động nào, dù đơn giản hay phức tạp, đều gồm đúng bốn phần:</p>
+  <table class="cmp">
+    <tr><th style="width:22%">Mảnh</th><th style="width:38%">Trả lời câu hỏi</th><th>Ví dụ ở quán cà phê</th></tr>
+    <tr><td><b>1. Khởi động</b><br><code>trigger</code></td><td>Khi nào thì chạy?</td><td>Mỗi sáng 7 giờ</td></tr>
+    <tr><td><b>2. Lấy dữ liệu</b></td><td>Lấy thông tin từ đâu?</td><td>Đọc bảng đơn hàng hôm qua</td></tr>
+    <tr><td><b>3. Xử lý</b></td><td>Biến đổi, tính toán, lọc gì?</td><td>Cộng tổng doanh thu, tìm món bán chạy</td></tr>
+    <tr><td><b>4. Đưa đi đâu</b></td><td>Kết quả gửi cho ai, cất vào đâu?</td><td>Gửi email cho chủ quán</td></tr>
+  </table>
+  <p>Khi anh nhìn bất kỳ workflow nào — của mình hay của người khác — hãy tập chỉ ra bốn mảnh này. Nhìn được là hiểu được.</p>
+
+  <details class="pitfall"><summary>⚠️ Ba hiểu lầm phổ biến về automation</summary><div class="dbody">
+    <p><b>1. "Tự động hoá là thay thế con người."</b> Trong thực tế, phần lớn automation thay thế <i>phần chán nhất</i> của công việc: copy-paste, tổng hợp, gửi thông báo. Người vẫn ra quyết định.</p>
+    <p><b>2. "Phải biết lập trình mới làm được."</b> Không đúng ở mức khởi đầu. Nhưng cũng đừng tin lời quảng cáo "không cần code" hoàn toàn — khi bài toán phức tạp lên, biết chút code là khác biệt giữa làm được và bó tay. Đó là lý do lộ trình này vẫn có Python ở giai đoạn sau.</p>
+    <p><b>3. "Dựng xong là xong."</b> Automation cần <b>bảo trì</b>. Google đổi giao diện, API đổi phiên bản, dữ liệu đổi định dạng — workflow gãy. Người làm nghề này được trả tiền phần lớn cho việc <i>giữ cho hệ thống chạy</i>, không phải cho việc dựng nó lần đầu.</p>
+  </div></details>
+
+  <div class="exercise">
+    <span class="ex-label">Tự nghĩ</span>
+    <p>Liệt kê ra giấy <b>ba việc</b> anh đang làm bằng tay mỗi tuần. Với mỗi việc, trả lời ba câu hỏi ở trên. Việc nào đạt cả ba thì đánh dấu — đó là ứng viên đầu tiên để anh tự động hoá thật sau khi học xong tuần 2.</p>
+  </div>
+</section>
+
+<!-- ==================== K2 ==================== -->
+<section class="lesson" id="k2">
+  <div class="eyebrow">Kiến thức nền K2</div>
+  <h2>n8n hoạt động thế nào</h2>
+  <div class="goal"><b>🎯 Sau bài này bạn sẽ</b> Hiểu nguyên lý node và luồng dữ liệu <b>trước khi</b> mở n8n thật — nhờ bộ giả lập ngay bên dưới. Vào web thật sẽ đỡ bỡ ngỡ hẳn.</div>
+
+  <p>n8n cho anh một tấm bảng trắng (<code class="inline">canvas</code>). Anh đặt lên đó các khối vuông (<code class="inline">node</code>) và nối chúng bằng dây. Dữ liệu chạy từ trái sang phải, qua từng node, mỗi node biến đổi nó một chút.</p>
+
+  <div class="warn"><b>⚠️ Đây là bộ giả lập, không phải n8n thật.</b> Nó chỉ có bốn loại node và dữ liệu là giả. Mục đích duy nhất: cho anh cảm giác về <b>luồng dữ liệu</b> trước khi vào web thật ở Ngày 2.</div>
+
+  <div class="nodesim" data-lesson="k2">
+    <div class="ns-bar"><div class="dots"><span></span><span></span><span></span></div><span class="ns-title">bảng giả lập — quy trình của bạn</span><button class="btn btn-reset ns-clear">↺ Xoá hết</button></div>
+    <div class="ns-canvas"></div>
+    <div class="ns-pal">
+      <span style="font-size:12px;color:#6E8E9E;margin-right:3px">Thêm node:</span>
+      <button class="ns-add" data-node="trigger">⏰ Lịch chạy</button>
+      <button class="ns-add" data-node="sheet">📋 Đọc bảng</button>
+      <button class="ns-add" data-node="filter">🔍 Lọc</button>
+      <button class="ns-add" data-node="calc">🧮 Tính thêm cột</button>
+      <button class="ns-add" data-node="mail">✉️ Gửi email</button>
+      <button class="btn btn-run ns-run" style="margin-left:auto">▶ Chạy thử</button>
+    </div>
+    <div class="ns-out"></div>
+  </div>
+
+  <div class="doing"><b>▶ Làm thử ngay:</b> bấm lần lượt <b>⏰ Lịch chạy → 📋 Đọc bảng → 🔍 Lọc → ✉️ Gửi email</b>, rồi bấm <b>▶ Chạy thử</b>. Quan sát số <code class="inline">items</code> thay đổi ở từng node.</div>
+
+  <h3>Ba điều bộ giả lập vừa dạy anh</h3>
+  <table class="cmp">
+    <tr><th style="width:26%">Điều</th><th>Ý nghĩa</th></tr>
+    <tr><td><b>Phải có trigger trước</b></td><td>Không có node khởi động thì workflow không biết <i>khi nào</i> chạy. Thử bấm Chạy mà chưa thêm ⏰ xem báo gì.</td></tr>
+    <tr><td><b>Dữ liệu là nhiều dòng</b></td><td>Chữ <code>items</code> chính là số dòng đang chạy qua. Node Lọc làm nó <b>giảm</b>. Đây là khái niệm khó nhất với người mới.</td></tr>
+    <tr><td><b>Thứ tự quyết định kết quả</b></td><td>Lọc trước rồi tính, khác với tính trước rồi lọc. Thử đảo thứ tự và chạy lại.</td></tr>
+  </table>
+
+  <details class="think"><summary>🧭 Vì sao "items" là khái niệm khó nhất — bấm để xem</summary><div class="dbody">
+    <p>Người mới thường nghĩ: workflow chạy <b>một lần</b> thì xử lý <b>một thứ</b>. Sai.</p>
+    <p>Một lần chạy (<code class="inline">execution</code>) có thể mang theo 1 dòng, 50 dòng, hay 10.000 dòng dữ liệu. Node phía sau sẽ <b>tự động lặp lại</b> cho từng dòng mà anh không phải viết vòng lặp nào.</p>
+    <p>Đây vừa là điểm mạnh vừa là cái bẫy: nếu node cuối là "gửi email" và đang có 500 items, anh vừa gửi 500 email.</p>
+    <p class="think-key">🔑 <b>Chốt lại:</b> trước khi bật một workflow chạy thật, luôn nhìn con số <code class="inline">items</code> ở node cuối cùng. Đó là số lần hành động sẽ xảy ra.</p>
+  </div></details>
+
+  <div class="exercise">
+    <span class="ex-label">Bài tập K2</span>
+    <p>Dùng bộ giả lập dựng quy trình sau và chạy thử: <b>Lịch chạy → Đọc bảng → Tính thêm cột → Lọc → Gửi email</b>. Sau đó trả lời: node nào làm số items <i>giảm</i>, node nào <i>không đổi</i>?</p>
+    <details><summary>Đáp án</summary><div class="dbody">
+      <p><b>Giảm:</b> chỉ node 🔍 Lọc. Nó bỏ bớt những dòng không thoả điều kiện.</p>
+      <p><b>Không đổi:</b> 🧮 Tính thêm cột (vẫn từng ấy dòng, chỉ thêm cột mới) và ✉️ Gửi email (gửi xong vẫn trả về từng ấy dòng).</p>
+      <p><b>Tạo ra dữ liệu:</b> 📋 Đọc bảng — trước nó chỉ có 1 item báo hiệu "đến giờ rồi", sau nó là nhiều dòng thật.</p>
+    </div></details>
+  </div>
+</section>
+<!-- ==================== NGÀY 1 ==================== -->
+<section class="lesson" id="d1">
+  <div class="dayhead">
+    <div class="dnum"><b>01</b><span>ngày</span></div>
+    <div class="dt"><h2>Dựng chỗ học</h2><p>Tuần 1 — Nhìn thấy tận mắt</p></div>
+  </div>
+  <div class="daymeta">
+    <span class="chip">⏱ <b>60 phút</b></span>
+    <span class="chip">Không cần nền tảng gì</span>
+    <span class="chip hot">Có việc phải làm ngay: đặt lịch nhắc</span>
+  </div>
+
+  <div class="goal"><b>🎯 Xong ngày hôm nay bạn sẽ có</b> Ba tài khoản cần thiết, một chỗ ghi chép, và — quan trọng nhất — <b>biết chính xác ngày nào n8n hết hạn dùng thử</b> để không bị đứt gánh giữa đường.</div>
+
+  <h3>Bước 1 — Mở ba tài khoản (25 phút)</h3>
+  <p>Cả ba đều miễn phí. Dùng cùng một địa chỉ email để về sau dễ nhớ.</p>
+  <table class="cmp">
+    <tr><th style="width:26%">Tài khoản</th><th>Dùng để làm gì</th><th style="width:24%">Lưu ý khi đăng ký</th></tr>
+    <tr><td><b>n8n</b></td><td>Công cụ chính của cả tháng. Nơi anh dựng quy trình tự động.</td><td>Chọn bản Cloud để khỏi cài đặt gì</td></tr>
+    <tr><td><b>HubSpot Academy</b></td><td>Học nền marketing miễn phí, có chứng chỉ</td><td>Chọn ngôn ngữ English</td></tr>
+    <tr><td><b>GitHub</b></td><td>Nơi cất code và khoe với nhà tuyển dụng sau này</td><td><b>Đặt username tử tế</b> — nó sẽ nằm trong CV của anh ba năm nữa</td></tr>
+  </table>
+  <div class="linkbox">
+    <div class="lb-lab">Bấm để mở</div>
+    <a class="linkout" href="https://n8n.io/" target="_blank" rel="noopener">n8n.io</a>
+    <a class="linkout" href="https://academy.hubspot.com/" target="_blank" rel="noopener">academy.hubspot.com</a>
+    <a class="linkout" href="https://github.com/" target="_blank" rel="noopener">github.com</a>
+  </div>
+
+  <div class="warn"><b>⚠️ Về username GitHub</b> Đừng đặt kiểu <code class="inline">hoangdeptrai97</code> hay <code class="inline">xxx_killer_xxx</code>. Nhà tuyển dụng nước ngoài sẽ nhìn thấy nó. Dùng tên thật không dấu, ví dụ <code class="inline">hoangnguyen-vn</code> hoặc <code class="inline">nguyenhoang-dev</code>.</div>
+
+  <h3>Bước 2 — Việc quan trọng nhất hôm nay (10 phút)</h3>
+  <p>n8n bản Cloud <b>chỉ miễn phí trong một thời gian có hạn</b>. Rất nhiều người đăng ký, học được hai tuần, rồi bị khoá giữa chừng và bỏ luôn.</p>
+  <ol class="steps">
+    <li>Mở trang điều kiện dùng thử của n8n (link bên dưới) và đọc xem được bao nhiêu ngày.</li>
+    <li><b>Mở lịch điện thoại, đặt một lời nhắc</b> vào ngày trước hạn 3 ngày, nội dung: <i>"n8n sắp hết hạn — quyết định mua gói hay cài lên máy"</i>.</li>
+    <li>Ghi ngày hết hạn vào ô ghi chú của Ngày 1 trong <b>Nhật ký</b> của app này.</li>
+  </ol>
+  <div class="linkbox">
+    <div class="lb-lab">Đọc điều kiện dùng thử</div>
+    <a class="linkout" href="https://docs.n8n.io/manage-cloud/cloud-free-trial/" target="_blank" rel="noopener">docs.n8n.io — Cloud free trial</a>
+  </div>
+  <div class="note">💡 <b>Hai lựa chọn khi hết hạn:</b> (a) mua gói rẻ nhất, vài trăm nghìn một tháng — coi như học phí, rẻ hơn mọi khoá học; hoặc (b) cài bản miễn phí lên máy, không mất tiền nhưng khó hơn. Nếu chọn (b), bắt đầu tìm hiểu từ Ngày 12, đừng đợi đến lúc bị khoá.</div>
+
+  <h3>Bước 3 — Làm quen công cụ trong app (25 phút)</h3>
+  <p>App này có sẵn bốn công cụ. Hôm nay chỉ cần mở qua cho biết, chưa cần dùng sâu.</p>
+  <ol class="steps">
+    <li>Mở <b>▤ Nhật ký &amp; tiến độ</b> ở cột trái. Điền số phút học hôm nay và ghi chú "Ngày 1 — đăng ký tài khoản".</li>
+    <li>Mở <b>▣ Thẻ ghi nhớ</b>. Học thử 5 thẻ. Chưa cần nhớ, chỉ cần biết nó hoạt động thế nào.</li>
+    <li>Mở <b>◷ Đồng hồ học</b>. Từ mai, mỗi buổi học hãy bấm giờ ở đây — xong bấm một nút là tự ghi vào nhật ký.</li>
+  </ol>
+
+  <div class="chk"><b>✅ Xong ngày 1 khi</b>
+    <ul>
+      <li>Có đủ 3 tài khoản, đăng nhập được</li>
+      <li>Đã đặt lời nhắc ngày hết hạn n8n vào lịch điện thoại</li>
+      <li>Nhật ký trong app đã có dòng Ngày 1</li>
+      <li>Đã học thử 5 thẻ ghi nhớ</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="1"></div>
+</section>
+
+<!-- ==================== NGÀY 2 ==================== -->
+<section class="lesson" id="d2">
+  <div class="dayhead">
+    <div class="dnum"><b>02</b><span>ngày</span></div>
+    <div class="dt"><h2>Làm thử trước, đọc sau</h2><p>Tuần 1 — ngày quan trọng nhất của cả tháng</p></div>
+  </div>
+  <div class="daymeta">
+    <span class="chip">⏱ <b>60 phút</b></span>
+    <span class="chip hot">Ngày bản lề</span>
+    <span class="chip">Không cần kết nối tài khoản thật nào</span>
+  </div>
+
+  <div class="goal"><b>🎯 Xong ngày hôm nay bạn sẽ</b> Tận mắt thấy một quy trình tự động chạy — và hiểu ba từ <code class="inline">workflow</code>, <code class="inline">node</code>, <code class="inline">trigger</code> không phải bằng định nghĩa mà bằng trải nghiệm.</div>
+
+  <div class="doing"><b>▶ Nguyên tắc số 1 áp dụng ngay hôm nay.</b> Bài này anh <b>KHÔNG được đọc kỹ</b>. Chỉ nhìn ảnh và bấm theo. Đọc hiểu là việc của nửa sau buổi học.</div>
+
+  <h3>Bước 1 — Bấm theo, đừng đọc (20 phút)</h3>
+  <div class="linkbox">
+    <div class="lb-lab">Mở trang này</div>
+    <a class="linkout" href="https://docs.n8n.io/try-it-out/quickstart/" target="_blank" rel="noopener">docs.n8n.io — A very quick quickstart</a>
+  </div>
+  <ol class="steps">
+    <li>Cuộn xuống, nhìn <b>ảnh chụp màn hình</b>, làm theo đúng như ảnh. Chưa hiểu chữ cũng cứ làm.</li>
+    <li>Bài này dùng một mẫu có sẵn với <b>dữ liệu giả</b> và node huấn luyện — anh <b>không phải</b> kết nối Gmail hay bất kỳ tài khoản thật nào. Không có rủi ro gì cả.</li>
+    <li>Mục tiêu duy nhất của 20 phút này: bấm được nút <b>Execute Workflow</b> và thấy dữ liệu chạy qua.</li>
+  </ol>
+  <div class="warn"><b>⚠️ Nếu tắc ở bước đăng nhập:</b> trang này yêu cầu tài khoản n8n Cloud — anh đã tạo ở Ngày 1 rồi. Nếu chưa, quay lại Ngày 1 làm nốt trước.</div>
+
+  <h3>Bước 2 — Bây giờ mới đọc (25 phút)</h3>
+  <p>Quay lại đầu trang, đọc lại từng bước bằng tiếng Anh. Lần này chữ nghĩa sẽ có nghĩa, vì anh đã thấy tận mắt nó là cái gì.</p>
+  <ol class="steps">
+    <li>Đọc chậm, không dịch cả trang. Gặp từ lạ thì đối chiếu bảng <b>Mười từ phải thuộc</b> trong app.</li>
+    <li>Ghi lại <b>5 từ mới</b> mà bảng 10 từ chưa có.</li>
+    <li>Trả lời trong đầu ba câu: quy trình này <i>khởi động</i> thế nào? Nó <i>lấy</i> dữ liệu từ đâu? Nó <i>đưa</i> kết quả đi đâu?</li>
+  </ol>
+  <div class="note">💡 Ba câu hỏi trên chính là ba trong bốn mảnh của mọi automation mà bài <b>K1</b> đã nói. Nếu chưa đọc K1, đọc ngay bây giờ — mất 8 phút và làm mọi thứ sáng ra.</div>
+
+  <h3>Bước 3 — Ghi lại cảm giác (15 phút)</h3>
+  <p>Vào <b>▤ Nhật ký</b>, ghi vào ô ghi chú Ngày 2 câu trả lời cho: <b>"Điều gì làm mình bất ngờ nhất?"</b></p>
+  <p>Câu này nghe vô nghĩa nhưng không phải. Ba tháng nữa đọc lại, anh sẽ thấy quãng đường mình đã đi. Và nếu có ngày muốn bỏ cuộc, dòng này là thứ kéo anh lại.</p>
+
+  <details class="pitfall"><summary>⚠️ Bốn chỗ người mới hay tắc ở bài quickstart</summary><div class="dbody">
+    <p><b>1. Không tìm thấy nút Execute Workflow.</b> Nó nằm ở <i>giữa phía dưới</i> màn hình canvas, không phải góc trên. Trên màn hình nhỏ có thể bị khuất — thử thu nhỏ trình duyệt bằng Ctrl và dấu trừ.</p>
+    <p><b>2. Node hiện dấu chấm than đỏ.</b> Bình thường. Nghĩa là node chưa được cấu hình đủ. Bấm đúp vào node để mở ra và điền nốt.</p>
+    <p><b>3. Không hiểu phần "expression".</b> Bỏ qua, làm theo ảnh là được. Ngày 4 sẽ gặp lại và lúc đó mới cần hiểu.</p>
+    <p><b>4. Lỡ bấm lung tung, workflow rối tung.</b> Không sao, dữ liệu là giả. Tạo workflow mới từ đầu, làm lại. Làm lại lần hai luôn nhanh hơn và nhớ lâu hơn.</p>
+    <p style="color:#8A3A36;font-style:italic;margin-top:12px">Tắc là bình thường. Người tự học nào cũng tắc ở buổi đầu. Cái khác biệt duy nhất giữa người thành công và người bỏ cuộc là: người thành công ghi lại chỗ tắc rồi hôm sau quay lại.</p>
+  </div></details>
+
+  <div class="chk"><b>✅ Xong ngày 2 khi</b>
+    <ul>
+      <li>Đã bấm Execute Workflow và thấy dữ liệu chạy qua các node</li>
+      <li>Nói được bằng lời của mình: workflow là gì, node là gì, trigger là gì</li>
+      <li>Nhật ký Ngày 2 có câu trả lời "điều gì làm mình bất ngờ nhất"</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="2"></div>
+</section>
+
+<!-- ==================== NGÀY 3 ==================== -->
+<section class="lesson" id="d3">
+  <div class="dayhead">
+    <div class="dnum"><b>03</b><span>ngày</span></div>
+    <div class="dt"><h2>Học mười từ khoá</h2><p>Tuần 1 — Nhìn thấy tận mắt</p></div>
+  </div>
+  <div class="daymeta">
+    <span class="chip">⏱ <b>60 phút</b></span>
+    <span class="chip">Chủ yếu dùng công cụ trong app</span>
+  </div>
+
+  <div class="goal"><b>🎯 Xong ngày hôm nay bạn sẽ</b> Gọi tên được từng phần trên màn hình n8n bằng tiếng Anh. Đây là bước biến "tôi thấy nó chạy" thành "tôi hiểu nó là gì".</div>
+
+  <h3>Bước 1 — Đối chiếu hai nguồn (20 phút)</h3>
+  <ol class="steps">
+    <li>Mở trang từ điển chính thức của n8n (link dưới).</li>
+    <li>Mở song song trang <b>Mười từ phải thuộc</b> trong app này.</li>
+    <li>Đọc định nghĩa tiếng Anh trước, rồi mới xem bản tiếng Việt để kiểm chứng mình hiểu đúng chưa. <b>Không làm ngược lại.</b></li>
+  </ol>
+  <div class="linkbox">
+    <div class="lb-lab">Từ điển chính thức</div>
+    <a class="linkout" href="https://docs.n8n.io/glossary/" target="_blank" rel="noopener">docs.n8n.io — Glossary</a>
+    <a class="linkout" href="https://docs.n8n.io/workflows/components/nodes/" target="_blank" rel="noopener">Node là gì</a>
+  </div>
+
+  <h3>Bước 2 — Nạp vào trí nhớ (20 phút)</h3>
+  <p>Mở <b>▣ Thẻ ghi nhớ</b> và học hết bộ <b>n8n cơ bản</b>. Cách chấm:</p>
+  <table class="cmp">
+    <tr><th style="width:22%">Bấm nút</th><th>Khi nào</th><th style="width:28%">Thẻ sẽ quay lại</th></tr>
+    <tr><td><b>Chưa nhớ</b></td><td>Nhìn mặt trước mà không nghĩ ra gì</td><td>Ngay trong buổi này</td></tr>
+    <tr><td><b>Khó</b></td><td>Nghĩ ra nhưng phải mất vài giây</td><td>Sau vài thẻ nữa</td></tr>
+    <tr><td><b>Thuộc rồi</b></td><td>Bật ra ngay lập tức</td><td>Buổi học sau</td></tr>
+  </table>
+  <div class="warn"><b>⚠️ Đừng bấm "Thuộc rồi" cho nhanh.</b> App không chấm điểm anh, nó chỉ dùng con số đó để quyết định khi nào cho thẻ quay lại. Bấm gian là tự hại mình.</div>
+
+  <h3>Bước 3 — Chỉ tay gọi tên (20 phút)</h3>
+  <p>Mở lại workflow đã dựng hôm qua trên n8n. Nhìn màn hình và <b>nói thành tiếng</b> tên tiếng Anh của từng thứ anh chỉ vào:</p>
+  <ul>
+    <li>Cả tấm bảng trắng này gọi là gì? → <i>canvas</i></li>
+    <li>Mỗi khối vuông gọi là gì? → <i>node</i></li>
+    <li>Khối đầu tiên có gì đặc biệt? → nó là <i>trigger</i></li>
+    <li>Đường nối giữa hai khối? → <i>connection</i></li>
+    <li>Mỗi lần bấm chạy gọi là gì? → một <i>execution</i></li>
+  </ul>
+  <div class="note">💡 <b>Nói thành tiếng</b> nghe buồn cười nhưng có lý do: anh đang nhắm thị trường remote, nơi anh sẽ phải <i>nói</i> những từ này trong buổi phỏng vấn. Đọc thầm không luyện được phần đó.</div>
+
+  <div class="chk"><b>✅ Xong ngày 3 khi</b>
+    <ul>
+      <li>Đã học hết một lượt bộ thẻ n8n cơ bản</li>
+      <li>Chỉ vào màn hình n8n và gọi đúng tên 5 thành phần</li>
+      <li>Nhật ký Ngày 3 đã ghi</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="3"></div>
+</section>
+
+<!-- ==================== NGÀY 4 ==================== -->
+<section class="lesson" id="d4">
+  <div class="dayhead">
+    <div class="dnum"><b>04</b><span>ngày</span></div>
+    <div class="dt"><h2>Tự dựng workflow</h2><p>Tuần 1 — Nhìn thấy tận mắt</p></div>
+  </div>
+  <div class="daymeta">
+    <span class="chip">⏱ <b>75 phút</b></span>
+    <span class="chip">Lần đầu tự làm, không copy mẫu</span>
+  </div>
+
+  <div class="goal"><b>🎯 Xong ngày hôm nay bạn sẽ</b> Dựng được một quy trình <b>từ tấm bảng trắng</b>, không dùng mẫu có sẵn. Đây là khác biệt lớn so với ngày 2.</div>
+
+  <h3>Bước 1 — Làm theo hướng dẫn dài (50 phút)</h3>
+  <div class="linkbox">
+    <div class="lb-lab">Mở trang này</div>
+    <a class="linkout" href="https://docs.n8n.io/try-it-out/tutorial-first-workflow/" target="_blank" rel="noopener">docs.n8n.io — Your first workflow</a>
+  </div>
+  <p>Bài này dựng quy trình: <b>hẹn giờ chạy → lấy dữ liệu ảnh thiên văn từ NASA → xử lý → gửi đi</b>. Nó dạy luôn cách hẹn giờ mà Ngày 6 anh sẽ dùng lại.</p>
+  <ol class="steps">
+    <li>Lần này <b>được phép</b> đọc trước khi bấm — vì anh đã có cảm giác từ ngày 2.</li>
+    <li>Làm từ đầu đến cuối, không bỏ bước nào, kể cả bước có vẻ thừa.</li>
+    <li>Mỗi lần thêm một node, tự hỏi: node này thuộc mảnh nào trong bốn mảnh ở bài K1?</li>
+  </ol>
+
+  <h3>Bước 2 — Ghi lại chỗ tắc (15 phút)</h3>
+  <p>Vào <b>▤ Nhật ký</b>, ghi vào ghi chú Ngày 4 <b>mọi chỗ anh phải dừng lại tra cứu</b>. Càng cụ thể càng tốt.</p>
+  <p>Danh sách này có giá trị thật: cuối tháng nhìn lại, những chỗ tắc lặp đi lặp lại chính là lỗ hổng kiến thức cần vá — chứ không phải cảm giác chung chung "mình còn yếu".</p>
+
+  <h3>Bước 3 — Ôn thẻ (10 phút)</h3>
+  <p>Mở <b>▣ Thẻ ghi nhớ</b>, ôn lại. Thêm vào bộ <b>Của tôi</b> những từ mới gặp hôm nay.</p>
+
+  <details class="decode"><summary>🔍 Bốn thứ mới xuất hiện trong bài hôm nay</summary><div class="dbody">
+    <table class="cmp">
+      <tr><th style="width:26%">Thứ</th><th>Nghĩa</th></tr>
+      <tr><td><code>Schedule Trigger</code></td><td>Node khởi động theo lịch. Chọn được: mỗi phút, mỗi giờ, mỗi ngày, mỗi tuần.</td></tr>
+      <tr><td><code>credential</code></td><td>Chỗ cất thông tin đăng nhập. Khai báo một lần, dùng cho mọi workflow. Đây cũng là chỗ chứa thông tin nhạy cảm — <b>không bao giờ chụp màn hình phần này.</b></td></tr>
+      <tr><td><code>expression</code></td><td>Công thức nhỏ, viết trong dấu <code>{{ }}</code>, để lấy dữ liệu từ node phía trước. Giống hệt công thức Excel tham chiếu ô khác.</td></tr>
+      <tr><td><code>Test workflow</code></td><td>Chạy thử một lần bằng tay, không cần bật Active. Luôn test trước khi bật chạy thật.</td></tr>
+    </table>
+  </div></details>
+
+  <div class="chk"><b>✅ Xong ngày 4 khi</b>
+    <ul>
+      <li>Workflow thứ hai chạy được, dựng từ bảng trắng</li>
+      <li>Có danh sách chỗ tắc trong nhật ký</li>
+      <li>Hiểu <code class="inline">credential</code> dùng để làm gì</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="4"></div>
+</section>
+
+<!-- ==================== NGÀY 5 ==================== -->
+<section class="lesson" id="d5">
+  <div class="dayhead">
+    <div class="dnum"><b>05</b><span>ngày</span></div>
+    <div class="dt"><h2>Nền marketing</h2><p>Tuần 1 — Nhìn thấy tận mắt</p></div>
+  </div>
+  <div class="daymeta">
+    <span class="chip">⏱ <b>60 phút</b></span>
+    <span class="chip">Đổi món — hôm nay không đụng n8n</span>
+  </div>
+
+  <div class="goal"><b>🎯 Xong ngày hôm nay bạn sẽ</b> Bắt đầu hiểu <b>vì sao</b> doanh nghiệp cần tự động hoá marketing — chứ không chỉ biết <i>cách</i> làm.</div>
+
+  <div class="note">💡 <b>Vì sao chen marketing vào giữa tuần kỹ thuật?</b> Vì tên nghề là <i>AI Marketing Engineer</i>, không phải <i>AI Engineer</i>. Người chỉ biết dựng workflow là thợ. Người hiểu phễu bán hàng và biết chỗ nào đang rò rỉ tiền mới là kỹ sư. Phần marketing quyết định anh nằm ở nửa trên hay nửa dưới của thang lương.</div>
+
+  <h3>Bước 1 — Bắt đầu khoá Inbound Marketing (45 phút)</h3>
+  <div class="linkbox">
+    <div class="lb-lab">Mở khoá học</div>
+    <a class="linkout" href="https://academy.hubspot.com/courses/inbound-marketing" target="_blank" rel="noopener">academy.hubspot.com — Inbound Marketing</a>
+  </div>
+  <ol class="steps">
+    <li>Học hết <b>Lesson 1</b>. Khoá này miễn phí và có chứng chỉ ở cuối — anh sẽ thi ở Ngày 17.</li>
+    <li><b>Bật phụ đề tiếng Anh</b>, không bật phụ đề tiếng Việt. Nghe không kịp thì giảm tốc độ xuống 0.75x.</li>
+    <li>Ghi 5 từ mới vào bộ thẻ <b>Của tôi</b> trong app.</li>
+  </ol>
+  <div class="warn"><b>⚠️ Phụ đề tiếng Việt là cái bẫy.</b> Bật lên thì mắt sẽ tự động đọc tiếng Việt và tai ngừng nghe tiếng Anh. Anh sẽ hiểu bài nhưng không tiến bộ chút nào về ngôn ngữ. Thà hiểu 60% bằng tiếng Anh còn hơn 100% bằng tiếng Việt.</div>
+
+  <h3>Bước 2 — Nối vào việc mình đang học (15 phút)</h3>
+  <p>Sau khi xem xong, viết vào <b>▤ Nhật ký</b> câu trả lời cho: <b>"Trong ba giai đoạn của phễu inbound, giai đoạn nào tự động hoá được nhiều nhất? Vì sao?"</b></p>
+  <details><summary>Gợi ý nếu bí</summary><div class="dbody">
+    <p>Nghĩ theo ba câu hỏi ở bài <b>K1</b>: việc nào <i>lặp lại</i>, có <i>quy tắc rõ ràng</i>, và <i>tốn thời gian</i>? Ví dụ: gửi email chào mừng cho người mới đăng ký là việc lặp lại, quy tắc rõ, tốn thời gian nếu làm tay. Còn viết một bài blog hay thì không.</p>
+  </div></details>
+
+  <div class="chk"><b>✅ Xong ngày 5 khi</b>
+    <ul>
+      <li>Xong Lesson 1 của khoá Inbound Marketing</li>
+      <li>Bộ thẻ "Của tôi" có ít nhất 5 từ</li>
+      <li>Nhật ký có câu trả lời về phễu inbound</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="5"></div>
+</section>
+
+<!-- ==================== NGÀY 6 ==================== -->
+<section class="lesson" id="d6">
+  <div class="dayhead">
+    <div class="dnum"><b>06</b><span>ngày</span></div>
+    <div class="dt"><h2>Cho máy tự chạy thay mình</h2><p>Tuần 1 — sản phẩm đầu tiên của tuần</p></div>
+  </div>
+  <div class="daymeta">
+    <span class="chip">⏱ <b>75 phút</b></span>
+    <span class="chip hot">Sản phẩm tuần 1</span>
+  </div>
+
+  <div class="goal"><b>🎯 Xong ngày hôm nay bạn sẽ</b> Có một quy trình <b>tự chạy khi anh đang ngủ</b>. Đây là khoảnh khắc automation thôi là lý thuyết.</div>
+
+  <h3>Bước 1 — Hiểu cách hẹn giờ (15 phút)</h3>
+  <div class="linkbox">
+    <div class="lb-lab">Đọc tài liệu</div>
+    <a class="linkout" href="https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.scheduletrigger/" target="_blank" rel="noopener">Schedule Trigger node</a>
+  </div>
+  <p>Đọc phần đầu, tập trung vào các lựa chọn khoảng thời gian: <code class="inline">Seconds / Minutes / Hours / Days / Weeks / Months</code>.</p>
+
+  <h3>Bước 2 — Dựng và bật (45 phút)</h3>
+  <ol class="steps">
+    <li>Tạo workflow mới. Thêm <b>Schedule Trigger</b>, đặt chạy <b>mỗi ngày một lần</b> vào giờ anh thường thức dậy.</li>
+    <li>Thêm node gửi email cho <b>chính địa chỉ email của anh</b>. Nội dung tuỳ ý — ví dụ một câu nhắc học bài.</li>
+    <li>Bấm <b>Test workflow</b> trước. Kiểm tra hộp thư xem có nhận được không.</li>
+    <li>Nhận được rồi mới gạt công tắc <b>Inactive → Active</b> ở góc trên bên phải.</li>
+  </ol>
+  <div class="warn"><b>⚠️ Bước 3 là bắt buộc.</b> Đừng bật Active khi chưa test. Một workflow sai mà chạy tự động mỗi ngày sẽ âm thầm gửi rác vào hộp thư của anh cho tới khi anh phát hiện ra.</div>
+
+  <h3>Bước 3 — Đặt bẫy kiểm chứng (15 phút)</h3>
+  <p>Ghi vào <b>▤ Nhật ký</b> Ngày 6: <i>"Ngày mai kiểm tra hộp thư lúc [giờ đã hẹn]"</i>. Ngày 7 sẽ có bước kiểm tra lại việc này.</p>
+  <p>Nếu ngày mai email không tới, đó không phải thất bại — đó là <b>bài học đầu tiên về việc automation cần được giám sát</b>, thứ mà người làm nghề này được trả tiền để làm.</p>
+
+  <details class="pitfall"><summary>⚠️ Ba lý do email không tới</summary><div class="dbody">
+    <p><b>1. Quên gạt Active.</b> Lý do phổ biến nhất. Workflow ở trạng thái Inactive chỉ chạy khi anh bấm tay.</p>
+    <p><b>2. Sai múi giờ.</b> n8n Cloud có thể đang dùng múi giờ khác Việt Nam. Kiểm tra phần cài đặt múi giờ của workspace, hoặc đơn giản là tính bù giờ.</p>
+    <p><b>3. Email rơi vào Spam.</b> Kiểm tra thư mục Spam trước khi kết luận là hỏng.</p>
+  </div></details>
+
+  <div class="chk"><b>✅ Xong ngày 6 khi</b>
+    <ul>
+      <li>Workflow đã ở trạng thái <b>Active</b></li>
+      <li>Đã test thành công và nhận được email thử</li>
+      <li>Nhật ký có ghi chú nhắc kiểm tra ngày mai</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="6"></div>
+</section>
+
+<!-- ==================== NGÀY 7 ==================== -->
+<section class="lesson" id="d7">
+  <div class="dayhead">
+    <div class="dnum"><b>07</b><span>ngày</span></div>
+    <div class="dt"><h2>Nhìn lại tuần 1</h2><p>Ngày chốt sổ — không học nội dung mới</p></div>
+  </div>
+  <div class="daymeta">
+    <span class="chip">⏱ <b>45 phút</b></span>
+    <span class="chip">Ngày nhẹ</span>
+    <span class="chip hot">Có bài kiểm tra</span>
+  </div>
+
+  <div class="goal"><b>🎯 Ngày hôm nay để làm gì</b> Không nạp thêm gì mới. Chỉ kiểm tra xem tuần vừa rồi có thật sự đọng lại không, và điều chỉnh cho tuần sau.</div>
+
+  <h3>Bước 1 — Kiểm chứng workflow (5 phút)</h3>
+  <p>Mở hộp thư. Email tự động từ Ngày 6 có tới không?</p>
+  <ul>
+    <li><b>Có</b> → tuyệt. Anh vừa có sản phẩm đầu tiên chạy thật.</li>
+    <li><b>Không</b> → mở lại phần "Ba lý do email không tới" ở Ngày 6 và sửa. Đây là bài học giá trị hơn cả việc nó chạy đúng ngay lần đầu.</li>
+  </ul>
+
+  <h3>Bước 2 — Bài kiểm tra tuần 1 (20 phút)</h3>
+  <p>Sáu câu. Trả lời bằng trí nhớ trước, đừng mở lại bài. Đạt 4/6 trở lên là ổn.</p>
+
+  <div class="quiz" data-lesson="d7">
+    <div class="qz-item" data-ans="2">
+      <p class="qz-q">1. Trong n8n, "node" là gì?</p>
+      <label><input type="radio"> Toàn bộ quy trình tự động</label>
+      <label><input type="radio"> Một bước trong quy trình</label>
+      <label><input type="radio"> Một lần quy trình chạy</label>
+      <div class="qz-why">Toàn bộ quy trình là <code>workflow</code>. Một lần chạy là <code>execution</code>. Node là từng bước bên trong.</div>
+    </div>
+    <div class="qz-item" data-ans="3">
+      <p class="qz-q">2. Node nào bắt buộc phải có để workflow tự chạy được?</p>
+      <label><input type="radio"> Node gửi email</label>
+      <label><input type="radio"> Node đọc dữ liệu</label>
+      <label><input type="radio"> Node trigger</label>
+      <div class="qz-why">Không có trigger thì workflow không biết <i>khi nào</i> chạy, chỉ chạy được khi bấm tay.</div>
+    </div>
+    <div class="qz-item" data-ans="1">
+      <p class="qz-q">3. Bốn mảnh của mọi automation theo đúng thứ tự là gì?</p>
+      <label><input type="radio"> Khởi động → Lấy dữ liệu → Xử lý → Đưa đi đâu</label>
+      <label><input type="radio"> Lấy dữ liệu → Khởi động → Đưa đi đâu → Xử lý</label>
+      <label><input type="radio"> Xử lý → Khởi động → Lấy dữ liệu → Đưa đi đâu</label>
+      <div class="qz-why">Luôn bắt đầu bằng "khi nào chạy", kết thúc bằng "kết quả đi đâu". Nhìn workflow lạ, tập chỉ ra bốn mảnh này.</div>
+    </div>
+    <div class="qz-item" data-ans="2">
+      <p class="qz-q">4. Node nào làm số <code>items</code> giảm đi?</p>
+      <label><input type="radio"> Node tính thêm cột</label>
+      <label><input type="radio"> Node lọc</label>
+      <label><input type="radio"> Node gửi email</label>
+      <div class="qz-why">Chỉ node lọc bỏ bớt dòng. Tính thêm cột giữ nguyên số dòng, chỉ thêm cột. Gửi email cũng không đổi số dòng.</div>
+    </div>
+    <div class="qz-item" data-ans="3">
+      <p class="qz-q">5. Trước khi gạt workflow sang Active, bắt buộc phải làm gì?</p>
+      <label><input type="radio"> Đổi tên workflow cho dễ nhớ</label>
+      <label><input type="radio"> Xuất file dự phòng</label>
+      <label><input type="radio"> Bấm Test workflow và kiểm tra kết quả</label>
+      <div class="qz-why">Bật Active mà chưa test thì workflow sai sẽ âm thầm chạy mỗi ngày. Test trước là kỷ luật bắt buộc.</div>
+    </div>
+    <div class="qz-item" data-ans="1">
+      <p class="qz-q">6. Vì sao app này bắt "làm thử trước, đọc sau"?</p>
+      <label><input type="radio"> Vì đọc mô tả một thứ chưa từng thấy thì không hiểu được gì</label>
+      <label><input type="radio"> Vì tài liệu n8n viết khó hiểu</label>
+      <label><input type="radio"> Vì tiết kiệm thời gian</label>
+      <div class="qz-why">Não cần một trải nghiệm cụ thể để gắn chữ nghĩa vào. Thấy trước, hiểu sau — đây là nguyên tắc số 1.</div>
+    </div>
+    <div class="qz-actions">
+      <button class="btn qz-grade">✔ Chấm điểm</button>
+      <button class="btn qz-retry">↺ Làm lại</button>
+      <span class="qz-score"></span>
+    </div>
+  </div>
+
+  <h3>Bước 3 — Ba câu tự vấn (20 phút)</h3>
+  <p>Mở <b>▤ Nhật ký</b>, xem lại biểu đồ sáu ngày qua, rồi ghi vào ghi chú Ngày 7 câu trả lời cho ba câu:</p>
+  <ol class="steps">
+    <li><b>Học được gì?</b> Viết ba gạch đầu dòng, cụ thể. "Hiểu automation" là không cụ thể. "Dựng được workflow tự gửi email mỗi sáng" mới là cụ thể.</li>
+    <li><b>Chỗ nào tắc?</b> Nhìn lại danh sách chỗ tắc đã ghi. Có chỗ nào lặp lại hai lần trở lên không?</li>
+    <li><b>Tuần sau sửa gì?</b> Một điều thôi. Ví dụ: "học vào 6h sáng thay vì 10h tối vì tối hay bỏ".</li>
+  </ol>
+
+  <div class="chk"><b>✅ Mốc cuối tuần 1</b>
+    <ul>
+      <li>Hai workflow chạy được, một cái tự chạy theo lịch</li>
+      <li>Bài kiểm tra đạt từ 4/6</li>
+      <li>Nhật ký có đủ 7 ngày (kể cả ngày ghi 0 phút)</li>
+      <li>Đã học hết một lượt bộ thẻ n8n cơ bản</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="7"></div>
+</section>
+<!-- ==================== THẺ GHI NHỚ ==================== -->
+<section class="lesson" id="tcards">
+  <div class="eyebrow">Công cụ</div>
+  <h2>Thẻ ghi nhớ</h2>
+  <p>Thay cho Anki. Học ba phút mỗi ngày, thẻ nào chưa thuộc sẽ tự quay lại sớm hơn.</p>
+
+  <div class="stat-row">
+    <div class="stat"><div class="lab">Chưa thuộc</div><div class="stat-num" id="fcNew">0</div><div class="sub">cần học</div></div>
+    <div class="stat"><div class="lab">Đang học</div><div class="stat-num" id="fcLearn">0</div><div class="sub">nhớ mang máng</div></div>
+    <div class="stat"><div class="lab">Đã thuộc</div><div class="stat-num" id="fcDone">0</div><div class="sub">bật ra ngay</div></div>
+  </div>
+
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 12px">
+    <button class="tm-btn deck on" data-deck="n8n">n8n cơ bản</button>
+    <button class="tm-btn deck" data-deck="auto">Automation &amp; API</button>
+    <button class="tm-btn deck" data-deck="ai">AI &amp; prompt</button>
+    <button class="tm-btn deck" data-deck="mkt">Marketing</button>
+    <button class="tm-btn deck" data-deck="mine">Của tôi</button>
+  </div>
+
+  <div class="fc-stage" id="fcStage">
+    <div class="fc-front" id="fcFront">—</div>
+    <div class="fc-hint" id="fcHint">bấm vào thẻ để lật</div>
+    <div class="fc-back" id="fcBack">
+      <div class="fc-mean" id="fcMean"></div>
+      <div class="fc-ex" id="fcEx"></div>
+    </div>
+  </div>
+  <div class="fc-rate" id="fcRate" style="display:none">
+    <button class="fc-btn fc-again" data-rate="0">Chưa nhớ</button>
+    <button class="fc-btn fc-hard" data-rate="1">Khó</button>
+    <button class="fc-btn fc-good" data-rate="2">Thuộc rồi</button>
+  </div>
+  <div class="fc-meta">
+    <span id="fcCount">—</span>
+    <button class="btn qz-retry" id="fcReset" style="padding:3px 12px;font-size:12.5px">↺ Học lại bộ này từ đầu</button>
+  </div>
+
+  <h3>Thêm thẻ của riêng anh</h3>
+  <p>Gặp từ mới khi đọc tài liệu thì thêm vào đây ngay, đừng để đến mai.</p>
+  <div class="toolcard">
+    <div style="display:flex;gap:9px;flex-wrap:wrap;align-items:flex-end">
+      <div style="flex:1;min-width:140px"><div class="lb-lab">Từ tiếng Anh</div><input id="ncFront" type="text" placeholder="ví dụ: webhook" style="width:100%;padding:8px 11px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:15px"></div>
+      <div style="flex:2;min-width:180px"><div class="lb-lab">Nghĩa tiếng Việt</div><input id="ncBack" type="text" placeholder="ví dụ: địa chỉ để hệ thống khác gửi dữ liệu vào" style="width:100%;padding:8px 11px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:15px"></div>
+      <button class="btn btn-run" id="ncAdd" style="padding:9px 18px">+ Thêm thẻ</button>
+    </div>
+    <div id="ncList" style="margin-top:14px;font-size:14px;color:var(--muted)"></div>
+  </div>
+</section>
+
+<!-- ==================== NHẬT KÝ ==================== -->
+<section class="lesson" id="tjournal">
+  <div class="eyebrow">Công cụ</div>
+  <h2>Nhật ký &amp; tiến độ</h2>
+  <p>Ghi mỗi tối, mất ba mươi giây. Kể cả hôm bỏ học cũng ghi 0 phút kèm lý do — đó mới là dữ liệu có ích.</p>
+
+  <div class="stat-row">
+    <div class="stat"><div class="lab">Ngày đã học</div><div class="stat-num" id="jrDays">0</div><div class="sub">mục tiêu ≥ 24/30</div></div>
+    <div class="stat"><div class="lab">Tổng thời gian</div><div class="stat-num" id="jrHours">0h</div><div class="sub">mục tiêu ≥ 22 giờ</div></div>
+    <div class="stat"><div class="lab">Chuỗi hiện tại</div><div class="stat-num" id="jrStreak">0</div><div class="sub">ngày liên tiếp</div></div>
+    <div class="stat"><div class="lab">Trung bình</div><div class="stat-num" id="jrAvg">0</div><div class="sub">phút mỗi ngày học</div></div>
+  </div>
+
+  <div class="chartbox">
+    <div class="lb-lab" style="margin-bottom:10px">Số phút học mỗi ngày</div>
+    <div id="jrChart"></div>
+  </div>
+
+  <h3>Bảng ghi</h3>
+  <div style="overflow-x:auto">
+    <table class="jr-grid" id="jrTable">
+      <thead><tr><th>Ngày</th><th style="width:88px">Phút</th><th>Đã làm gì / tắc ở đâu</th><th style="width:52px">Xong</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="warn" style="margin-top:20px"><b>⚠️ Sao lưu dữ liệu</b> Mọi thứ lưu trong trình duyệt máy này. Xoá lịch sử duyệt web là mất sạch. Cuối mỗi tuần bấm <b>Xuất dữ liệu</b> để tải file dự phòng về máy.</div>
+  <div style="display:flex;gap:9px;flex-wrap:wrap">
+    <button class="btn btn-run" id="jrExport" style="padding:9px 18px">⬇ Xuất dữ liệu ra file</button>
+    <label class="btn qz-retry" style="padding:9px 18px;cursor:pointer">⬆ Nạp lại từ file<input type="file" id="jrImport" accept=".json" style="display:none"></label>
+    <button class="btn qz-retry" id="jrWipe" style="padding:9px 18px;color:var(--stop);border-color:#EFCFCD">✕ Xoá toàn bộ dữ liệu</button>
+  </div>
+</section>
+
+<!-- ==================== ĐỒNG HỒ ==================== -->
+<section class="lesson" id="ttimer">
+  <div class="eyebrow">Công cụ</div>
+  <h2>Đồng hồ học</h2>
+  <p>Nguyên tắc số 2: hết giờ thì dừng, kể cả đang dở. Đặt giờ trước khi bắt đầu để khỏi bị cuốn.</p>
+
+  <div class="toolcard" style="text-align:center">
+    <div class="tm-face" id="tmFace">45:00</div>
+    <div class="tm-row">
+      <button class="tm-btn preset" data-min="25">25 phút</button>
+      <button class="tm-btn preset on" data-min="45">45 phút</button>
+      <button class="tm-btn preset" data-min="60">60 phút</button>
+      <button class="tm-btn preset" data-min="75">75 phút</button>
+    </div>
+    <div class="tm-row">
+      <button class="tm-btn go" id="tmGo">▶ Bắt đầu</button>
+      <button class="tm-btn" id="tmReset">↺ Đặt lại</button>
+    </div>
+    <div style="margin-top:18px;padding-top:16px;border-top:1px solid var(--line-soft)">
+      <div class="lb-lab" style="margin-bottom:8px">Đã học xong? Ghi thẳng vào nhật ký</div>
+      <div style="display:flex;gap:9px;justify-content:center;flex-wrap:wrap;align-items:center">
+        <span style="font-size:14px;color:var(--muted)">Ngày</span>
+        <select id="tmDay" style="padding:7px 11px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:14.5px"></select>
+        <button class="btn btn-run" id="tmSave" style="padding:8px 16px">+ Cộng <span id="tmMins">0</span> phút vào nhật ký</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">💡 <b>Cách dùng đúng:</b> chọn số phút <b>trước khi</b> mở tài liệu. Bấm Bắt đầu. Hết giờ thì dừng thật, kể cả đang hào hứng. Hôm sau anh sẽ quay lại với năng lượng còn nguyên — đó mới là cách đi được ba năm.</div>
+</section>
+
+<!-- ==================== TỰ CHẤM ==================== -->
+<section class="lesson" id="treview">
+  <div class="eyebrow">Công cụ</div>
+  <h2>Tự chấm cuối tháng</h2>
+  <p>Điền vào Ngày 29. Chấm trung thực — bảng này chỉ có ích nếu anh không tự lừa mình.</p>
+
+  <div class="toolcard" id="srList"></div>
+
+  <div class="stat-row">
+    <div class="stat"><div class="lab">Số hạng mục đạt</div><div class="stat-num" id="srScore">0 / 13</div></div>
+  </div>
+  <div id="srVerdict"></div>
+
+  <details class="decode"><summary>🔍 Bảng này dùng để làm gì</summary><div class="dbody">
+    <p>Không phải để chấm điểm anh. Để <b>quyết định tháng 2 học gì</b>.</p>
+    <p>Nếu đạt cao, tháng 2 tăng độ khó. Nếu đạt thấp, vấn đề gần như luôn nằm ở <i>hệ thống</i> — giờ giấc, môi trường, khối lượng — chứ không phải năng lực. Cắt bớt và làm lại tốt hơn là cố gồng rồi bỏ.</p>
+  </div></details>
+</section>
+
+<!-- ==================== LỘ TRÌNH DÀI ==================== -->
+<section class="lesson" id="map">
+  <div class="eyebrow">Đường dài</div>
+  <h2>Toàn cảnh 36 tháng</h2>
+  <div class="warn"><b>⚠️ Đọc trang này một lần rồi thôi.</b> Nhìn quá xa mỗi ngày chỉ gây nản. Việc của anh là ba mươi ngày trước mắt.</div>
+
+  <p>Con số 36 tháng đến từ phép tính đơn giản: cần khoảng <b>1.000–1.500 giờ</b> luyện tập có chủ đích để cạnh tranh được ở thị trường remote quốc tế. Với 5–10 giờ mỗi tuần, đó là 30–42 tháng. Nếu tăng lên 15 giờ/tuần thì rút còn 20–26 tháng.</p>
+
+  <table class="cmp">
+    <tr><th style="width:16%">Giai đoạn</th><th style="width:26%">Học gì</th><th>Sản phẩm phải có ở cuối giai đoạn</th></tr>
+    <tr><td><b>Tháng 1–6</b><br><span style="color:var(--muted);font-size:13px">Nền &amp; thói quen</span></td><td>Tiếng Anh kỹ thuật · n8n · marketing cơ bản · SQL</td><td>5 workflow thật · 1 chứng chỉ · GitHub công khai · viết tiếng Anh đều đặn</td></tr>
+    <tr><td><b>Tháng 7–14</b><br><span style="color:var(--muted);font-size:13px">Kiếm tiền lần đầu</span></td><td>Automation nâng cao · CRM · xử lý dữ liệu · API</td><td><b>Khách hàng trả tiền đầu tiên</b> (dù rẻ) · 3 case study có số liệu</td></tr>
+    <tr><td><b>Tháng 15–26</b><br><span style="color:var(--muted);font-size:13px">Phá trần no-code</span></td><td>Python · Git · đọc hiểu code người khác</td><td>Script Python chạy thật trong dự án khách · repo có README tử tế</td></tr>
+    <tr><td><b>Tháng 27–36</b><br><span style="color:var(--muted);font-size:13px">Ra thị trường</span></td><td>LLM · agent · <b>eval framework</b> · phỏng vấn tiếng Anh</td><td>Portfolio 6 dự án · phỏng vấn được bằng tiếng Anh · apply job thật</td></tr>
+  </table>
+
+  <h3>Ba điều quyết định anh đi được bao xa</h3>
+  <ol class="steps">
+    <li><b>Tiếng Anh, không phải kỹ thuật.</b> Đây là điểm nghẽn số một. Kỹ thuật anh học được. Tiếng Anh nếu bỏ bê hai năm thì hai năm đó gần như mất trắng đối với thị trường quốc tế.</li>
+    <li><b>Có khách hàng thật càng sớm càng tốt.</b> Một khách trả 2 triệu đồng chứng minh nhiều hơn mười chứng chỉ. Mốc nhắm: tháng 10–14.</li>
+    <li><b>Đừng dừng ở no-code.</b> Khoảng một nửa vị trí trong ngành không đòi hỏi biết code — đó là cửa vào của anh. Nhưng các vị trí trả lương cao nhất thì có. Dừng ở no-code là tự đặt trần cho mình.</li>
+  </ol>
+
+  <div class="note">💡 <b>Vì sao app này chỉ chi tiết 30 ngày:</b> vì lộ trình tháng 6 phụ thuộc vào việc tháng 1 diễn ra thế nào. Lập kế hoạch chi tiết cho 36 tháng ngay bây giờ là tự lừa mình. Xong tháng 1, có số liệu thật, mới thiết kế tiếp được.</div>
+</section>
+
+<div class="lesson-nav" id="lessonNav">
+  <button class="btn-nav" id="btnPrev">← Trang trước</button>
+  <button class="btn-nav primary" id="btnNext">Trang tiếp theo →</button>
+</div>
+
+</div><!-- /content -->
+</main>
+</div><!-- /wrap -->
+
+<div id="pystatus"><span class="spinner"></span><span>Đang tải Python…</span></div>
+<script>
+/* ============================================================
+   TRẠM 30 — app.js
+   ============================================================ */
+const LESSONS = ["start","rules","words","k1","k2",
+                 "d1","d2","d3","d4","d5","d6","d7",
+                 "tcards","tjournal","ttimer","treview","map"];
+const DAY_IDS = ["d1","d2","d3","d4","d5","d6","d7"];   // sẽ nối dài ở các phần sau
+const TOTAL_DAYS = 30;
+
+/* ---------- Lưu trữ ---------- */
+const DB = {
+  get(k, d){ try{ const v = localStorage.getItem("t30."+k); return v ? JSON.parse(v) : d; }catch(e){ return d; } },
+  set(k, v){ try{ localStorage.setItem("t30."+k, JSON.stringify(v)); }catch(e){ toast("Không lưu được — trình duyệt đang chặn bộ nhớ cục bộ"); } },
+  del(k){ try{ localStorage.removeItem("t30."+k); }catch(e){} },
+};
+let DONE = new Set(DB.get("done", []));
+let JOURNAL = DB.get("journal", {});
+let CARDS = DB.get("cards", {});
+let MINE = DB.get("mine", []);
+let REVIEW = DB.get("review", []);
+
+/* ---------- Toast ---------- */
+let toastEl;
+function toast(msg){
+  if(!toastEl){ toastEl = document.createElement("div"); toastEl.className = "toast"; document.body.appendChild(toastEl); }
+  toastEl.textContent = msg;
+  toastEl.classList.add("show");
+  clearTimeout(toastEl._t);
+  toastEl._t = setTimeout(() => toastEl.classList.remove("show"), 2600);
+}
+
+/* ============================================================
+   ĐIỀU HƯỚNG
+   ============================================================ */
+const sidebar = document.getElementById("sidebar");
+const scrim   = document.getElementById("scrim");
+document.getElementById("menuBtn").addEventListener("click", () => { sidebar.classList.toggle("open"); scrim.classList.toggle("show"); });
+scrim.addEventListener("click", () => { sidebar.classList.remove("open"); scrim.classList.remove("show"); });
+
+function showLesson(id, push){
+  if(!LESSONS.includes(id)) id = "start";
+  document.querySelectorAll(".lesson").forEach(s => s.classList.toggle("show", s.id === id));
+  document.querySelectorAll(".lesson-link").forEach(b => b.classList.toggle("active", b.dataset.goto === id));
+  const i = LESSONS.indexOf(id);
+  document.getElementById("btnPrev").disabled = i <= 0;
+  document.getElementById("btnNext").disabled = i >= LESSONS.length - 1;
+  window.scrollTo({ top: 0, behavior: "instant" in window ? "instant" : "auto" });
+  if(push !== false) history.replaceState(null, "", "#" + id);
+  sidebar.classList.remove("open"); scrim.classList.remove("show");
+  const act = document.querySelector(".lesson-link.active");
+  if(act && act.scrollIntoView) { try{ act.scrollIntoView({ block: "nearest" }); }catch(e){} }
+  if(id === "tjournal") renderJournal();
+  if(id === "tcards")   renderCards();
+  if(id === "treview")  renderReview();
+}
+document.querySelectorAll(".lesson-link").forEach(b => b.addEventListener("click", () => showLesson(b.dataset.goto)));
+document.getElementById("btnPrev").addEventListener("click", () => showLesson(LESSONS[LESSONS.indexOf(current()) - 1]));
+document.getElementById("btnNext").addEventListener("click", () => showLesson(LESSONS[LESSONS.indexOf(current()) + 1]));
+function current(){ const s = document.querySelector(".lesson.show"); return s ? s.id : "start"; }
+document.addEventListener("click", e => {
+  const j = e.target.closest("[data-jump]");
+  if(j) showLesson(j.dataset.jump);
+});
+
+/* ============================================================
+   TIẾN ĐỘ
+   ============================================================ */
+function markDone(id){
+  if(!id || DONE.has(id)) return;
+  DONE.add(id); DB.set("done", [...DONE]); paintProgress();
+}
+function unmarkDone(id){ DONE.delete(id); DB.set("done", [...DONE]); paintProgress(); }
+
+function todayDay(){
+  // "hôm nay" = ngày đầu tiên chưa hoàn thành
+  for(let n = 1; n <= TOTAL_DAYS; n++) if(!DONE.has("d" + n)) return n;
+  return TOTAL_DAYS;
+}
+function paintProgress(){
+  document.querySelectorAll(".lesson-link").forEach(b => {
+    b.classList.toggle("done", DONE.has(b.dataset.goto));
+    b.classList.remove("today");
+  });
+  const t = document.querySelector('.lesson-link[data-goto="d' + todayDay() + '"]');
+  if(t && !DONE.has(t.dataset.goto)) t.classList.add("today");
+
+  const n = [...Array(TOTAL_DAYS)].filter((_, i) => DONE.has("d" + (i + 1))).length;
+  document.getElementById("sbVal").textContent = n + " / " + TOTAL_DAYS + " ngày";
+  document.getElementById("sbBar").style.width = (n / TOTAL_DAYS * 100) + "%";
+  paintPipe();
+  document.querySelectorAll(".daydone").forEach(paintDayBtn);
+}
+
+/* ---------- Đường ống 30 ngày ---------- */
+function paintPipe(){
+  const rail = document.getElementById("pipeMain");
+  if(!rail) return;
+  const now = todayDay();
+  rail.innerHTML = "";
+  for(let n = 1; n <= TOTAL_DAYS; n++){
+    const done = DONE.has("d" + n);
+    const b = document.createElement("button");
+    b.className = "pnode" + (done ? " done" : "") + (!done && n === now ? " now" : "");
+    b.textContent = n;
+    b.title = "Ngày " + n + (LESSONS.includes("d"+n) ? "" : " — chưa có trong bản này");
+    b.addEventListener("click", () => {
+      if(LESSONS.includes("d" + n)) showLesson("d" + n);
+      else toast("Ngày " + n + " sẽ có ở bản cập nhật tiếp theo");
+    });
+    rail.appendChild(b);
+    if(n < TOTAL_DAYS){
+      const w = document.createElement("i");
+      w.className = "pwire" + (done ? " on" : "");
+      rail.appendChild(w);
+    }
+  }
+}
+
+/* ---------- Nút hoàn thành cuối mỗi ngày ---------- */
+function paintDayBtn(box){
+  const id = "d" + box.dataset.day;
+  const on = DONE.has(id);
+  box.innerHTML =
+    '<div style="background:' + (on ? "var(--ok-soft)" : "#fff") + ';border:1px solid ' + (on ? "#C2E4D2" : "var(--line)") +
+    ';border-radius:var(--radius);padding:16px 18px;margin:22px 0 0;display:flex;align-items:center;gap:14px;flex-wrap:wrap">' +
+      '<div style="flex:1;min-width:180px">' +
+        '<div style="font-weight:600;font-family:Lexend,sans-serif">' + (on ? "✓ Đã hoàn thành ngày " + box.dataset.day : "Xong hết các bước rồi?") + '</div>' +
+        '<div style="font-size:13.5px;color:var(--muted)">' + (on ? "Bấm lần nữa nếu muốn bỏ đánh dấu." : "Đánh dấu để đường ống sáng thêm một đốt.") + '</div>' +
+      '</div>' +
+      '<button class="btn ' + (on ? "qz-retry" : "btn-run") + '" style="padding:10px 20px">' + (on ? "↺ Bỏ đánh dấu" : "✓ Đánh dấu hoàn thành") + '</button>' +
+    '</div>';
+  box.querySelector("button").onclick = () => {
+    if(DONE.has(id)){ unmarkDone(id); }
+    else{
+      markDone(id);
+      const j = JOURNAL[box.dataset.day] || {};
+      if(!j.m) toast("Đã xong ngày " + box.dataset.day + " — nhớ ghi số phút vào Nhật ký");
+      else toast("Đã xong ngày " + box.dataset.day + " 🎉");
+    }
+  };
+}
+
+/* ============================================================
+   QUIZ
+   ============================================================ */
+document.querySelectorAll(".quiz").forEach(q => {
+  const items = [...q.querySelectorAll(".qz-item")];
+  items.forEach(it => {
+    const labels = [...it.querySelectorAll("label")];
+    const name = "q" + Math.random().toString(36).slice(2, 9);
+    labels.forEach(l => l.querySelector("input").name = name);
+  });
+  q.querySelector(".qz-grade").addEventListener("click", () => {
+    let ok = 0;
+    items.forEach(it => {
+      const ans = parseInt(it.dataset.ans, 10);
+      const labels = [...it.querySelectorAll("label")];
+      labels.forEach(l => l.classList.remove("right", "wrong"));
+      const picked = labels.findIndex(l => l.querySelector("input").checked);
+      if(picked > -1){
+        if(picked + 1 === ans){ labels[picked].classList.add("right"); ok++; }
+        else{ labels[picked].classList.add("wrong"); labels[ans - 1].classList.add("right"); }
+      }else{ labels[ans - 1].classList.add("right"); }
+      it.querySelector(".qz-why").classList.add("show");
+    });
+    const s = q.querySelector(".qz-score");
+    s.textContent = ok + " / " + items.length;
+    s.style.color = ok >= Math.ceil(items.length * 0.65) ? "var(--ok)" : "var(--stop)";
+    if(ok >= Math.ceil(items.length * 0.65)) markDone(q.dataset.lesson);
+  });
+  q.querySelector(".qz-retry").addEventListener("click", () => {
+    items.forEach(it => {
+      it.querySelectorAll("label").forEach(l => l.classList.remove("right", "wrong"));
+      it.querySelectorAll("input").forEach(i => i.checked = false);
+      it.querySelector(".qz-why").classList.remove("show");
+    });
+    q.querySelector(".qz-score").textContent = "";
+  });
+});
+
+/* ============================================================
+   BỘ GIẢ LẬP NODE
+   ============================================================ */
+const NODE_DEF = {
+  trigger:{ ic:"⏰", nm:"Lịch chạy",     trig:true,  run:()=>({items:1, note:"đến giờ rồi", data:[{"time":"07:00"}]}) },
+  sheet:  { ic:"📋", nm:"Đọc bảng",      run:()=>({items:5, note:"đọc 5 dòng từ bảng đơn hàng",
+             data:[{"mon":"Cà phê sữa","sl":2,"gia":35000},{"mon":"Trà đào","sl":1,"gia":45000},
+                   {"mon":"Bánh mì","sl":3,"gia":25000},{"mon":"Trà sữa","sl":2,"gia":50000},
+                   {"mon":"Nước suối","sl":5,"gia":15000}] }) },
+  filter: { ic:"🔍", nm:"Lọc",           run:(inp)=>{ const d=(inp.data||[]).filter(r=>(r.gia||0)>=30000);
+             return {items:d.length, note:"giữ lại dòng có giá ≥ 30.000", data:d}; } },
+  calc:   { ic:"🧮", nm:"Tính thêm cột", run:(inp)=>{ const d=(inp.data||[]).map(r=>Object.assign({},r,{thanh_tien:(r.sl||0)*(r.gia||0)}));
+             return {items:d.length, note:"thêm cột thanh_tien", data:d}; } },
+  mail:   { ic:"✉️", nm:"Gửi email",     run:(inp)=>({items:inp.items, note:"gửi "+inp.items+" email", data:inp.data}) },
+};
+document.querySelectorAll(".nodesim").forEach(sim => {
+  const canvas = sim.querySelector(".ns-canvas");
+  const out    = sim.querySelector(".ns-out");
+  let chain = [], sel = -1;
+
+  function draw(){
+    canvas.innerHTML = "";
+    if(!chain.length){ canvas.innerHTML = '<div class="ns-empty">Bảng trống — bấm nút bên dưới để thêm node đầu tiên</div>'; return; }
+    chain.forEach((n, i) => {
+      const d = NODE_DEF[n.type];
+      const el = document.createElement("div");
+      el.className = "nsn" + (d.trig ? " trig" : "") + (n.res ? " ran" : "") + (i === sel ? " sel" : "");
+      el.innerHTML = '<div class="ic">' + d.ic + '</div><div class="nm">' + d.nm + '</div>' +
+                     '<div class="ct">' + (n.res ? n.res.items + " items" : "chưa chạy") + '</div>' +
+                     '<button class="x" title="Bỏ node này">×</button>';
+      el.addEventListener("click", e => { if(e.target.classList.contains("x")) return; sel = i; draw(); showOut(); });
+      el.querySelector(".x").addEventListener("click", e => { e.stopPropagation(); chain.splice(i, 1); sel = -1; reset(); });
+      canvas.appendChild(el);
+      if(i < chain.length - 1){
+        const w = document.createElement("i");
+        w.className = "nswire" + (n.res ? " on" : "");
+        canvas.appendChild(w);
+      }
+    });
+  }
+  function reset(){ chain.forEach(n => n.res = null); draw(); out.innerHTML = ""; }
+  function showOut(){
+    if(sel < 0 || !chain[sel]) return;
+    const n = chain[sel], d = NODE_DEF[n.type];
+    if(!n.res){ out.innerHTML = '<span class="dim">Node "' + d.nm + '" chưa chạy. Bấm ▶ Chạy thử trước.</span>'; return; }
+    out.innerHTML = '<span class="dim">// đầu ra của node: ' + d.nm + ' — ' + n.res.note + '</span>\n' +
+                    '<b>' + n.res.items + ' items</b>\n' +
+                    JSON.stringify(n.res.data, null, 2);
+  }
+
+  sim.querySelectorAll(".ns-add").forEach(b => b.addEventListener("click", () => {
+    const t = b.dataset.node;
+    if(NODE_DEF[t].trig && chain.some(n => NODE_DEF[n.type].trig)){ toast("Một quy trình chỉ cần một node khởi động"); return; }
+    if(!NODE_DEF[t].trig && !chain.length){ toast("Hãy thêm ⏰ Lịch chạy trước — quy trình cần biết khi nào chạy"); return; }
+    chain.push({ type:t, res:null }); sel = chain.length - 1; reset(); draw();
+  }));
+  sim.querySelector(".ns-clear").addEventListener("click", () => { chain = []; sel = -1; reset(); });
+
+  sim.querySelector(".ns-run").addEventListener("click", () => {
+    if(!chain.length){ out.innerHTML = '<span class="warnx">⚠ Bảng đang trống. Thêm node trước đã.</span>'; return; }
+    if(!NODE_DEF[chain[0].type].trig){
+      out.innerHTML = '<span class="warnx">⚠ Không chạy được: node đầu tiên phải là một trigger (⏰ Lịch chạy).</span>\n' +
+                      '<span class="dim">Không có trigger thì quy trình không biết KHI NÀO cần chạy.</span>';
+      return;
+    }
+    let prev = { items:0, data:[] }, log = "";
+    chain.forEach((n, i) => {
+      const d = NODE_DEF[n.type];
+      n.res = d.run(prev);
+      log += (i + 1) + ". " + d.ic + " " + d.nm.padEnd(16, " ") + "→ " + String(n.res.items).padStart(2, " ") + " items   " +
+             '<span class="dim">(' + n.res.note + ')</span>\n';
+      prev = n.res;
+    });
+    const last = chain[chain.length - 1];
+    log += '\n<span class="dim">// Chạy xong. Bấm vào một node bất kỳ để xem dữ liệu bên trong nó.</span>';
+    if(last.type === "mail" && last.res.items > 1)
+      log += '\n<span class="warnx">⚠ Node cuối gửi ' + last.res.items + ' email. Trên hệ thống thật, đây là ' + last.res.items + ' email thật gửi đi.</span>';
+    out.innerHTML = log;
+    sel = -1; draw();
+    markDone(sim.dataset.lesson);
+  });
+  draw();
+});
+
+/* ============================================================
+   THẺ GHI NHỚ
+   ============================================================ */
+const DECKS = {
+  n8n: [
+    ["workflow","Một quy trình tự động hoàn chỉnh","Cả dây chuyền sản xuất"],
+    ["node","Một bước trong quy trình","Một cái máy trong dây chuyền"],
+    ["trigger","Bước đầu tiên, thứ khởi động quy trình","Nút bấm khởi động"],
+    ["connection","Đường nối giữa hai node","Băng chuyền nối hai máy"],
+    ["execution","Một lần workflow chạy","Một ca sản xuất"],
+    ["credential","Thông tin đăng nhập để n8n vào Gmail, Sheet…","Chìa khoá — không bao giờ chụp màn hình phần này"],
+    ["canvas","Màn hình trắng để kéo thả các node","Bàn làm việc"],
+    ["item","Một dòng dữ liệu chạy qua node","Một sản phẩm trên băng chuyền"],
+    ["expression","Công thức nhỏ lấy dữ liệu từ node trước, viết trong {{ }}","Công thức tham chiếu ô trong Excel"],
+    ["webhook","Địa chỉ để hệ thống khác gửi dữ liệu vào","Hòm thư nhận hàng"],
+    ["active / inactive","Trạng thái bật hay tắt tự động chạy","Công tắc điện của cả dây chuyền"],
+    ["template","Workflow mẫu có sẵn để dùng lại","Bản vẽ có sẵn"],
+    ["pin data","Ghim tạm dữ liệu để test mà không gọi lại nguồn thật","Đóng băng mẫu thử"],
+    ["sub-workflow","Workflow con được workflow khác gọi vào","Dây chuyền phụ"],
+  ],
+  auto: [
+    ["automation","Bảo máy làm thay chuỗi thao tác lặp lại theo quy tắc cố định",""],
+    ["API","Cách hai phần mềm nói chuyện với nhau","Cửa sổ giao dịch giữa hai toà nhà"],
+    ["JSON","Định dạng dữ liệu dạng { khoá: giá trị }","Cách viết địa chỉ chuẩn để máy đọc"],
+    ["GET","Lệnh xin dữ liệu về","Hỏi mượn"],
+    ["POST","Lệnh gửi dữ liệu đi","Nộp đơn"],
+    ["API key","Chìa khoá riêng để dùng dịch vụ — tuyệt đối không công khai",""],
+    ["endpoint","Địa chỉ cụ thể của một chức năng API","Số phòng trong toà nhà"],
+    ["rate limit","Giới hạn số lần gọi API trong một khoảng thời gian","Mỗi ngày chỉ được hỏi 100 câu"],
+    ["schedule / cron","Hẹn giờ chạy tự động","Đồng hồ hẹn giờ"],
+    ["payload","Phần dữ liệu thật gửi kèm trong một lần gọi","Hàng bên trong kiện hàng"],
+    ["parse","Bóc tách dữ liệu thô ra thành phần dùng được","Mở kiện hàng lấy đúng món cần"],
+    ["log","Bản ghi lại những gì đã chạy","Sổ nhật ký máy"],
+    ["debug","Tìm và sửa lỗi","Soi vào ruột máy xem hỏng chỗ nào"],
+    ["deploy","Đưa lên chạy thật","Xuất xưởng"],
+  ],
+  ai: [
+    ["prompt","Câu lệnh mình đưa cho AI",""],
+    ["system prompt","Lời dặn nền đặt trước, quy định AI đóng vai gì","Bản mô tả công việc"],
+    ["token","Đơn vị nhỏ AI dùng để đếm chữ — tính tiền theo đây",""],
+    ["context window","Lượng chữ tối đa AI nhớ được trong một lần","Sức chứa của bàn làm việc"],
+    ["temperature","Mức ngẫu nhiên trong câu trả lời — thấp thì đều, cao thì bay","Núm chỉnh độ sáng tạo"],
+    ["structured output","Bắt AI trả lời theo khuôn cố định, thường là JSON","Bắt điền vào biểu mẫu"],
+    ["hallucination","AI bịa ra thông tin nghe rất thuyết phục nhưng sai","Nói dối mà không biết mình nói dối"],
+    ["eval","Cách chấm điểm chất lượng đầu ra của AI một cách có hệ thống","Bảng chấm thi — thứ phân biệt người có nghề"],
+    ["agent","AI tự chọn công cụ và làm nhiều bước để đạt mục tiêu","Nhân viên tự xoay xở"],
+    ["RAG","Cho AI tra tài liệu của mình trước khi trả lời","Cho phép mở sách khi thi"],
+    ["fine-tune","Huấn luyện lại mô hình bằng dữ liệu riêng","Đào tạo nội bộ"],
+    ["few-shot","Đưa vài ví dụ mẫu trong prompt để AI bắt chước","Làm mẫu cho xem"],
+  ],
+  mkt: [
+    ["funnel","Phễu — hành trình từ người lạ tới khách hàng",""],
+    ["lead","Người đã để lại thông tin, có thể thành khách","Khách tiềm năng"],
+    ["conversion","Chuyển đổi — người xem thành người mua",""],
+    ["CTA","Call to action — lời kêu gọi hành động","Nút Mua ngay"],
+    ["CRM","Phần mềm quản lý quan hệ khách hàng","Sổ khách hàng điện tử"],
+    ["inbound","Kéo khách tới bằng nội dung có ích, thay vì đi chào mời",""],
+    ["nurturing","Nuôi dưỡng khách tiềm năng bằng chuỗi nội dung theo thời gian",""],
+    ["segmentation","Chia khách thành nhóm để gửi nội dung phù hợp",""],
+    ["churn","Tỷ lệ khách bỏ đi",""],
+    ["CAC","Chi phí để có một khách hàng mới",""],
+    ["LTV","Tổng tiền một khách mang lại trong cả đời khách",""],
+    ["attribution","Xác định kênh nào thật sự tạo ra đơn hàng","Ai là người ghi bàn"],
+  ],
+};
+let curDeck = "n8n", queue = [], curCard = null, flipped = false;
+
+function deckCards(d){
+  if(d === "mine") return MINE.map((c, i) => ["mine#" + i, c.f, c.b, ""]);
+  return (DECKS[d] || []).map((c, i) => [d + "#" + i, c[0], c[1], c[2] || ""]);
+}
+function bucket(id){ return (CARDS[id] && CARDS[id].b) || 0; }
+function buildQueue(){
+  const all = deckCards(curDeck);
+  queue = all.slice().sort((a, b) => bucket(a[0]) - bucket(b[0]));
+  next();
+}
+function next(){
+  const F = document.getElementById("fcFront"), B = document.getElementById("fcBack");
+  const R = document.getElementById("fcRate"), H = document.getElementById("fcHint");
+  if(!queue.length){
+    curCard = null; F.textContent = "🎉 Xong bộ này";
+    H.textContent = curDeck === "mine" && !MINE.length ? "Bộ này chưa có thẻ nào — thêm ở dưới" : "Quay lại buổi sau để ôn tiếp";
+    B.classList.remove("show"); R.style.display = "none";
+  }else{
+    curCard = queue.shift(); flipped = false;
+    F.textContent = curCard[1]; H.textContent = "bấm vào thẻ để lật";
+    document.getElementById("fcMean").textContent = curCard[2];
+    document.getElementById("fcEx").textContent = curCard[3];
+    B.classList.remove("show"); R.style.display = "none";
+  }
+  document.getElementById("fcCount").textContent = "Còn " + queue.length + " thẻ trong lượt này";
+  paintCardStats();
+}
+function paintCardStats(){
+  const all = deckCards(curDeck);
+  const c = [0, 0, 0];
+  all.forEach(x => c[bucket(x[0])]++);
+  document.getElementById("fcNew").textContent = c[0];
+  document.getElementById("fcLearn").textContent = c[1];
+  document.getElementById("fcDone").textContent = c[2];
+}
+function renderCards(){ buildQueue(); renderMine(); }
+
+document.getElementById("fcStage").addEventListener("click", () => {
+  if(!curCard || flipped) return;
+  flipped = true;
+  document.getElementById("fcBack").classList.add("show");
+  document.getElementById("fcHint").textContent = "bạn nhớ tới mức nào?";
+  document.getElementById("fcRate").style.display = "flex";
+});
+document.querySelectorAll("#fcRate .fc-btn").forEach(b => b.addEventListener("click", () => {
+  if(!curCard) return;
+  const r = parseInt(b.dataset.rate, 10), id = curCard[0];
+  CARDS[id] = CARDS[id] || { b:0, n:0 };
+  CARDS[id].n++;
+  if(r === 0){ CARDS[id].b = 0; queue.splice(Math.min(2, queue.length), 0, curCard); }
+  else if(r === 1){ CARDS[id].b = 1; queue.splice(Math.min(6, queue.length), 0, curCard); }
+  else{ CARDS[id].b = 2; }
+  DB.set("cards", CARDS);
+  next();
+}));
+document.querySelectorAll(".tm-btn.deck").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll(".tm-btn.deck").forEach(x => x.classList.remove("on"));
+  b.classList.add("on"); curDeck = b.dataset.deck; buildQueue();
+}));
+document.getElementById("fcReset").addEventListener("click", () => {
+  deckCards(curDeck).forEach(c => delete CARDS[c[0]]);
+  DB.set("cards", CARDS); buildQueue(); toast("Đã đặt lại bộ thẻ này");
+});
+document.getElementById("ncAdd").addEventListener("click", () => {
+  const f = document.getElementById("ncFront").value.trim();
+  const b = document.getElementById("ncBack").value.trim();
+  if(!f || !b){ toast("Điền cả từ tiếng Anh lẫn nghĩa tiếng Việt"); return; }
+  MINE.push({ f, b }); DB.set("mine", MINE);
+  document.getElementById("ncFront").value = ""; document.getElementById("ncBack").value = "";
+  renderMine(); if(curDeck === "mine") buildQueue();
+  toast("Đã thêm thẻ vào bộ Của tôi");
+});
+function renderMine(){
+  const el = document.getElementById("ncList");
+  if(!MINE.length){ el.innerHTML = "<i>Chưa có thẻ nào. Gặp từ mới khi đọc tài liệu thì thêm ngay tại đây.</i>"; return; }
+  el.innerHTML = "<b>" + MINE.length + " thẻ:</b> " + MINE.map((c, i) =>
+    '<span style="display:inline-block;background:#EEF4F8;border-radius:99px;padding:2px 8px 2px 11px;margin:3px 4px 0 0">' +
+    c.f + ' <button data-del="' + i + '" style="border:none;background:none;cursor:pointer;color:#9AA;font-size:13px">×</button></span>').join("");
+  el.querySelectorAll("[data-del]").forEach(b => b.addEventListener("click", () => {
+    MINE.splice(parseInt(b.dataset.del, 10), 1); DB.set("mine", MINE); renderMine(); if(curDeck === "mine") buildQueue();
+  }));
+}
+
+/* ============================================================
+   NHẬT KÝ
+   ============================================================ */
+function renderJournal(){
+  const tb = document.querySelector("#jrTable tbody");
+  tb.innerHTML = "";
+  for(let n = 1; n <= TOTAL_DAYS; n++){
+    const j = JOURNAL[n] || {};
+    const tr = document.createElement("tr");
+    if(j.m) tr.className = "filled";
+    tr.innerHTML =
+      '<td class="jr-day">' + n + '</td>' +
+      '<td><input type="number" min="0" max="600" value="' + (j.m || "") + '" data-d="' + n + '" data-f="m"></td>' +
+      '<td><input type="text" value="' + (j.n || "").replace(/"/g, "&quot;") + '" data-d="' + n + '" data-f="n" placeholder="đã làm gì, tắc ở đâu…"></td>' +
+      '<td style="text-align:center">' + (DONE.has("d" + n) ? "✓" : "") + '</td>';
+    tb.appendChild(tr);
+  }
+  tb.querySelectorAll("input").forEach(i => i.addEventListener("change", () => {
+    const d = i.dataset.d;
+    JOURNAL[d] = JOURNAL[d] || {};
+    JOURNAL[d][i.dataset.f] = i.dataset.f === "m" ? (parseInt(i.value, 10) || 0) : i.value;
+    DB.set("journal", JOURNAL); renderJournal();
+  }));
+  paintJournalStats(); paintChart();
+}
+function paintJournalStats(){
+  let days = 0, mins = 0, streak = 0, best = 0;
+  for(let n = 1; n <= TOTAL_DAYS; n++){
+    const m = (JOURNAL[n] || {}).m || 0;
+    if(m > 0){ days++; mins += m; streak++; best = Math.max(best, streak); }
+    else if(JOURNAL[n]) streak = 0;
+  }
+  let cur = 0;
+  for(let n = TOTAL_DAYS; n >= 1; n--){
+    const m = (JOURNAL[n] || {}).m || 0;
+    if(m > 0) cur++;
+    else if(cur > 0) break;
+  }
+  document.getElementById("jrDays").textContent = days;
+  document.getElementById("jrHours").textContent = (mins / 60).toFixed(1) + "h";
+  document.getElementById("jrStreak").textContent = best;
+  document.getElementById("jrAvg").textContent = days ? Math.round(mins / days) : 0;
+}
+function paintChart(){
+  const W = 30, gap = 4, bw = 18, H = 130;
+  const max = Math.max(60, ...Object.values(JOURNAL).map(j => j.m || 0));
+  let svg = '<svg width="' + (W * (bw + gap)) + '" height="' + (H + 26) + '" role="img" aria-label="Biểu đồ phút học mỗi ngày">';
+  svg += '<line x1="0" y1="' + H + '" x2="' + (W * (bw + gap)) + '" y2="' + H + '" stroke="#DBE3E9"/>';
+  for(let n = 1; n <= W; n++){
+    const m = (JOURNAL[n] || {}).m || 0;
+    const h = Math.round(m / max * (H - 8));
+    const x = (n - 1) * (bw + gap);
+    if(m > 0){
+      svg += '<rect x="' + x + '" y="' + (H - h) + '" width="' + bw + '" height="' + h + '" rx="3" fill="' + (m >= 45 ? "#12A594" : "#8ACFC6") + '"><title>Ngày ' + n + ': ' + m + ' phút</title></rect>';
+    }else{
+      svg += '<rect x="' + x + '" y="' + (H - 3) + '" width="' + bw + '" height="3" rx="1.5" fill="#DBE3E9"><title>Ngày ' + n + ': chưa ghi</title></rect>';
+    }
+    if(n % 5 === 0 || n === 1)
+      svg += '<text x="' + (x + bw / 2) + '" y="' + (H + 18) + '" text-anchor="middle" font-size="10.5" fill="#8899A8" font-family="IBM Plex Mono">' + n + '</text>';
+  }
+  svg += "</svg>";
+  document.getElementById("jrChart").innerHTML = svg;
+}
+document.getElementById("jrExport").addEventListener("click", () => {
+  const data = { v:1, ts:new Date().toISOString(), done:[...DONE], journal:JOURNAL, cards:CARDS, mine:MINE, review:REVIEW };
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type:"application/json" }));
+  a.download = "tram30-backup-" + new Date().toISOString().slice(0, 10) + ".json";
+  a.click(); toast("Đã tải file dự phòng về máy");
+});
+document.getElementById("jrImport").addEventListener("change", e => {
+  const f = e.target.files[0]; if(!f) return;
+  const r = new FileReader();
+  r.onload = () => {
+    try{
+      const d = JSON.parse(r.result);
+      if(d.done) { DONE = new Set(d.done); DB.set("done", d.done); }
+      if(d.journal){ JOURNAL = d.journal; DB.set("journal", JOURNAL); }
+      if(d.cards)  { CARDS = d.cards;     DB.set("cards", CARDS); }
+      if(d.mine)   { MINE = d.mine;       DB.set("mine", MINE); }
+      if(d.review) { REVIEW = d.review;   DB.set("review", REVIEW); }
+      paintProgress(); renderJournal(); toast("Đã nạp lại dữ liệu từ file");
+    }catch(err){ toast("File không đọc được — có thể không phải file dự phòng của Trạm 30"); }
+  };
+  r.readAsText(f); e.target.value = "";
+});
+document.getElementById("jrWipe").addEventListener("click", () => {
+  if(!confirm("Xoá toàn bộ tiến độ, nhật ký và thẻ ghi nhớ? Không khôi phục được.")) return;
+  ["done","journal","cards","mine","review"].forEach(k => DB.del(k));
+  DONE = new Set(); JOURNAL = {}; CARDS = {}; MINE = []; REVIEW = [];
+  paintProgress(); renderJournal(); toast("Đã xoá sạch dữ liệu");
+});
+
+/* ============================================================
+   ĐỒNG HỒ
+   ============================================================ */
+let tmTotal = 45 * 60, tmLeft = tmTotal, tmRun = null, tmDone = 0;
+const tmFace = document.getElementById("tmFace");
+function tmPaint(){
+  const m = Math.floor(tmLeft / 60), s = tmLeft % 60;
+  tmFace.textContent = String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0");
+  tmFace.classList.toggle("run", !!tmRun);
+  document.getElementById("tmMins").textContent = tmDone || Math.round((tmTotal - tmLeft) / 60);
+}
+document.querySelectorAll(".tm-btn.preset").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll(".tm-btn.preset").forEach(x => x.classList.remove("on"));
+  b.classList.add("on");
+  clearInterval(tmRun); tmRun = null;
+  tmTotal = parseInt(b.dataset.min, 10) * 60; tmLeft = tmTotal;
+  document.getElementById("tmGo").textContent = "▶ Bắt đầu"; tmPaint();
+}));
+document.getElementById("tmGo").addEventListener("click", () => {
+  const btn = document.getElementById("tmGo");
+  if(tmRun){ clearInterval(tmRun); tmRun = null; btn.textContent = "▶ Tiếp tục"; tmPaint(); return; }
+  btn.textContent = "⏸ Tạm dừng";
+  tmRun = setInterval(() => {
+    tmLeft--;
+    if(tmLeft <= 0){
+      clearInterval(tmRun); tmRun = null; tmLeft = 0;
+      tmDone = Math.round(tmTotal / 60);
+      btn.textContent = "▶ Bắt đầu";
+      toast("Hết giờ. Dừng lại đi — nguyên tắc số 2.");
+    }
+    tmPaint();
+  }, 1000);
+  tmPaint();
+});
+document.getElementById("tmReset").addEventListener("click", () => {
+  clearInterval(tmRun); tmRun = null; tmLeft = tmTotal; tmDone = 0;
+  document.getElementById("tmGo").textContent = "▶ Bắt đầu"; tmPaint();
+});
+(() => {
+  const sel = document.getElementById("tmDay");
+  for(let n = 1; n <= TOTAL_DAYS; n++) sel.innerHTML += '<option value="' + n + '">' + n + '</option>';
+  sel.value = todayDay();
+})();
+document.getElementById("tmSave").addEventListener("click", () => {
+  const mins = tmDone || Math.round((tmTotal - tmLeft) / 60);
+  if(mins <= 0){ toast("Chưa học phút nào — bấm Bắt đầu trước đã"); return; }
+  const d = document.getElementById("tmDay").value;
+  JOURNAL[d] = JOURNAL[d] || {};
+  JOURNAL[d].m = (JOURNAL[d].m || 0) + mins;
+  DB.set("journal", JOURNAL);
+  tmDone = 0; tmLeft = tmTotal; tmPaint();
+  toast("Đã cộng " + mins + " phút vào ngày " + d);
+});
+tmPaint();
+
+/* ============================================================
+   TỰ CHẤM CUỐI THÁNG
+   ============================================================ */
+const SR = [
+  ["Số ngày thực học trong tháng", "đạt nếu ≥ 24/30 ngày"],
+  ["Tổng số giờ thực tế", "đạt nếu ≥ 22 giờ"],
+  ["Đọc một trang tài liệu mới mà không dịch cả trang", "đạt / không đạt"],
+  ["Số thẻ ghi nhớ đã chuyển sang mức Thuộc rồi", "đạt nếu ≥ 45 thẻ"],
+  ["Số workflow n8n chạy được", "đạt nếu = 3"],
+  ["Có workflow tự chạy theo lịch, không cần bấm", "đạt / không đạt"],
+  ["Workflow có gọi AI", "đạt / không đạt"],
+  ["Bảng chấm 10 kết quả AI, có ghi lý do", "đạt / không đạt"],
+  ["Chứng chỉ HubSpot Inbound Marketing", "đạt / không đạt"],
+  ["Số bài SQL đã học trên web PyKhởiĐầu", "đạt nếu ≥ 8 bài"],
+  ["Trang GitHub công khai có mô tả tiếng Anh", "đạt / không đạt"],
+  ["Bài viết tiếng Anh đã đăng LinkedIn", "đạt / không đạt"],
+  ["Hứng thú hiện tại vẫn bằng hoặc hơn ngày 1", "tự cảm nhận"],
+];
+function renderReview(){
+  const el = document.getElementById("srList");
+  el.innerHTML = SR.map((s, i) =>
+    '<label class="sr-item"><input type="checkbox" data-i="' + i + '"' + (REVIEW[i] ? " checked" : "") + '>' +
+    '<span class="txt"><b>' + s[0] + '</b><br><span class="std">' + s[1] + '</span></span></label>').join("");
+  el.querySelectorAll("input").forEach(c => c.addEventListener("change", () => {
+    REVIEW[parseInt(c.dataset.i, 10)] = c.checked; DB.set("review", REVIEW); paintVerdict();
+  }));
+  paintVerdict();
+}
+function paintVerdict(){
+  const n = REVIEW.filter(Boolean).length;
+  document.getElementById("srScore").textContent = n + " / 13";
+  let cls = "warn", txt = "";
+  if(n >= 11){ cls = "chk"; txt = "<b>Nền tảng tốt hơn mong đợi.</b> Tháng 2 tăng độ khó: bắt đầu học Python cơ bản song song, giữ nguyên nhịp học hiện tại."; }
+  else if(n >= 7){ cls = "note"; txt = "<b>Bình thường và hoàn toàn chấp nhận được.</b> Tháng 2 lặp lại mô hình này, dồn thêm vào hai hạng mục yếu nhất. Chưa vội học thêm thứ mới."; }
+  else if(n >= 4){ cls = "warn"; txt = "<b>Vấn đề nằm ở hệ thống, không phải năng lực.</b> Kiểm tra lại: giờ học đã cố định trong ngày chưa? Tháng 2 cắt bớt, chỉ giữ n8n và tiếng Anh."; }
+  else{ cls = "warn"; txt = "<b>Tín hiệu trung thực cần lắng nghe.</b> Hoặc 5–10 giờ mỗi tuần không khả thi với lịch hiện tại, hoặc hướng này không hợp. Biết bây giờ vẫn tốt hơn biết sau hai năm."; }
+  document.getElementById("srVerdict").innerHTML = '<div class="' + cls + '">' + txt + '</div>';
+}
+
+/* ============================================================
+   PYODIDE (dành cho các bài code ở phần sau)
+   ============================================================ */
+let pyPromise = null;
+function loadPyodideOnce(){
+  if(pyPromise) return pyPromise;
+  const st = document.getElementById("pystatus");
+  st.classList.add("show");
+  pyPromise = new Promise((res, rej) => {
+    const s = document.createElement("script");
+    s.src = "https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js";
+    s.onload = async () => {
+      try{
+        const py = await loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.26.4/full/" });
+        py.setStdin({ stdin: () => prompt("Chương trình đang chờ bạn nhập:") ?? "" });
+        st.classList.remove("show"); res(py);
+      }catch(e){ st.classList.remove("show"); rej(e); }
+    };
+    s.onerror = () => { st.classList.remove("show"); rej(new Error("Không tải được Python — kiểm tra kết nối mạng")); };
+    document.head.appendChild(s);
+  });
+  return pyPromise;
+}
+document.querySelectorAll(".runner").forEach(r => {
+  const ta = r.querySelector("textarea.code"), out = r.querySelector("pre.out");
+  const orig = ta.value;
+  async function run(){
+    out.classList.add("has");
+    out.innerHTML = '<span class="sysmsg">Đang chạy…</span>';
+    try{
+      const py = await loadPyodideOnce();
+      if(/^\s*(import|from)\s+/m.test(ta.value)){
+        out.innerHTML = '<span class="sysmsg">Đang tải thư viện (lần đầu mất 10–20 giây)…</span>';
+        try{ await py.loadPackagesFromImports(ta.value); }catch(e){}
+      }
+      out.textContent = "";
+      py.setStdout({ batched: t => out.append(t + "\n") });
+      py.setStderr({ batched: t => { const s = document.createElement("span"); s.className = "err"; s.textContent = t + "\n"; out.append(s); } });
+      await py.runPythonAsync(ta.value);
+      if(!out.textContent.trim()) out.innerHTML = '<span class="sysmsg">(chạy xong, chương trình không in gì)</span>';
+      markDone(r.dataset.lesson);
+    }catch(e){
+      let m = String(e.message || e);
+      const i = m.indexOf('File "<exec>"'); if(i > -1) m = m.slice(i);
+      out.innerHTML = '<span class="err">' + m.replace(/</g, "&lt;") + "</span>";
+    }
+  }
+  r.querySelector(".btn-run").addEventListener("click", run);
+  r.querySelector(".btn-reset").addEventListener("click", () => { ta.value = orig; out.classList.remove("has"); out.textContent = ""; });
+  ta.addEventListener("keydown", e => { if((e.ctrlKey || e.metaKey) && e.key === "Enter"){ e.preventDefault(); run(); } });
+});
+
+/* ============================================================
+   KHỞI ĐỘNG
+   ============================================================ */
+paintProgress();
+showLesson((location.hash || "").replace("#", "") || "start", false);
+</script>
+</body>
+</html>
