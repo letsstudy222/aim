@@ -760,6 +760,93 @@ mark.hit{background:#FFE9A8;color:inherit;border-radius:3px;padding:0 2px}
 .pc-warn{font-size:14px;line-height:1.65;margin-top:12px;background:var(--warn-soft);
   border:1px solid var(--warn-line);border-radius:8px;padding:11px 14px;color:#6B4E12}
 @media(max-width:900px){.pc-big{font-size:30px}}
+/* ===== Thang đo năng lực ===== */
+.sk-row{padding:14px 0;border-bottom:1px solid var(--line-soft)}
+.sk-row:last-of-type{border-bottom:none}
+.sk-name{font-family:'Lexend',sans-serif;font-weight:600;font-size:15.5px;color:var(--panel);margin-bottom:8px}
+.sk-lv{display:flex;gap:6px;flex-wrap:wrap}
+.sk-b{flex:1;min-width:118px;background:#fff;border:1px solid var(--line);border-radius:9px;
+  padding:8px 10px;cursor:pointer;font-family:inherit;text-align:left;
+  display:flex;flex-direction:column;gap:3px;transition:border-color .15s,background .15s}
+.sk-b:hover{border-color:var(--signal)}
+.sk-b b{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--faint)}
+.sk-b span{font-size:11.5px;color:var(--muted);line-height:1.4}
+.sk-b.under{background:var(--signal-soft);border-color:#C3E5DF}
+.sk-b.under b{color:var(--signal-dark)}
+.sk-b.on{background:var(--panel);border-color:var(--panel)}
+.sk-b.on b{color:var(--signal)}
+.sk-b.on span{color:#C6DCE6}
+.sk-sum{margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+.sk-avg{font-family:'Lexend',sans-serif;font-size:20px;font-weight:600;color:var(--panel)}
+.sk-avg b{color:var(--signal-dark)}
+.sk-n{font-size:13.5px;color:var(--muted);font-weight:400;font-family:'IBM Plex Sans',sans-serif}
+.sk-weak{font-size:14.5px;color:var(--muted);margin-top:6px}
+.sk-next{font-size:14.5px;line-height:1.65;margin-top:12px;background:var(--signal-soft);
+  border-radius:8px;padding:11px 14px;color:var(--ink)}
+.sk-hint{font-size:14px;color:var(--muted)}
+@media(max-width:900px){.sk-b{min-width:calc(50% - 3px)}}
+/* ===== Luyện giữ phạm vi ===== */
+.scopesim{background:var(--panel);border:1px solid var(--panel-line);border-radius:var(--radius);margin:16px 0;overflow:hidden}
+.ss-bar{display:flex;align-items:center;gap:9px;padding:8px 13px;background:var(--panel-2);border-bottom:1px solid var(--panel-line)}
+.ss-title{font-family:'IBM Plex Mono',monospace;font-size:12px;color:#89A6B6;flex:1}
+.ss-title b{color:var(--signal)}
+.ss-msg{padding:16px 15px 12px}
+.ss-bubble{background:#1B4257;border-radius:14px 14px 14px 4px;padding:12px 15px;color:#E4EFF4;
+  font-size:15px;line-height:1.6;max-width:min(560px,92%)}
+.ss-note{font-size:13px;color:#7E9AAA;margin-top:9px;font-style:italic}
+.ss-opts{padding:0 15px 12px;display:flex;flex-direction:column;gap:8px}
+.ss-opt{background:#12303F;border:1px solid #2B5468;border-radius:10px;padding:11px 14px;
+  color:#D6E6EE;font-family:inherit;font-size:14.3px;line-height:1.55;text-align:left;cursor:pointer;transition:border-color .15s}
+.ss-opt:hover{border-color:var(--signal)}
+.ss-opt.dim{opacity:.4}
+.ss-opt.good{border-color:var(--signal);background:#12362C;opacity:1}
+.ss-opt.bad{border-color:#7A3030;background:#3A1E1E;opacity:1}
+.ss-out{padding:0 15px 15px}
+.ss-v{border-radius:9px;padding:12px 15px;font-size:13.8px;line-height:1.65;margin-bottom:11px}
+.ss-v.y{background:#12362C;border:1px solid #2E7D5F;color:#C4EFDC}
+.ss-v.n{background:#3A1E1E;border:1px solid #7A3030;color:#F5CFCF}
+.ss-v b{color:#fff}
+.ss-final{text-align:center;padding:10px 0}
+.ss-final b{font-family:'Lexend',sans-serif;font-size:34px;color:var(--signal)}
+.ss-final p{color:#9DB6C4;font-size:14.5px;margin:8px 0 0;line-height:1.6}
+/* ===== Mục lục gập được ===== */
+.navtrack.navfold{cursor:pointer;user-select:none;display:flex;align-items:center;gap:7px;
+  padding-bottom:8px;margin-bottom:0;border-radius:7px;padding-left:8px;padding-right:8px;margin-left:0;margin-right:0}
+.navtrack.navfold:hover{background:#E1E9EE}
+.navtrack.navfold:focus-visible{outline:3px solid var(--pulse);outline-offset:1px}
+.navtrack.navfold::before{content:"▸";font-size:11px;color:var(--muted);transition:transform .15s;display:inline-block}
+.navtrack.navfold.open::before{transform:rotate(90deg)}
+.nav-n{margin-left:auto;font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  color:var(--faint);background:#DFE7EC;border-radius:99px;padding:1px 7px;font-weight:600}
+.navtrack.navfold.open .nav-n{background:var(--signal-soft);color:var(--signal-dark)}
+.navbody{display:none}
+.navbody.open{display:block;margin-bottom:6px}
+.lesson-link.nav-pin{background:#E4EDF2;font-weight:600;margin-bottom:10px}
+.lesson-link.nav-pin:hover{background:#D6E2E9}
+.lesson-link.nav-pin.active{background:var(--panel);color:#fff}
+/* ===== Chọn công cụ ===== */
+.picksim{background:var(--panel);border:1px solid var(--panel-line);border-radius:var(--radius);margin:16px 0;overflow:hidden}
+.pk-bar{display:flex;align-items:center;gap:9px;padding:8px 13px;background:var(--panel-2);border-bottom:1px solid var(--panel-line)}
+.pk-title{font-family:'IBM Plex Mono',monospace;font-size:12px;color:#89A6B6;flex:1}
+.pk-title b{color:var(--signal)}
+.pk-case{padding:16px 15px 12px}
+.pk-req{font-size:15.5px;color:#E4EFF4;line-height:1.6}
+.pk-ctx{font-size:13px;color:#7E9AAA;margin-top:9px;font-style:italic}
+.pk-opts{display:flex;gap:8px;padding:0 15px 12px;flex-wrap:wrap}
+.pk-opt{flex:1;min-width:130px;background:#12303F;border:1px solid #2B5468;border-radius:10px;
+  padding:12px 10px;color:#D6E6EE;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:border-color .15s}
+.pk-opt:hover:not(:disabled){border-color:var(--signal)}
+.pk-opt:disabled{cursor:default}
+.pk-opt.dim{opacity:.35}
+.pk-opt.good{border-color:var(--signal);background:#12362C;opacity:1}
+.pk-opt.bad{border-color:#7A3030;background:#3A1E1E;opacity:1}
+.pk-out{padding:0 15px 15px}
+.pk-v{border-radius:9px;padding:13px 15px;font-size:13.8px;line-height:1.65;margin-bottom:11px}
+.pk-v.y{background:#12362C;border:1px solid #2E7D5F;color:#C4EFDC}
+.pk-v.n{background:#2A2A3A;border:1px solid #4A4A66;color:#D9D9EC}
+.pk-you{color:#F5CFCF;padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid rgba(255,255,255,.12)}
+.pk-right b{color:#fff}
+@media(max-width:900px){.pk-opt{min-width:calc(50% - 4px);font-size:13.3px}}
 </style>
 </head>
 <body>
@@ -814,8 +901,7 @@ mark.hit{background:#FFE9A8;color:inherit;border-radius:3px;padding:0 2px}
   <button class="sb-resume" id="sbMap" style="background:var(--panel);margin-top:-8px">🗺️ Toàn cảnh — xem cả khoá</button>
   <button class="sb-resume" id="sbStuck" style="background:#5A6B7A;margin-top:-8px">🆘 Đang bị tắc?</button>
 
-  <button class="lesson-link" data-goto="mapall"><span class="lnum">🗺️</span> Toàn cảnh <span class="tick">✓</span></button>
-  <button class="lesson-link" data-goto="m46"><span class="lnum">4-6</span> Khung tháng 4, 5, 6 <span class="tick">✓</span></button>
+  <button class="lesson-link nav-pin" data-goto="mapall"><span class="lnum">🗺️</span> Toàn cảnh — xem cả khoá <span class="tick">✓</span></button>
 
   <div class="navtrack">🧭 Bắt đầu</div>
   <button class="lesson-link" data-goto="start"><span class="lnum">◆</span> Đọc cái này trước <span class="tick">✓</span></button>
@@ -831,6 +917,8 @@ mark.hit{background:#FFE9A8;color:inherit;border-radius:3px;padding:0 2px}
 
   <button class="lesson-link" data-goto="k5"><span class="lnum">K5</span> Đọc log và tìm chỗ gãy <span class="tick">✓</span></button>
   <button class="lesson-link" data-goto="k6"><span class="lnum">K6</span> Dữ liệu bẩn <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="k7"><span class="lnum">K7</span> Giữ phạm vi công việc <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="k8"><span class="lnum">K8</span> Chọn công cụ cho đúng <span class="tick">✓</span></button>
 
   <div class="navtrack">📅 Tuần 1 — Nhìn thấy tận mắt</div>
   <button class="lesson-link" data-goto="d1"><span class="lnum">1</span> Dựng chỗ học <span class="tick">✓</span></button>
@@ -870,6 +958,41 @@ mark.hit{background:#FFE9A8;color:inherit;border-radius:3px;padding:0 2px}
   <button class="lesson-link" data-goto="d29"><span class="lnum">29</span> Tự chấm điểm <span class="tick">✓</span></button>
   <button class="lesson-link" data-goto="d30"><span class="lnum">30</span> Kế hoạch tháng 2 <span class="tick">✓</span></button>
 
+  <div class="navgroup">Tuần 9 — Quy trình thứ hai, tự dựng</div>
+  <button class="lesson-link" data-goto="d61"><span class="lnum">61</span> Tự chọn việc thứ hai <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="d62"><span class="lnum">62</span> Tự thiết kế <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="d63"><span class="lnum">63</span> Dựng nửa đầu <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="d64"><span class="lnum">64</span> Nửa sau và làm sạch <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="d65"><span class="lnum">65</span> Tự phá quy trình <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="d66"><span class="lnum">66</span> Bật và đo <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="d67"><span class="lnum">67</span> Nhìn lại tuần 9 <span class="tick">✓</span></button>
+  <div class="navgroup">Tuần 10 — Python làm việc thật</div>
+  <button class="lesson-link" data-goto="d68"><span class="lnum">68</span> Đọc và ghi file <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="d69"><span class="lnum">69</span> Xử lý bảng CSV <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="d70"><span class="lnum">70</span> JSON bằng Python <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="d71"><span class="lnum">71</span> Bắt lỗi cho tử tế <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="d72"><span class="lnum">72</span> Python ra khỏi trình duyệt <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="d73"><span class="lnum">73</span> Script làm việc thật <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="d74"><span class="lnum">74</span> Nhìn lại tuần 10 <span class="tick">✓</span></button>
+  <div class="navgroup">Tuần 11 — Làm cho người khác</div>
+  <button class="lesson-link" data-goto="d75"><span class="lnum">75</span> Tìm người <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="d76"><span class="lnum">76</span> Xem họ làm <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="d77"><span class="lnum">77</span> Chốt phạm vi <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="d78"><span class="lnum">78</span> Dựng với dữ liệu của họ <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="d79"><span class="lnum">79</span> Hoàn thiện và gia cố <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="d80"><span class="lnum">80</span> Bàn giao <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="d81"><span class="lnum">81</span> Nhìn lại tuần 11 <span class="tick">✓</span></button>
+  <div class="navgroup">Tuần 12 — Nói được tiếng Anh</div>
+  <button class="lesson-link" data-goto="d82"><span class="lnum">82</span> Vì sao nói khó hơn viết <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="d83"><span class="lnum">83</span> Quay video đầu tiên <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="d84"><span class="lnum">84</span> Xem lại và đếm <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="d85"><span class="lnum">85</span> Hỏi lại khách <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="d86"><span class="lnum">86</span> Quay lại lần hai <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="d87"><span class="lnum">87</span> Case study thứ ba <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="d88"><span class="lnum">88</span> Nhìn lại tuần 12 <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="d89"><span class="lnum">89</span> Tự chấm tháng 3 <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="d90"><span class="lnum">90</span> Chín mươi ngày <span class="tick">✓</span></button>
+
   <div class="navtrack">📅 Tháng 4 — Làm nhiều hơn, nhanh hơn</div>
   <button class="lesson-link" data-goto="w13"><span class="lnum">T13</span> Quy trình 3 trong 1 tuần <span class="tick">✓</span></button>
   <button class="lesson-link" data-goto="w14"><span class="lnum">T14</span> Nối thứ chưa có sẵn <span class="tick">✓</span></button>
@@ -887,6 +1010,7 @@ mark.hit{background:#FFE9A8;color:inherit;border-radius:3px;padding:0 2px}
   <button class="lesson-link" data-goto="w22"><span class="lnum">T22</span> Dọn nhà <span class="tick">✓</span></button>
   <button class="lesson-link" data-goto="w23"><span class="lnum">T23</span> Nói được tiếng Anh <span class="tick">✓</span></button>
   <button class="lesson-link" data-goto="w24"><span class="lnum">T24</span> Chốt giai đoạn một <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="m46"><span class="lnum">4-6</span> Khung tổng quan tháng 4–6 <span class="tick">✓</span></button>
   <button class="lesson-link" data-goto="ph2"><span class="lnum">GĐ2</span> Kiếm tiền lần đầu <span class="tick">✓</span></button>
 
   <div class="navtrack">💼 Giai đoạn 2 — Kiếm tiền lần đầu</div>
@@ -904,9 +1028,19 @@ mark.hit{background:#FFE9A8;color:inherit;border-radius:3px;padding:0 2px}
   <button class="lesson-link" data-goto="tprice"><span class="lnum">💰</span> Công cụ báo giá <span class="tick">✓</span></button>
   <button class="lesson-link" data-goto="thandover"><span class="lnum">🤝</span> Mẫu bàn giao <span class="tick">✓</span></button>
 
+  <div class="navtrack">🔓 Giai đoạn 3 — Phá trần no-code</div>
+  <button class="lesson-link" data-goto="ph3"><span class="lnum">▸</span> Tổng quan mười hai tháng <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="q15"><span class="lnum">15</span> Python thật sự <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="q18"><span class="lnum">18</span> Đọc code người khác <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="q21"><span class="lnum">21</span> Hệ thống nhiều phần <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="q24"><span class="lnum">24</span> Nâng giá, chọn khách <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="tskill"><span class="lnum">📊</span> Thang đo năng lực <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="ph4"><span class="lnum">GĐ4</span> Ra thị trường quốc tế <span class="tick">✓</span></button>
+
   <div class="navtrack">📕 Tra cứu</div>
   <button class="lesson-link" data-goto="book"><span class="lnum">📕</span> Sổ tay tra cứu <span class="tick">✓</span></button>
   <button class="lesson-link" data-goto="stuck"><span class="lnum">🆘</span> Khi bị tắc <span class="tick">✓</span></button>
+  <button class="lesson-link" data-goto="restart"><span class="lnum">↻</span> Bắt đầu lại <span class="tick">✓</span></button>
   <button class="lesson-link" data-goto="nguon"><span class="lnum">#</span> Con số lấy từ đâu <span class="tick">✓</span></button>
 
   <div class="navtrack">📅 Tháng 2 — Từ học sang làm</div>
@@ -997,7 +1131,7 @@ mark.hit{background:#FFE9A8;color:inherit;border-radius:3px;padding:0 2px}
     <tr><th>Điều nhiều người tưởng</th><th>Sự thật</th></tr>
     <tr><td>Một tháng là biết lập trình</td><td>Không. Tháng này chưa động tới lập trình, và cũng chưa cần.</td></tr>
     <tr><td>Một tháng là đọc được tài liệu tiếng Anh</td><td>Không. Chỉ nhằm <b>bắt đầu chịu đựng được</b> việc đọc tiếng Anh mà không dịch cả trang.</td></tr>
-    <tr><td>Một tháng là kiếm được tiền</td><td>Không. Mốc thu nhập đầu tiên vào khoảng tháng thứ 10–14.</td></tr>
+    <tr><td>Một tháng là kiếm được tiền</td><td>Không. Mốc thu nhập đầu tiên vào khoảng tháng thứ 9–14.</td></tr>
   </table>
 
   <h3>Tháng này chỉ nhằm bốn mục tiêu</h3>
@@ -1577,8 +1711,8 @@ mark.hit{background:#FFE9A8;color:inherit;border-radius:3px;padding:0 2px}
     <div class="qz-item" data-ans="1">
       <p class="qz-q">6. Vì sao app này bắt "làm thử trước, đọc sau"?</p>
       <label><input type="radio"> Vì đọc mô tả một thứ chưa từng thấy thì không hiểu được gì</label>
-      <label><input type="radio"> Vì tài liệu n8n viết khó hiểu</label>
-      <label><input type="radio"> Vì tiết kiệm thời gian</label>
+      <label><input type="radio"> Vì tài liệu n8n viết khó hiểu, phải thấy trước mới đoán được ý</label>
+      <label><input type="radio"> Vì bấm thử nhanh hơn đọc, tiết kiệm thời gian mỗi buổi học</label>
       <div class="qz-why">Não cần một trải nghiệm cụ thể để gắn chữ nghĩa vào. Thấy trước, hiểu sau — đây là nguyên tắc số 1.</div>
     </div>
     <div class="qz-actions">
@@ -2088,8 +2222,8 @@ print("Món đắt nhất:", dat_nhat["mon"], "-", dat_nhat["gia"], "đ")</pre><
     </div>
     <div class="qz-item" data-ans="3">
       <p class="qz-q">6. "Edge case" nghĩa là gì?</p>
-      <label><input type="radio"> Lỗi xảy ra ở phiên bản mới nhất</label>
-      <label><input type="radio"> Trường hợp chạy nhanh nhất</label>
+      <label><input type="radio"> Lỗi chỉ xảy ra ở phiên bản mới nhất của công cụ, chưa kịp vá</label>
+      <label><input type="radio"> Trường hợp chạy nhanh nhất, dùng để đo hiệu năng tối đa</label>
       <label><input type="radio"> Trường hợp biên: dữ liệu rỗng, sai kiểu, quá dài, số âm…</label>
       <div class="qz-why">Người mới chỉ thử trường hợp bình thường. Người có nghề luôn thử trường hợp biên trước khi cho chạy thật.</div>
     </div>
@@ -2449,8 +2583,8 @@ print("Món đắt nhất:", dat_nhat["mon"], "-", dat_nhat["gia"], "đ")</pre><
     <div class="qz-item" data-ans="1">
       <p class="qz-q">5. Tab <code>Executions</code> trong n8n dùng để làm gì?</p>
       <label><input type="radio"> Xem lại mọi lần workflow đã chạy, kể cả lần thất bại và lý do</label>
-      <label><input type="radio"> Xem danh sách node có sẵn</label>
-      <label><input type="radio"> Xem hoá đơn thanh toán</label>
+      <label><input type="radio"> Xem danh sách toàn bộ node có sẵn để kéo vào canvas</label>
+      <label><input type="radio"> Xem hoá đơn và mức sử dụng tài khoản trong tháng</label>
       <div class="qz-why">Đây là công cụ chẩn đoán quan trọng nhất khi workflow tự động không chạy đúng.</div>
     </div>
     <div class="qz-item" data-ans="2">
@@ -2935,16 +3069,16 @@ Workflows I built while learning n8n, from zero, in 30 days.
     </div>
     <div class="qz-item" data-ans="2">
       <p class="qz-q">6. Trước khi đẩy file workflow lên GitHub công khai, bắt buộc phải làm gì?</p>
-      <label><input type="radio"> Đổi tên file cho gọn</label>
+      <label><input type="radio"> Đổi tên file cho gọn và dễ tìm trong kho</label>
       <label><input type="radio"> Mở file kiểm tra và xoá mọi key, token, email cá nhân</label>
-      <label><input type="radio"> Nén file lại cho nhẹ</label>
+      <label><input type="radio"> Nén file lại cho nhẹ để kho không quá dung lượng</label>
       <div class="qz-why">Bot quét GitHub tìm key bị lộ, thường phát hiện trong vài phút. Lỡ đẩy lên thì xoá file chưa đủ — phải huỷ key cũ.</div>
     </div>
     <div class="qz-item" data-ans="2">
       <p class="qz-q">7. Vì sao nên tự viết bài tiếng Anh thay vì để AI viết?</p>
-      <label><input type="radio"> Vì AI viết sai ngữ pháp</label>
+      <label><input type="radio"> Vì AI hay viết sai ngữ pháp tiếng Anh ở những câu dài</label>
       <label><input type="radio"> Vì bài AI viết trơn tru nhưng chung chung, thiếu chi tiết thật nên kém đáng tin</label>
-      <label><input type="radio"> Vì LinkedIn cấm nội dung do AI tạo</label>
+      <label><input type="radio"> Vì LinkedIn có quy định cấm đăng nội dung do AI viết ra</label>
       <div class="qz-why">Bài có lỗi ngữ pháp nhưng có chi tiết cụ thể đáng tin hơn nhiều so với bài hoàn hảo mà rỗng.</div>
     </div>
     <div class="qz-actions">
@@ -3401,23 +3535,23 @@ Workflows I built while learning n8n, from zero, in 30 days.
     </div>
     <div class="qz-item" data-ans="3">
       <p class="qz-q">2. Vì sao phải vẽ ra giấy trước khi mở n8n?</p>
-      <label><input type="radio"> Để trình bày cho khách hàng xem</label>
-      <label><input type="radio"> Vì n8n không cho sửa sau khi dựng</label>
+      <label><input type="radio"> Để có bản vẽ trình khách hàng duyệt trước khi bắt tay làm</label>
+      <label><input type="radio"> Vì n8n không cho sửa cấu trúc sau khi workflow đã Active</label>
       <label><input type="radio"> Vì dựng theo cảm hứng hay phải phá đi làm lại khi phát hiện thiếu dữ liệu</label>
       <div class="qz-why">Vẽ trước mất 20 phút, tiết kiệm hàng giờ mò lại. Đây là thói quen phân biệt người có nghề.</div>
     </div>
     <div class="qz-item" data-ans="1">
       <p class="qz-q">3. Số items thực tế khác con số anh dự kiến. Nên làm gì?</p>
       <label><input type="radio"> Dừng lại tìm hiểu ngay, vì đó là dấu hiệu hiểu sai cấu trúc dữ liệu</label>
-      <label><input type="radio"> Bỏ qua, chỉnh lại ở node cuối</label>
-      <label><input type="radio"> Xoá node đó và dựng lại từ đầu</label>
+      <label><input type="radio"> Bỏ qua, chỉnh lại số lượng ở node cuối cho khớp là được</label>
+      <label><input type="radio"> Xoá node đó rồi dựng lại từ đầu cho chắc, tránh lỗi ngầm</label>
       <div class="qz-why">Bỏ qua thì mọi thứ phía sau sai theo, và lỗi sẽ hiện ra ở chỗ khác khiến anh tìm nhầm chỗ.</div>
     </div>
     <div class="qz-item" data-ans="2">
       <p class="qz-q">4. Trong SQL, lệnh nào nguy hiểm nhất nếu quên <code>WHERE</code>?</p>
-      <label><input type="radio"> SELECT</label>
+      <label><input type="radio"> SELECT và ORDER BY</label>
       <label><input type="radio"> UPDATE và DELETE</label>
-      <label><input type="radio"> GROUP BY</label>
+      <label><input type="radio"> GROUP BY và HAVING</label>
       <div class="qz-why"><code>SELECT</code> chỉ đọc, sai cũng không mất gì. <code>UPDATE</code> và <code>DELETE</code> ghi — quên <code>WHERE</code> là sửa hoặc xoá toàn bộ bảng.</div>
     </div>
     <div class="qz-item" data-ans="3">
@@ -3430,8 +3564,8 @@ Workflows I built while learning n8n, from zero, in 30 days.
     <div class="qz-item" data-ans="1">
       <p class="qz-q">6. Vì sao phải đo mốc gốc "hiện tốn bao nhiêu phút mỗi tuần" ở Ngày 31?</p>
       <label><input type="radio"> Để cuối tháng có con số so sánh, kể được trong case study và phỏng vấn</label>
-      <label><input type="radio"> Để tính tiền công với khách hàng</label>
-      <label><input type="radio"> Để biết nên dùng công cụ nào</label>
+      <label><input type="radio"> Để tính tiền công cho khách dựa trên thời gian tiết kiệm</label>
+      <label><input type="radio"> Để biết nên dùng công cụ nào cho hợp với quy mô công việc</label>
       <div class="qz-why">Không có mốc gốc thì cuối tháng chỉ nói được "tôi làm cái này rồi" — không thuyết phục bằng "tiết kiệm 90 phút mỗi tuần".</div>
     </div>
     <div class="qz-actions">
@@ -3879,8 +4013,8 @@ print(f"\n  TỔNG: {sum(theo_tp.values())} đ")</textarea>
     <div class="qz-item" data-ans="1">
       <p class="qz-q">5. Khác biệt cốt lõi giữa <code>GROUP BY</code> và window function?</p>
       <label><input type="radio"> GROUP BY nén nhiều dòng thành một; window function giữ nguyên số dòng và thêm cột tính toán</label>
-      <label><input type="radio"> Window function chạy nhanh hơn</label>
-      <label><input type="radio"> Window function chỉ dùng được với số</label>
+      <label><input type="radio"> Window function chạy nhanh hơn vì không phải gom nhóm trước khi tính</label>
+      <label><input type="radio"> Window function chỉ dùng được với cột số, GROUP BY dùng được mọi kiểu</label>
       <div class="qz-why">Nắm được điều này là nắm được bài. Câu hỏi kiểu "đơn này là đơn thứ mấy của khách" cần giữ nguyên dòng, nên GROUP BY không trả lời được.</div>
     </div>
     <div class="qz-item" data-ans="2">
@@ -4173,23 +4307,23 @@ print(f"Vào {len(dong)} dòng, giữ lại {len(giu_lai)} dòng")
   <div class="quiz" data-lesson="d51">
     <div class="qz-item" data-ans="2">
       <p class="qz-q">1. <code>"2" + "3"</code> trong Python ra gì?</p>
-      <label><input type="radio"> 5</label>
+      <label><input type="radio"> 5 — Python tự nhận ra đây là số và cộng lại</label>
       <label><input type="radio"> "23" — vì cả hai là chuỗi, dấu + nối chúng lại</label>
-      <label><input type="radio"> Báo lỗi</label>
+      <label><input type="radio"> Báo lỗi — không cộng được chuỗi với chuỗi</label>
       <div class="qz-why">Đây chính là kiểu bẩn số 2 ở bài K6. Muốn ra 5 thì phải ép kiểu: <code>int("2") + int("3")</code>.</div>
     </div>
     <div class="qz-item" data-ans="3">
       <p class="qz-q">2. Vì sao n8n không bắt anh viết vòng lặp?</p>
-      <label><input type="radio"> Vì n8n không hỗ trợ vòng lặp</label>
-      <label><input type="radio"> Vì workflow chỉ xử lý một dòng mỗi lần</label>
+      <label><input type="radio"> Vì n8n không hỗ trợ vòng lặp, muốn lặp phải dùng node Code</label>
+      <label><input type="radio"> Vì mỗi lần chạy, workflow chỉ xử lý đúng một dòng dữ liệu</label>
       <label><input type="radio"> Vì n8n tự lặp mọi node cho từng item — nó giấu vòng lặp đi cho dễ dùng</label>
       <div class="qz-why">52 items thì mọi node sau tự chạy 52 lần. Python bắt anh viết ra, đổi lại anh kiểm soát được: bỏ giữa chừng, đếm, chia nhóm theo ý mình.</div>
     </div>
     <div class="qz-item" data-ans="1">
       <p class="qz-q">3. <code>dictionary</code> trong Python tương ứng với gì mà anh đã dùng suốt hai tháng?</p>
       <label><input type="radio"> JSON — cùng một cấu trúc, chỉ khác tên gọi</label>
-      <label><input type="radio"> Bảng Google Sheet</label>
-      <label><input type="radio"> Node Edit Fields</label>
+      <label><input type="radio"> Bảng Google Sheet — cùng là dạng hàng và cột</label>
+      <label><input type="radio"> Node Edit Fields — cùng là nơi đặt tên cho giá trị</label>
       <div class="qz-why"><code>d["khach"]</code> trong Python chính là <code>{{ $json.khach }}</code> trong n8n.</div>
     </div>
     <div class="qz-item" data-ans="3">
@@ -4201,9 +4335,9 @@ print(f"Vào {len(dong)} dòng, giữ lại {len(giu_lai)} dòng")
     </div>
     <div class="qz-item" data-ans="2">
       <p class="qz-q">5. AI viết cho anh một đoạn code. Nên làm gì trước khi chạy?</p>
-      <label><input type="radio"> Chạy luôn, sai thì sửa</label>
+      <label><input type="radio"> Chạy luôn, sai thì đọc thông báo lỗi rồi nhờ AI sửa tiếp</label>
       <label><input type="radio"> Đọc hiểu và viết một câu mô tả nó làm gì, rồi mới chạy để kiểm chứng</label>
-      <label><input type="radio"> Nhờ AI giải thích lại bằng tiếng Việt</label>
+      <label><input type="radio"> Nhờ AI giải thích lại từng dòng bằng tiếng Việt rồi chạy</label>
       <div class="qz-why">AI viết sai thường xuyên hơn nhiều so với vẻ ngoài tự tin của nó. Người đọc được code mới phát hiện ra.</div>
     </div>
     <div class="qz-item" data-ans="1">
@@ -4234,6 +4368,9 @@ print(f"Vào {len(dong)} dòng, giữ lại {len(giu_lai)} dòng")
     <tr><td>Hiểu dictionary và truy cập được trường lồng nhau</td><td>Ôn lại bài K3 — cây JSON ở đó giúp nhiều</td></tr>
     <tr><td>Đọc được đoạn code 20 dòng và nói được nó làm gì</td><td>Luyện thêm bằng chính các đoạn trong bài K6</td></tr>
   </table>
+
+  <div class="doing"><b>▶ Vừa học code xong, đọc ngay bài này.</b> Bài <b>K8</b> dạy khi nào <b>không</b> nên dùng code. Người mới học code hay viết code cho mọi thứ — tốn gấp đôi mà không được gì.
+  <p style="margin:10px 0 0"><button class="btn btn-run" data-jump="k8" style="padding:8px 16px">→ Mở bài K8</button></p></div>
 
   <div class="chk"><b>✅ Mốc cuối tuần 7</b>
     <ul>
@@ -4530,16 +4667,16 @@ print(f"Vào {len(dong)} dòng, giữ lại {len(giu_lai)} dòng")
     </div>
     <div class="qz-item" data-ans="3">
       <p class="qz-q">2. Trước khi thay một phần của quy trình đang chạy, nên làm gì?</p>
-      <label><input type="radio"> Tắt quy trình đi rồi sửa</label>
-      <label><input type="radio"> Sửa thẳng, sai thì hoàn tác</label>
+      <label><input type="radio"> Tắt quy trình đang chạy, sửa xong rồi bật lại</label>
+      <label><input type="radio"> Sửa thẳng trên bản đang chạy, sai thì hoàn tác lại</label>
       <label><input type="radio"> Nhân bản ra bản mới, chạy song song hai bản rồi so kết quả</label>
       <div class="qz-why">Quy trình thật vẫn chạy trong lúc anh thử nghiệm. Kết quả khớp hoàn toàn thì mới thay.</div>
     </div>
     <div class="qz-item" data-ans="1">
       <p class="qz-q">3. Thay năm node kéo thả bằng một node Code 60 dòng. Đánh giá?</p>
       <label><input type="radio"> Chưa chắc tốt hơn — code dài khó đọc hơn node kéo thả</label>
-      <label><input type="radio"> Luôn tốt hơn vì ít node hơn</label>
-      <label><input type="radio"> Luôn tệ hơn vì phải biết code</label>
+      <label><input type="radio"> Luôn tốt hơn vì ít node thì workflow gọn và chạy nhanh hơn</label>
+      <label><input type="radio"> Luôn tệ hơn vì người sau phải biết code mới bảo trì được</label>
       <div class="qz-why">Chỉ dùng code khi kéo thả thật sự bó tay. "Ít node hơn" không phải mục tiêu.</div>
     </div>
     <div class="qz-item" data-ans="3">
@@ -4559,8 +4696,8 @@ print(f"Vào {len(dong)} dòng, giữ lại {len(giu_lai)} dòng")
     <div class="qz-item" data-ans="1">
       <p class="qz-q">6. Viết "the hard part was learning n8n" trong case study. Vấn đề?</p>
       <label><input type="radio"> Quá chung chung — không chứng minh được đã làm thật</label>
-      <label><input type="radio"> Quá dài</label>
-      <label><input type="radio"> Không nên thừa nhận điểm yếu</label>
+      <label><input type="radio"> Quá dài, nên rút gọn thành một cụm từ</label>
+      <label><input type="radio"> Không nên thừa nhận điểm yếu trong hồ sơ xin việc</label>
       <div class="qz-why">Chi tiết cụ thể như "API trả về ngày ở ba định dạng khác nhau" mới là thứ chứng minh anh đã đụng vào việc thật.</div>
     </div>
     <div class="qz-actions">
@@ -4744,10 +4881,24 @@ print(f"Vào {len(dong)} dòng, giữ lại {len(giu_lai)} dòng")
   <div class="eyebrow">Tháng 3</div>
   <h2>Tự đi</h2>
 
+  <div class="pipe">
+    <div class="pipe-lab">tháng 3 — ngày 61 tới 90</div>
+    <div class="pipe-rail" id="pipeM3"></div>
+    <div class="pipe-legend">
+      <span><i style="background:#12A594"></i>đã xong</span>
+      <span><i style="background:#2A2118;border:1.5px solid #F26B3A"></i>hôm nay</span>
+      <span><i style="background:#193C4D;border:1.5px solid #2B5468"></i>chưa tới</span>
+    </div>
+  </div>
+
   <div id="m3Gate"></div>
 
-  <div class="warn"><b>⚠️ Tháng này không có 30 bài viết sẵn. Đó là chủ đích.</b>
-    <p style="margin:9px 0 0">Hai tháng đầu tôi chỉ cho anh từng bước vì anh cần thấy một lộ trình trông như thế nào. Nhưng mục tiêu cuối cùng không phải là anh đi hết lộ trình của tôi — mà là <b>anh tự vạch được lộ trình của mình</b>. Người luôn cần bài soạn sẵn sẽ dừng lại đúng lúc hết bài soạn sẵn. Còn 34 tháng nữa, và không ai soạn hộ được cả 34 tháng đó.</p>
+  <div class="warn"><b>⚠️ Tháng này có bài viết sẵn, nhưng cách dùng khác hẳn hai tháng đầu.</b>
+    <p style="margin:9px 0 0">Nhiều ngày trong tháng 3 <b>không chỉ anh làm gì</b> — chúng đặt câu hỏi để anh tự trả lời, rồi mới cho đối chiếu. Tuần 9 có một luật riêng: <b>không mở lại bài hướng dẫn cũ</b>. Mục tiêu cuối không phải là anh đi hết lộ trình này, mà là <b>anh tự vạch được lộ trình của mình</b> — vì còn 33 tháng nữa và không ai soạn hộ được cả 33 tháng đó.</p>
+  </div>
+
+  <div class="doing"><b>▶ Bắt đầu ở đây</b> Ba mươi ngày của tháng 3 đã có sẵn trong mục lục bên trái. Nếu anh muốn tự chia ngày theo cách của mình thì dùng bốn mục tiêu tuần bên dưới và công cụ lập kế hoạch ở cuối trang.
+    <p style="margin:10px 0 0"><button class="btn btn-run" data-jump="d61" style="padding:8px 16px">→ Vào Ngày 61</button></p>
   </div>
 
   <h3>Mức hướng dẫn giảm dần — có chủ ý</h3>
@@ -4839,6 +4990,1361 @@ print(f"Vào {len(dong)} dòng, giữ lại {len(giu_lai)} dòng")
   <div class="doing"><b>▶ Nếu tháng 3 thấy quá sức</b> Quay lại làm theo mô hình tháng 2: mỗi ngày một việc nhỏ, tự viết ra từ tối hôm trước. Giảm mục tiêu tuần xuống một nửa. Tự đi không có nghĩa là đi nhanh hơn — chỉ có nghĩa là không còn ai cầm tay.
     <p style="margin:10px 0 0"><button class="btn btn-run" data-jump="stuck" style="padding:8px 16px">🆘 Mở trang Khi bị tắc</button></p>
   </div>
+</section>
+<!-- ==================== NGÀY 61 ==================== -->
+<section class="lesson" id="d61">
+  <div class="dayhead">
+    <div class="dnum"><b>61</b><span>ngày</span></div>
+    <div class="dt"><h2>Tự chọn việc thứ hai</h2><p>Tuần 9 — Tự đi</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>60 phút</b></span><span class="chip hot">Không mở lại bài cũ</span></div>
+
+  <div class="goal"><b>🎯 Xong ngày hôm nay anh sẽ có</b> Việc thứ hai đã chọn và đo được mốc gốc — làm <b>hoàn toàn từ trí nhớ</b>, không mở lại Ngày 31.</div>
+
+  <div class="warn"><b>⚠️ Luật của tuần này: không mở lại bài hướng dẫn cũ.</b> Tắc thì dùng trang <b>Khi bị tắc</b>, hoặc tra tài liệu gốc. Mục đích không phải làm khó anh — mà để biết <b>thật sự</b> anh nhớ được bao nhiêu. Mở lại bài cũ thì anh chỉ đang chép lại, không phải tự dựng.</div>
+
+  <h3>Bước 1 — Nhớ lại ba tiêu chí (15 phút)</h3>
+  <p>Viết ra giấy ba tiêu chí để biết một việc có đáng tự động hoá không. Viết xong rồi mới đối chiếu.</p>
+  <details><summary>Đối chiếu sau khi đã tự viết</summary><div class="dbody">
+    <p><b>Lặp lại</b> · <b>quy tắc rõ ràng</b> · <b>tốn thời gian</b>. Thiếu một là nên bỏ qua.</p>
+    <p>Nhớ được cả ba mà không nhìn là dấu hiệu tốt. Nhớ được hai thì bình thường. Không nhớ cái nào thì mở lại bài <b>K1</b> — đó là bài nền, không phải bài cũ.</p>
+  </div></details>
+
+  <h3>Bước 2 — Chọn và chấm (30 phút)</h3>
+  <ol class="steps">
+    <li>Mở <b>▤ Nhật ký</b> Ngày 31, đọc lại danh sách tám việc. Còn việc nào chưa làm không?</li>
+    <li>Nếu danh sách cũ đã hết hoặc không còn phù hợp, liệt kê <b>năm việc mới</b> — hai tháng qua chắc chắn phát sinh thêm.</li>
+    <li>Chấm ba cột như đã làm ở Ngày 31. Chọn việc điểm cao nhất.</li>
+  </ol>
+  <div class="note">💡 <b>Được phép chọn việc khó hơn lần trước.</b> Tuần 5 anh nên chọn dễ để hoàn thành. Giờ anh đã dựng thành công một cái — chọn thứ có thêm một tầng phức tạp là cách tiến bộ.</div>
+
+  <h3>Bước 3 — Đo mốc gốc (15 phút)</h3>
+  <p>Việc này hiện tốn bao nhiêu phút mỗi tuần? Ghi con số vào Nhật ký Ngày 61.</p>
+  <p>Ghi thêm <b>dự đoán</b>: anh nghĩ sẽ mất bao nhiêu giờ để dựng xong? Cuối tuần đối chiếu — đây là cách năng lực ước lượng hình thành.</p>
+
+  <div class="chk"><b>✅ Xong ngày 61 khi</b>
+    <ul>
+      <li>Nhớ được ba tiêu chí mà không mở bài cũ</li>
+      <li>Đã chọn một việc, có điểm chấm</li>
+      <li>Có mốc gốc và dự đoán số giờ sẽ mất</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="61"></div>
+</section>
+
+<!-- ==================== NGÀY 62 ==================== -->
+<section class="lesson" id="d62">
+  <div class="dayhead">
+    <div class="dnum"><b>62</b><span>ngày</span></div>
+    <div class="dt"><h2>Tự thiết kế</h2><p>Tuần 9 — Tự đi</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>60 phút</b></span><span class="chip">Vẫn chưa mở n8n</span></div>
+
+  <div class="goal"><b>🎯 Xong ngày hôm nay anh sẽ có</b> Bản vẽ đầy đủ, tự làm, và <b>tự kiểm tra được nó có thiếu gì không</b> — thay vì đợi ai đó chỉ ra.</div>
+
+  <h3>Bước 1 — Vẽ bốn mảnh (25 phút)</h3>
+  <p>Không cần bảng hướng dẫn. Bốn câu hỏi anh phải tự trả lời được:</p>
+  <ol class="steps">
+    <li>Cái gì làm nó chạy?</li>
+    <li>Dữ liệu ở đâu, ai đang giữ?</li>
+    <li>Cần lọc gì, tính gì, đổi gì?</li>
+    <li>Kết quả cho ai, dạng gì?</li>
+  </ol>
+
+  <h3>Bước 2 — Tự soát bản vẽ (25 phút)</h3>
+  <p>Đây là kỹ năng mới của tháng 3: <b>tự tìm lỗ hổng trong thiết kế của mình</b>. Sáu câu để tự hỏi:</p>
+  <table class="cmp">
+    <tr><th style="width:44%">Câu hỏi</th><th>Nếu chưa trả lời được</th></tr>
+    <tr><td>Dữ liệu có những kiểu bẩn nào?</td><td>Chưa nhìn dữ liệu thật đủ kỹ. Quay lại nhìn.</td></tr>
+    <tr><td>Số items ở node cuối là bao nhiêu?</td><td>Chưa hiểu luồng. Vẽ lại từ đầu.</td></tr>
+    <tr><td>Nguồn dữ liệu chết thì sao?</td><td>Thiếu nhánh xử lý lỗi.</td></tr>
+    <tr><td>Chạy hai lần liên tiếp có hỏng gì không?</td><td>Có thể ghi trùng. Cần cách chống.</td></tr>
+    <tr><td>Ai đó đổi tên cột thì sao?</td><td>Cần cảnh báo, không nên im lặng.</td></tr>
+    <tr><td>Tháng sau dữ liệu tăng gấp mười thì sao?</td><td>Cần biết giới hạn của thiết kế hiện tại.</td></tr>
+  </table>
+
+  <h3>Bước 3 — Ước lượng lại (10 phút)</h3>
+  <p>Sau khi soát, con số dự đoán ở Ngày 61 có đổi không? Ghi cả hai con số vào Nhật ký.</p>
+  <div class="note">💡 Người mới ước lượng thiếu vì chỉ tính thời gian <i>dựng</i>. Sáu câu ở trên chính là những thứ họ quên tính. Sau vài lần, anh sẽ tự cộng chúng vào ngay từ đầu.</div>
+
+  <div class="chk"><b>✅ Xong ngày 62 khi</b>
+    <ul>
+      <li>Có bản vẽ bốn mảnh, chụp lại lưu Drive</li>
+      <li>Trả lời được cả sáu câu tự soát</li>
+      <li>Có hai con số ước lượng: trước và sau khi soát</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="62"></div>
+</section>
+
+<!-- ==================== NGÀY 63 ==================== -->
+<section class="lesson" id="d63">
+  <div class="dayhead">
+    <div class="dnum"><b>63</b><span>ngày</span></div>
+    <div class="dt"><h2>Dựng nửa đầu</h2><p>Tuần 9 — Tự đi</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>75 phút</b></span><span class="chip hot">Bấm giờ từ lúc bắt đầu</span></div>
+
+  <div class="goal"><b>🎯 Xong ngày hôm nay anh sẽ có</b> Khởi động và lấy dữ liệu chạy được — và <b>số phút thật</b> để so với tuần 5.</div>
+
+  <h3>Bước 1 — Bấm giờ và dựng (60 phút)</h3>
+  <ol class="steps">
+    <li>Mở <b>◷ Đồng hồ học</b> trước khi bắt đầu. Con số này là dữ liệu, không phải để thúc ép.</li>
+    <li>Dựng theo bản vẽ: trigger → lấy dữ liệu → xử lý. Test sau mỗi node.</li>
+    <li>Mỗi lần phải tra cứu, <b>ghi lại tra cái gì</b>. Danh sách này cho biết lỗ hổng còn lại của anh.</li>
+  </ol>
+
+  <h3>Bước 2 — Đối chiếu với lần trước (15 phút)</h3>
+  <p>Ghi vào Nhật ký ba con số:</p>
+  <table class="cmp">
+    <tr><th style="width:44%">Chỉ số</th><th>Ý nghĩa</th></tr>
+    <tr><td>Số phút dựng tới bước này</td><td>So với tuần 5 — nhanh hơn bao nhiêu?</td></tr>
+    <tr><td>Số lần phải tra cứu</td><td>Giảm dần nghĩa là kiến thức đang thành phản xạ</td></tr>
+    <tr><td>Số lần phải sửa vì làm sai</td><td>Đây là chỉ số về chất lượng thiết kế, không phải kỹ năng gõ</td></tr>
+  </table>
+  <div class="note">💡 Nếu chậm hơn tuần 5, đừng vội kết luận là mình kém đi. Kiểm tra: việc lần này có khó hơn không? Có thêm tầng phức tạp nào không? So tốc độ chỉ có nghĩa khi độ khó tương đương.</div>
+
+  <div class="chk"><b>✅ Xong ngày 63 khi</b>
+    <ul>
+      <li>Node khởi động và lấy dữ liệu chạy được</li>
+      <li>Có ba con số trong nhật ký</li>
+      <li>Có danh sách những thứ phải tra cứu</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="63"></div>
+</section>
+
+<!-- ==================== NGÀY 64 ==================== -->
+<section class="lesson" id="d64">
+  <div class="dayhead">
+    <div class="dnum"><b>64</b><span>ngày</span></div>
+    <div class="dt"><h2>Nửa sau và làm sạch</h2><p>Tuần 9 — Tự đi</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>75 phút</b></span><span class="chip">Áp dụng bài K6 mà không mở lại</span></div>
+
+  <div class="goal"><b>🎯 Xong ngày hôm nay anh sẽ có</b> Chuỗi chạy trọn từ đầu tới cuối, có bước làm sạch dữ liệu do anh tự thiết kế.</div>
+
+  <h3>Bước 1 — Nối mảnh cuối (30 phút)</h3>
+  <ol class="steps">
+    <li>Thêm node đưa kết quả đi theo bản vẽ.</li>
+    <li><b>Nhìn số items trước khi chạy.</b> Đó là số lần hành động sẽ xảy ra thật.</li>
+    <li>Cần một kết quả tóm tắt thì chèn node gộp trước node cuối.</li>
+  </ol>
+
+  <h3>Bước 2 — Tự dựng bước làm sạch (35 phút)</h3>
+  <p>Không mở lại bài K6. Tự nhớ ra sáu kiểu bẩn, kiểm tra dữ liệu thật của mình có kiểu nào.</p>
+  <details><summary>Đối chiếu sau khi đã tự liệt kê</summary><div class="dbody">
+    <p>Ô trống · sai kiểu · định dạng lẫn lộn · khoảng trắng thừa · trùng lặp · giá trị ngoài dự kiến.</p>
+    <p>Nhớ được bốn trở lên là ổn. Dưới ba thì mở lại <b>K6</b> — nhưng chỉ sau khi đã cố nhớ.</p>
+  </div></details>
+  <p>Dựng bước làm sạch cho những kiểu bẩn thật sự có trong dữ liệu của anh. Đừng dựng cho kiểu không tồn tại.</p>
+
+  <h3>Bước 3 — Báo rõ đã bỏ gì (10 phút)</h3>
+  <p>Thêm dòng ghi rõ số dòng vào, số dòng bị bỏ và lý do — vào email hoặc báo cáo cuối.</p>
+
+  <div class="chk"><b>✅ Xong ngày 64 khi</b>
+    <ul>
+      <li>Chuỗi chạy trọn vẹn từ trigger tới kết quả</li>
+      <li>Có bước làm sạch, xử lý đúng những kiểu bẩn có thật</li>
+      <li>Kết quả cuối ghi rõ số dòng vào và số dòng bị bỏ</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="64"></div>
+</section>
+
+<!-- ==================== NGÀY 65 ==================== -->
+<section class="lesson" id="d65">
+  <div class="dayhead">
+    <div class="dnum"><b>65</b><span>ngày</span></div>
+    <div class="dt"><h2>Tự phá quy trình của mình</h2><p>Tuần 9 — Tự đi</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>60 phút</b></span><span class="chip hot">Tìm ca im lặng</span></div>
+
+  <div class="goal"><b>🎯 Xong ngày hôm nay anh sẽ có</b> Quy trình đã chịu được sáu cách phá — và <b>không ca nào im lặng</b>.</div>
+
+  <h3>Bước 1 — Tự liệt kê cách phá (15 phút)</h3>
+  <p>Viết ra sáu cách quy trình này có thể gãy. Tự nghĩ trước, đối chiếu sau.</p>
+  <details><summary>Đối chiếu</summary><div class="dbody">
+    <p>Nguồn dữ liệu chết · dữ liệu rỗng · dữ liệu quá nhiều · dữ liệu sai kiểu · đích đến chết · chạy trùng.</p>
+  </div></details>
+
+  <h3>Bước 2 — Phá thật (35 phút)</h3>
+  <ol class="steps">
+    <li>Tạo ra từng tình huống <b>thật</b>, không tưởng tượng.</li>
+    <li>Với mỗi ca, ghi hai điều: nó gãy ở node nào, và <b>anh có biết là nó gãy không</b>.</li>
+    <li>Ca nào im lặng thì thêm cảnh báo ngay.</li>
+  </ol>
+  <div class="warn"><b>⚠️ Ca nguy hiểm nhất vẫn là "chạy trót lọt nhưng kết quả sai".</b> Gãy thì anh biết. Chạy sai âm thầm thì anh tin vào con số sai — có khi hàng tháng. Với mỗi cách phá, hỏi thêm: nó có thể cho ra <i>kết quả trông bình thường nhưng sai</i> không?</div>
+
+  <h3>Bước 3 — Khôi phục và ghi (10 phút)</h3>
+  <p>Trả lại nguyên trạng, chạy lại một lần, ghi vào Nhật ký: thử mấy cách, mấy ca im lặng.</p>
+
+  <div class="chk"><b>✅ Xong ngày 65 khi</b>
+    <ul>
+      <li>Đã thử đủ sáu cách phá</li>
+      <li>Không ca nào im lặng</li>
+      <li>Quy trình đã trở lại bình thường</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="65"></div>
+</section>
+
+<!-- ==================== NGÀY 66 ==================== -->
+<section class="lesson" id="d66">
+  <div class="dayhead">
+    <div class="dnum"><b>66</b><span>ngày</span></div>
+    <div class="dt"><h2>Bật và đo</h2><p>Tuần 9 — sản phẩm của tuần</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>60 phút</b></span><span class="chip hot">Sản phẩm tuần 9</span></div>
+
+  <div class="goal"><b>🎯 Xong ngày hôm nay anh sẽ có</b> Quy trình thứ hai đang chạy thật, và <b>con số chứng minh anh đã nhanh lên</b>.</div>
+
+  <h3>Bước 1 — Bật Active (20 phút)</h3>
+  <ol class="steps">
+    <li>Test toàn chuỗi lần cuối. Kiểm tra kết quả ở nơi nhận.</li>
+    <li>Gạt sang <b>Active</b>.</li>
+    <li>Tải file workflow về máy, lưu vào Drive.</li>
+    <li>Thêm một dòng vào bảng <code class="inline">suc-khoe-quy-trinh</code>.</li>
+  </ol>
+
+  <h3>Bước 2 — Ba phép so (25 phút)</h3>
+  <table class="cmp">
+    <tr><th style="width:40%">So cái gì</th><th>Ý nghĩa của kết quả</th></tr>
+    <tr><td>Số giờ dựng: tuần 5 vs tuần 9</td><td>Tốc độ. Đây là con số anh dùng để báo giá ở tháng 9.</td></tr>
+    <tr><td>Dự đoán ở Ngày 61–62 vs thực tế</td><td>Năng lực ước lượng. Sai dưới 50% là tốt cho người mới.</td></tr>
+    <tr><td>Số lần tra cứu: lần này vs lần trước</td><td>Kiến thức đã thành phản xạ tới đâu.</td></tr>
+  </table>
+  <p>Ghi cả ba vào Nhật ký Ngày 66.</p>
+
+  <h3>Bước 3 — Đo lợi ích (15 phút)</h3>
+  <p>Mốc gốc ở Ngày 61 là bao nhiêu? Giờ còn tốn bao nhiêu phút mỗi tuần? Chênh lệch là con số tiết kiệm thật.</p>
+  <div class="note">💡 Cộng dồn với quy trình đầu tiên: tổng cộng hai quy trình đang tiết kiệm bao nhiêu phút mỗi tuần? Con số cộng dồn này là thứ anh đưa vào trang giới thiệu ở tháng 4.</div>
+
+  <div class="chk"><b>✅ Xong ngày 66 khi</b>
+    <ul>
+      <li>Quy trình thứ hai đang Active</li>
+      <li>Có ba phép so trong nhật ký</li>
+      <li>Biết tổng số phút tiết kiệm mỗi tuần của cả hai quy trình</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="66"></div>
+</section>
+
+<!-- ==================== NGÀY 67 ==================== -->
+<section class="lesson" id="d67">
+  <div class="dayhead">
+    <div class="dnum"><b>67</b><span>ngày</span></div>
+    <div class="dt"><h2>Nhìn lại tuần 9</h2><p>Ngày chốt sổ</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>45 phút</b></span><span class="chip">Ngày nhẹ</span></div>
+
+  <div class="goal"><b>🎯 Ngày hôm nay để làm gì</b> Kiểm chứng quy trình mới, và trả lời một câu quan trọng: <b>anh tự dựng được tới mức nào khi không có hướng dẫn?</b></div>
+
+  <h3>Bước 1 — Kiểm chứng (10 phút)</h3>
+  <p>Mở tab <b>Executions</b>. Từ lúc bật tới giờ chạy mấy lần, lỗi mấy lần? Kết quả có đúng như mong muốn — hay đúng kỹ thuật nhưng vô dụng thực tế?</p>
+
+  <h3>Bước 2 — Tự chấm khả năng tự đi (20 phút)</h3>
+  <table class="cmp">
+    <tr><th style="width:56%">Hạng mục</th><th>Đạt</th></tr>
+    <tr><td>Nhớ được ba tiêu chí chọn việc mà không mở bài cũ</td><td>đạt / không</td></tr>
+    <tr><td>Nhớ được từ bốn kiểu dữ liệu bẩn trở lên</td><td>đạt / không</td></tr>
+    <tr><td>Tự trả lời được sáu câu tự soát thiết kế</td><td>đạt / không</td></tr>
+    <tr><td>Số lần phải mở lại bài cũ trong tuần</td><td>≤ 2 lần</td></tr>
+    <tr><td>Dựng nhanh hơn tuần 5 (nếu độ khó tương đương)</td><td>đạt / không</td></tr>
+    <tr><td>Ước lượng sai dưới 50%</td><td>đạt / không</td></tr>
+  </table>
+  <div class="note">💡 <b>Đạt từ 4/6 nghĩa là anh đã tự đi được.</b> Dưới 3 thì chưa — và điều đó bình thường ở tháng 3. Tháng 4 lặp lại tuần này với một việc nữa, đừng vội sang phần khó hơn.</div>
+
+  <h3>Bước 3 — Ba câu tự vấn (15 phút)</h3>
+  <ol class="steps">
+    <li><b>Cảm giác tự dựng khác gì làm theo hướng dẫn?</b> Ghi thật, kể cả nếu thấy sợ.</li>
+    <li><b>Chỗ nào anh phải mở lại bài cũ?</b> Đó là lỗ hổng cần vá, không phải điểm yếu.</li>
+    <li><b>Tuần sau học Python — anh muốn viết được đoạn code làm gì?</b> Một câu cụ thể.</li>
+  </ol>
+
+  <div class="chk"><b>✅ Mốc cuối tuần 9</b>
+    <ul>
+      <li>Hai quy trình đang chạy thật</li>
+      <li>Bảng tự chấm đạt từ 4/6</li>
+      <li>Có ba phép so tốc độ trong nhật ký</li>
+      <li>Có câu mục tiêu cho tuần Python</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="67"></div>
+</section>
+
+<!-- ==================== NGÀY 68 ==================== -->
+<section class="lesson" id="d68">
+  <div class="dayhead">
+    <div class="dnum"><b>68</b><span>ngày</span></div>
+    <div class="dt"><h2>Đọc và ghi file</h2><p>Tuần 10 — Python làm việc thật</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>60 phút</b></span><span class="chip">Học trên PyKhởiĐầu</span></div>
+
+  <div class="goal"><b>🎯 Xong ngày hôm nay anh sẽ</b> Đọc được file từ máy và ghi kết quả ra file — bước biến Python từ bài tập thành công cụ.</div>
+
+  <div class="note">💡 <b>Vì sao đây là bài đầu của tuần.</b> Cho tới giờ mọi dữ liệu anh xử lý đều nằm sẵn trong code. Công việc thật thì dữ liệu nằm trong file — file khách gửi, file xuất từ hệ thống, file tải về. Không đọc được file thì Python chỉ là đồ chơi.</div>
+
+  <h3>Bước 1 — Học đọc ghi file (40 phút)</h3>
+  <p>Trên PyKhởiĐầu, học bài về <b>đọc và ghi file</b>. Chú ý ba thứ:</p>
+  <ol class="steps">
+    <li><b>Mở file bằng <code class="inline">with</code></b> — nó tự đóng file kể cả khi có lỗi. Không dùng <code class="inline">with</code> là nguồn lỗi khó tìm.</li>
+    <li><b>Chế độ mở:</b> <code class="inline">"r"</code> đọc · <code class="inline">"w"</code> ghi đè · <code class="inline">"a"</code> ghi thêm. Nhầm <code class="inline">"w"</code> với <code class="inline">"a"</code> là xoá sạch file cũ.</li>
+    <li><b>Mã hoá ký tự:</b> luôn ghi <code class="inline">encoding="utf-8"</code>. Thiếu nó thì tiếng Việt thành ký tự lạ.</li>
+  </ol>
+
+  <h3>Bước 2 — Làm với dữ liệu của mình (20 phút)</h3>
+  <ol class="steps">
+    <li>Xuất một bảng thật từ Google Sheet của anh ra file.</li>
+    <li>Viết đoạn code đọc file đó, đếm số dòng, in ra ba dòng đầu.</li>
+    <li>Ghi kết quả ra một file mới.</li>
+  </ol>
+
+  <div class="chk"><b>✅ Xong ngày 68 khi</b>
+    <ul>
+      <li>Đọc được file thật và in ra nội dung</li>
+      <li>Ghi được ra file mới, mở lên thấy đúng tiếng Việt</li>
+      <li>Giải thích được khác biệt giữa <code class="inline">"w"</code> và <code class="inline">"a"</code></li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="68"></div>
+</section>
+
+<!-- ==================== NGÀY 69 ==================== -->
+<section class="lesson" id="d69">
+  <div class="dayhead">
+    <div class="dnum"><b>69</b><span>ngày</span></div>
+    <div class="dt"><h2>Xử lý bảng bằng CSV</h2><p>Tuần 10 — Python làm việc thật</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>75 phút</b></span><span class="chip hot">Định dạng thông dụng nhất</span></div>
+
+  <div class="goal"><b>🎯 Xong ngày hôm nay anh sẽ</b> Xử lý được file bảng bằng Python — thứ khách hàng gửi cho anh nhiều nhất.</div>
+
+  <h3>Bước 1 — Học CSV (40 phút)</h3>
+  <p>Trên PyKhởiĐầu, học bài về <b>CSV</b>. Ba thứ cần nắm:</p>
+  <table class="cmp">
+    <tr><th style="width:34%">Thứ</th><th>Vì sao quan trọng</th></tr>
+    <tr><td>Đọc thành dictionary</td><td>Mỗi dòng thành <code>{"cot": "giá trị"}</code> — giống hệt cấu trúc JSON và items trong n8n</td></tr>
+    <tr><td>Dấu phân cách</td><td>File từ Excel tiếng Việt thường dùng dấu chấm phẩy, không phải dấu phẩy. Nhầm là đọc ra một cột duy nhất</td></tr>
+    <tr><td>Dòng tiêu đề</td><td>Có file có, có file không. Đọc nhầm là mất một dòng dữ liệu hoặc lấy dữ liệu làm tên cột</td></tr>
+  </table>
+
+  <h3>Bước 2 — Làm sạch bằng Python (35 phút)</h3>
+  <p>Viết một đoạn code làm đúng việc mà bài <b>K6</b> dạy, nhưng lần này trên file thật của anh:</p>
+  <ol class="steps">
+    <li>Đọc file CSV.</li>
+    <li>Bỏ dòng thiếu trường bắt buộc, cắt khoảng trắng thừa, ép cột số về số.</li>
+    <li>Đếm và in ra: vào bao nhiêu dòng, sạch bao nhiêu, bỏ bao nhiêu và vì sao.</li>
+    <li>Ghi phần sạch ra file mới, phần bỏ ra file riêng để xem lại.</li>
+  </ol>
+  <div class="note">💡 Bước 4 chính là cách xử lý tốt nhất trong bốn cách ở bài K6 — <b>tách riêng để xem lại</b>. Không mất dữ liệu, không làm hỏng báo cáo, và có bằng chứng khi khách hỏi "sao thiếu mấy dòng?".</div>
+
+  <div class="chk"><b>✅ Xong ngày 69 khi</b>
+    <ul>
+      <li>Đọc được file CSV thật thành danh sách dictionary</li>
+      <li>Có đoạn làm sạch chạy được, in ra thống kê vào/sạch/bỏ</li>
+      <li>Có hai file kết quả: sạch và cần xem lại</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="69"></div>
+</section>
+
+<!-- ==================== NGÀY 70 ==================== -->
+<section class="lesson" id="d70">
+  <div class="dayhead">
+    <div class="dnum"><b>70</b><span>ngày</span></div>
+    <div class="dt"><h2>JSON bằng Python</h2><p>Tuần 10 — nối lại vòng tròn</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>60 phút</b></span><span class="chip">Gặp lại thứ đã biết từ tháng 1</span></div>
+
+  <div class="goal"><b>🎯 Xong ngày hôm nay anh sẽ</b> Xử lý được JSON bằng Python — khép lại vòng tròn từ bài K3 hai tháng trước.</div>
+
+  <h3>Bước 1 — Học JSON trong Python (30 phút)</h3>
+  <p>Trên PyKhởiĐầu, học bài về <b>JSON</b>. Anh đã quen cấu trúc này từ Ngày 9 — giờ chỉ là học cách đọc ghi nó bằng code.</p>
+  <table class="cmp">
+    <tr><th style="width:30%">Hàm</th><th>Làm gì</th></tr>
+    <tr><td><code>json.loads()</code></td><td>Chuỗi JSON → dữ liệu Python dùng được</td></tr>
+    <tr><td><code>json.dumps()</code></td><td>Dữ liệu Python → chuỗi JSON để gửi đi hoặc lưu</td></tr>
+    <tr><td><code>json.load()</code> / <code>json.dump()</code></td><td>Cùng việc trên nhưng đọc ghi thẳng file</td></tr>
+  </table>
+  <div class="warn"><b>⚠️ Khi <code class="inline">dumps</code> dữ liệu có tiếng Việt</b>, thêm <code class="inline">ensure_ascii=False</code> — nếu không, tiếng Việt bị đổi thành dãy ký tự khó đọc. Đây là lỗi rất hay gặp và mất thời gian mò.</div>
+
+  <h3>Bước 2 — Xử lý dữ liệu API thật (30 phút)</h3>
+  <ol class="steps">
+    <li>Lấy phản hồi JSON từ một API anh đã dùng ở tháng 1 — thời tiết hoặc bất kỳ cái nào.</li>
+    <li>Lưu nó thành file, rồi viết code đọc file đó và trích ra đúng trường mình cần.</li>
+    <li>So sánh: đường dẫn trong Python và expression trong n8n giống nhau tới mức nào?</li>
+  </ol>
+  <details><summary>Đáp án phần so sánh</summary><div class="dbody">
+    <p>Gần như giống hệt. <code class="inline">{{ $json.current_weather.temperature }}</code> trong n8n chính là <code class="inline">d["current_weather"]["temperature"]</code> trong Python.</p>
+    <p>Cùng một cấu trúc dữ liệu, cùng một cách đi xuống từng tầng — chỉ khác cú pháp. Nhận ra điều này nghĩa là anh đã hiểu bản chất, không chỉ thuộc lòng cú pháp.</p>
+  </div></details>
+
+  <div class="chk"><b>✅ Xong ngày 70 khi</b>
+    <ul>
+      <li>Đọc và ghi được file JSON, tiếng Việt hiển thị đúng</li>
+      <li>Trích được trường lồng nhiều tầng</li>
+      <li>Nói được mối liên hệ giữa expression trong n8n và truy cập dictionary trong Python</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="70"></div>
+</section>
+
+<!-- ==================== NGÀY 71 ==================== -->
+<section class="lesson" id="d71">
+  <div class="dayhead">
+    <div class="dnum"><b>71</b><span>ngày</span></div>
+    <div class="dt"><h2>Bắt lỗi cho tử tế</h2><p>Tuần 10 — Python làm việc thật</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>60 phút</b></span><span class="chip hot">Phân biệt code chạy được và code dùng được</span></div>
+
+  <div class="goal"><b>🎯 Xong ngày hôm nay anh sẽ</b> Viết được code <b>không chết</b> khi gặp dữ liệu bất thường, và báo lỗi có ý nghĩa thay vì đổ một đống chữ đỏ.</div>
+
+  <h3>Bước 1 — Học try / except (30 phút)</h3>
+  <p>Trên PyKhởiĐầu, học bài về <b>bắt lỗi</b>. Ba nguyên tắc:</p>
+  <ol class="steps">
+    <li><b>Bắt đúng loại lỗi</b>, đừng bắt tất cả. <code class="inline">except ValueError</code> tốt hơn <code class="inline">except</code> trống — bắt tất cả nghĩa là giấu luôn cả những lỗi anh cần biết.</li>
+    <li><b>Nói rõ lỗi ở đâu.</b> Không phải "có lỗi" mà "dòng 47: cột số_lượng có giá trị 'ba' không đổi được sang số".</li>
+    <li><b>Quyết định có nên đi tiếp không.</b> Một dòng hỏng thì bỏ dòng đó và chạy tiếp. Cả file hỏng thì dừng hẳn.</li>
+  </ol>
+
+  <h3>Bước 2 — Gia cố đoạn code hôm ngày 69 (30 phút)</h3>
+  <ol class="steps">
+    <li>Cố tình phá file CSV: xoá một cột, để trống một dòng, gõ chữ vào cột số, đổi dấu phân cách.</li>
+    <li>Với mỗi ca, code của anh phản ứng thế nào? Chết hẳn hay báo lỗi rõ ràng rồi đi tiếp?</li>
+    <li>Sửa cho tới khi mọi ca đều <b>báo lỗi có ý nghĩa</b> và xử lý được phần còn lại.</li>
+  </ol>
+  <div class="note">💡 Đây chính là bài Ngày 41 và Ngày 65, nhưng ở mức code. Cùng một tư duy: chưa thử phá thì chưa biết nó chịu được tới đâu.</div>
+
+  <div class="chk"><b>✅ Xong ngày 71 khi</b>
+    <ul>
+      <li>Code không chết với cả bốn cách phá file</li>
+      <li>Mỗi lỗi báo rõ dòng nào, cột nào, giá trị gì</li>
+      <li>Bắt đúng loại lỗi, không dùng <code class="inline">except</code> trống</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="71"></div>
+</section>
+
+<!-- ==================== NGÀY 72 ==================== -->
+<section class="lesson" id="d72">
+  <div class="dayhead">
+    <div class="dnum"><b>72</b><span>ngày</span></div>
+    <div class="dt"><h2>Python ra khỏi trình duyệt</h2><p>Tuần 10 — cài lên máy</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>75 phút</b></span><span class="chip hot">Chỗ người mới hay bỏ cuộc</span></div>
+
+  <div class="goal"><b>🎯 Xong ngày hôm nay anh sẽ có</b> Python chạy trên máy của mình, và chạy được file code bằng dòng lệnh.</div>
+
+  <div class="warn"><b>⚠️ Đây là buổi dễ nản nhất tuần.</b> Cài đặt hay tắc vì những lý do vặt vãnh chẳng liên quan gì tới lập trình. Nếu tắc quá 20 phút, dùng khuôn câu hỏi ở trang <b>Khi bị tắc</b> — chép nguyên văn thông báo lỗi, đừng viết lại theo trí nhớ.</div>
+
+  <h3>Bước 1 — Cài đặt (30 phút)</h3>
+  <ol class="steps">
+    <li>Tải Python từ trang chính thức, cài bản mới nhất.</li>
+    <li><b>Windows: nhớ tick "Add python.exe to PATH"</b> ở màn hình đầu tiên. Quên bước này là mọi lệnh sau đó đều báo lỗi, và đây là nguyên nhân tắc số một.</li>
+    <li>Mở terminal, gõ <code class="inline">python --version</code>. Hiện số phiên bản là xong.</li>
+  </ol>
+
+  <h3>Bước 2 — Năm lệnh terminal (25 phút)</h3>
+  <table class="cmp">
+    <tr><th style="width:34%">Lệnh</th><th>Làm gì</th></tr>
+    <tr><td><code>cd ten-thu-muc</code></td><td>Đi vào thư mục</td></tr>
+    <tr><td><code>cd ..</code></td><td>Lùi ra một cấp</td></tr>
+    <tr><td><code>ls</code> (Mac) / <code>dir</code> (Windows)</td><td>Xem có gì trong thư mục</td></tr>
+    <tr><td><code>mkdir ten</code></td><td>Tạo thư mục mới</td></tr>
+    <tr><td><code>python ten_file.py</code></td><td>Chạy file code</td></tr>
+  </table>
+  <p>Gõ tay từng lệnh vài lần. Terminal là thứ anh sẽ dùng suốt hai năm tới.</p>
+
+  <h3>Bước 3 — Chạy code thật (20 phút)</h3>
+  <ol class="steps">
+    <li>Tạo thư mục <code class="inline">python-cua-toi</code>.</li>
+    <li>Chép đoạn code làm sạch CSV ở Ngày 69 vào một file <code class="inline">.py</code> trong đó.</li>
+    <li>Đặt file CSV thật cạnh nó, chạy bằng lệnh. Kết quả ra đúng như khi chạy trên web không?</li>
+  </ol>
+
+  <div class="chk"><b>✅ Xong ngày 72 khi</b>
+    <ul>
+      <li><code class="inline">python --version</code> chạy được trong terminal</li>
+      <li>Dùng được năm lệnh cơ bản</li>
+      <li>Chạy được file code thật trên máy, ra đúng kết quả</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="72"></div>
+</section>
+
+<!-- ==================== NGÀY 73 ==================== -->
+<section class="lesson" id="d73">
+  <div class="dayhead">
+    <div class="dnum"><b>73</b><span>ngày</span></div>
+    <div class="dt"><h2>Script làm việc thật</h2><p>Tuần 10 — sản phẩm của tuần</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>75 phút</b></span><span class="chip hot">Sản phẩm tuần 10</span></div>
+
+  <div class="goal"><b>🎯 Xong ngày hôm nay anh sẽ có</b> Một script giải quyết <b>việc thật</b> của anh, chạy trên máy, có xử lý lỗi và báo kết quả rõ ràng.</div>
+
+  <h3>Bước 1 — Chọn việc (15 phút)</h3>
+  <p>Chọn một việc <b>Python hợp hơn n8n</b>. Ba dấu hiệu:</p>
+  <ul>
+    <li>Dữ liệu nằm trong file, không phải trong dịch vụ trực tuyến</li>
+    <li>Logic nhiều bước, khó diễn đạt bằng chuỗi node</li>
+    <li>Chạy khi cần, không cần chạy tự động theo lịch</li>
+  </ul>
+  <div class="doing"><b>▶ Chưa chắc nên dùng Python hay n8n?</b> Bài <b>K8</b> có sáu yêu cầu thật để tập chọn công cụ — kể cả khi câu trả lời đúng là không nên tự động hoá.
+    <p style="margin:10px 0 0"><button class="btn btn-run" data-jump="k8" style="padding:8px 16px">→ Mở bài K8</button></p>
+  </div>
+
+  <h3>Bước 2 — Viết cho người khác đọc (45 phút)</h3>
+  <ol class="steps">
+    <li><b>Tách thành hàm.</b> Mỗi hàm một việc, tên hàm nói rõ nó làm gì.</li>
+    <li><b>Bắt lỗi</b> ở chỗ đọc file và chỗ ép kiểu — hai chỗ hay hỏng nhất.</li>
+    <li><b>In tiến độ:</b> đang xử lý dòng nào, xong bao nhiêu. Script chạy im lặng vài phút khiến người dùng tưởng nó treo.</li>
+    <li><b>Kết thúc bằng thống kê:</b> vào bao nhiêu, ra bao nhiêu, bỏ bao nhiêu, mất bao lâu.</li>
+  </ol>
+
+  <h3>Bước 3 — Viết hướng dẫn (15 phút)</h3>
+  <p>Tạo file <code class="inline">README.md</code> cạnh script, ghi ba mục: script này làm gì · cần đặt file nào ở đâu · chạy bằng lệnh gì.</p>
+  <div class="note">💡 Viết README cho <b>chính anh của ba tháng sau</b>. Đó là người sẽ mở lại thư mục này và không nhớ gì cả.</div>
+
+  <div class="chk"><b>✅ Xong ngày 73 khi</b>
+    <ul>
+      <li>Script chạy được trên máy, giải quyết việc thật</li>
+      <li>Có ít nhất ba hàm, tên rõ nghĩa</li>
+      <li>Có bắt lỗi và in thống kê cuối</li>
+      <li>Có README ba mục</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="73"></div>
+</section>
+
+<!-- ==================== NGÀY 74 ==================== -->
+<section class="lesson" id="d74">
+  <div class="dayhead">
+    <div class="dnum"><b>74</b><span>ngày</span></div>
+    <div class="dt"><h2>Nhìn lại tuần 10</h2><p>Ngày chốt sổ — có bài kiểm tra</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>45 phút</b></span><span class="chip">Ngày nhẹ</span><span class="chip hot">Có bài kiểm tra</span></div>
+
+  <div class="goal"><b>🎯 Ngày hôm nay để làm gì</b> Kiểm tra kiến thức Python và chuẩn bị tinh thần cho tuần 11 — tuần khó nhất tháng 3.</div>
+
+  <h3>Bước 1 — Bài kiểm tra tuần 10 (20 phút)</h3>
+  <div class="quiz" data-lesson="d74">
+    <div class="qz-item" data-ans="2">
+      <p class="qz-q">1. Mở file bằng <code>with open(...)</code> thay vì <code>open(...)</code> để làm gì?</p>
+      <label><input type="radio"> Để đọc file nhanh hơn khi file có dung lượng lớn</label>
+      <label><input type="radio"> Để file tự đóng lại kể cả khi giữa chừng có lỗi xảy ra</label>
+      <label><input type="radio"> Để có thể mở nhiều file cùng lúc trong một lệnh</label>
+      <div class="qz-why">File không đóng là nguồn lỗi khó tìm: dữ liệu chưa được ghi hết xuống đĩa, hoặc file bị khoá không sửa được.</div>
+    </div>
+    <div class="qz-item" data-ans="3">
+      <p class="qz-q">2. Mở file bằng chế độ <code>"w"</code> khi định ghi thêm dữ liệu. Chuyện gì xảy ra?</p>
+      <label><input type="radio"> Dữ liệu mới được thêm vào cuối file như mong muốn</label>
+      <label><input type="radio"> Python báo lỗi vì file đã tồn tại từ trước</label>
+      <label><input type="radio"> Toàn bộ nội dung cũ bị xoá sạch, chỉ còn dữ liệu mới</label>
+      <div class="qz-why"><code>"w"</code> ghi đè, <code>"a"</code> ghi thêm. Nhầm hai chế độ này là mất sạch dữ liệu cũ mà không có cảnh báo nào.</div>
+    </div>
+    <div class="qz-item" data-ans="1">
+      <p class="qz-q">3. Đọc file CSV xuất từ Excel tiếng Việt mà ra một cột duy nhất. Nguyên nhân?</p>
+      <label><input type="radio"> File dùng dấu chấm phẩy làm dấu phân cách, không phải dấu phẩy</label>
+      <label><input type="radio"> File quá lớn nên Python không đọc hết được các cột</label>
+      <label><input type="radio"> Thiếu thư viện đọc CSV nên Python đọc như văn bản thường</label>
+      <div class="qz-why">Excel ở nhiều vùng ngôn ngữ dùng dấu chấm phẩy. Khai báo đúng dấu phân cách khi đọc là xong.</div>
+    </div>
+    <div class="qz-item" data-ans="3">
+      <p class="qz-q">4. Vì sao nên bắt <code>except ValueError</code> thay vì <code>except</code> trống?</p>
+      <label><input type="radio"> Vì bắt trống chạy chậm hơn do phải kiểm tra nhiều loại lỗi</label>
+      <label><input type="radio"> Vì Python không cho phép dùng except trống trong bản mới</label>
+      <label><input type="radio"> Vì bắt tất cả sẽ giấu luôn cả những lỗi mình cần biết để sửa</label>
+      <div class="qz-why">Bắt trống nghĩa là mọi lỗi đều bị nuốt im lặng — kể cả lỗi gõ sai tên biến, thứ đáng lẽ phải hiện ra ngay.</div>
+    </div>
+    <div class="qz-item" data-ans="2">
+      <p class="qz-q">5. Ghi JSON có tiếng Việt ra file, mở lên thấy toàn ký tự lạ. Thiếu gì?</p>
+      <label><input type="radio"> Thiếu khai báo kiểu dữ liệu cho các trường có dấu tiếng Việt</label>
+      <label><input type="radio"> Thiếu <code>ensure_ascii=False</code> khi gọi <code>json.dumps</code></label>
+      <label><input type="radio"> Thiếu bước chuyển tiếng Việt sang không dấu trước khi ghi</label>
+      <div class="qz-why">Mặc định Python đổi ký tự ngoài bảng chữ cái tiếng Anh thành dãy mã. Thêm tham số đó là giữ nguyên tiếng Việt.</div>
+    </div>
+    <div class="qz-item" data-ans="1">
+      <p class="qz-q">6. Trên Windows, quên tick "Add python.exe to PATH" khi cài. Hậu quả?</p>
+      <label><input type="radio"> Gõ <code>python</code> trong terminal báo không tìm thấy lệnh</label>
+      <label><input type="radio"> Python cài được nhưng chạy chậm hơn bình thường nhiều</label>
+      <label><input type="radio"> Không cài thêm được thư viện ngoài bằng lệnh pip</label>
+      <div class="qz-why">Đây là nguyên nhân tắc số một khi cài Python lần đầu. Cách sửa: cài lại và tick đúng ô đó.</div>
+    </div>
+    <div class="qz-actions">
+      <button class="btn qz-grade">✔ Chấm điểm</button>
+      <button class="btn qz-retry">↺ Làm lại</button>
+      <span class="qz-score"></span>
+    </div>
+  </div>
+
+  <h3>Bước 2 — Đối chiếu mục tiêu (10 phút)</h3>
+  <p>Mở Nhật ký Ngày 67, đọc lại câu <i>"tuần sau muốn viết được đoạn code làm gì?"</i>. Viết được chưa? Chưa thì thiếu gì?</p>
+
+  <h3>Bước 3 — Chuẩn bị tuần 11 (15 phút)</h3>
+  <div class="warn"><b>⚠️ Tuần 11 là tuần khó nhất tháng 3</b> — vì nó không phụ thuộc vào anh. Anh phải tìm được <b>một người thật</b> chịu để anh làm cho họ. Bắt đầu tìm <b>từ hôm nay</b>, đừng đợi tới Ngày 75.</div>
+  <p>Nghĩ ra ba người có thể hỏi. Ưu tiên người anh gặp được mặt và có việc lặp lại rõ ràng.</p>
+
+  <div class="chk"><b>✅ Mốc cuối tuần 10</b>
+    <ul>
+      <li>Bài kiểm tra đạt từ 4/6</li>
+      <li>Python chạy được trên máy</li>
+      <li>Có một script giải quyết việc thật, kèm README</li>
+      <li>Có danh sách ba người để hỏi cho tuần 11</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="74"></div>
+</section>
+<!-- ==================== NGÀY 75 ==================== -->
+<section class="lesson" id="d75">
+  <div class="dayhead">
+    <div class="dnum"><b>75</b><span>ngày</span></div>
+    <div class="dt"><h2>Tìm người</h2><p>Tuần 11 — Làm cho người khác</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>60 phút</b></span><span class="chip hot">Tuần quan trọng nhất tháng 3</span></div>
+
+  <div class="goal"><b>🎯 Xong ngày hôm nay anh sẽ có</b> Một người đồng ý để anh làm cho họ, và lịch hẹn để xem họ làm việc đó.</div>
+
+  <div class="note">💡 <b>Vì sao tuần này quan trọng hơn cả tuần Python.</b> Làm cho mình thì anh tự hiểu ý mình, dữ liệu do anh nhập nên sạch, và sai cũng chẳng ai biết. Làm cho người khác thì cả ba điều đó biến mất — và đó chính là nghề.</div>
+
+  <h3>Bước 1 — Chọn người, không chọn việc (20 phút)</h3>
+  <p>Ngược với bản năng: ưu tiên <b>người dễ làm việc</b> hơn việc thú vị. Ba tiêu chí:</p>
+  <table class="cmp">
+    <tr><th style="width:34%">Tiêu chí</th><th>Vì sao</th></tr>
+    <tr><td><b>Gặp được mặt</b></td><td>Ca đầu làm cho người khác mà chỉ trao đổi qua tin nhắn thì rất dễ hiểu nhầm</td></tr>
+    <tr><td><b>Có việc lặp lại rõ ràng</b></td><td>Việc mơ hồ sẽ tốn cả tuần chỉ để hiểu, chưa kịp dựng gì</td></tr>
+    <tr><td><b>Chịu được nếu anh làm hỏng</b></td><td>Đây là ca đầu. Đừng chọn việc mà hỏng là ảnh hưởng tới tiền bạc của họ</td></tr>
+  </table>
+
+  <h3>Bước 2 — Cách mở lời (25 phút)</h3>
+  <div class="linkbox">
+    <div class="lb-lab">Câu mở lời — sửa lại cho hợp với anh</div>
+    <p style="margin:0;font-size:14.8px;line-height:1.8;color:var(--muted)"><i>"Em đang học về tự động hoá công việc. Em thấy anh/chị hay phải làm [việc gì] bằng tay mỗi tuần. Em muốn thử làm cho anh/chị một cái tự động, miễn phí — coi như em được thực hành. Nếu chạy tốt thì anh/chị dùng, không tốt thì mình bỏ, không mất gì cả. Anh/chị cho em xem qua cách anh/chị đang làm được không?"</i></p>
+  </div>
+  <p>Ba điều câu này làm được: nói rõ <b>anh được lợi gì</b> (thực hành), <b>họ mất gì</b> (không mất gì), và <b>xin đúng thứ cần</b> (được xem họ làm).</p>
+  <div class="warn"><b>⚠️ Đừng hứa kết quả ở buổi mở lời.</b> Chưa xem họ làm thì chưa biết có làm được không. Hứa trước rồi phát hiện không làm nổi là cách mất uy tín nhanh nhất — và uy tín với người quen còn khó lấy lại hơn với khách lạ.</div>
+
+  <h3>Bước 3 — Hẹn lịch xem họ làm (15 phút)</h3>
+  <p>Hẹn <b>xem trực tiếp</b> việc đó, không phải nghe kể. Ba mươi phút là đủ. Ghi vào Nhật ký ngày giờ đã hẹn.</p>
+  <p>Nếu người đầu từ chối, hỏi người thứ hai ngay trong hôm nay. Đừng để việc tìm người kéo dài cả tuần.</p>
+
+  <div class="chk"><b>✅ Xong ngày 75 khi</b>
+    <ul>
+      <li>Có một người đồng ý</li>
+      <li>Có lịch hẹn xem họ làm việc đó</li>
+      <li>Chưa hứa gì về kết quả</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="75"></div>
+</section>
+
+<!-- ==================== NGÀY 76 ==================== -->
+<section class="lesson" id="d76">
+  <div class="dayhead">
+    <div class="dnum"><b>76</b><span>ngày</span></div>
+    <div class="dt"><h2>Xem họ làm</h2><p>Tuần 11 — Làm cho người khác</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>75 phút</b></span><span class="chip hot">Chín trên mười vấn đề lộ ra hôm nay</span></div>
+
+  <div class="goal"><b>🎯 Xong ngày hôm nay anh sẽ có</b> Ghi chép đầy đủ về việc thật — và ít nhất một điều anh <b>chỉ biết được khi nhìn</b>, không phải khi nghe kể.</div>
+
+  <h3>Bước 1 — Hỏi trước khi xem (25 phút)</h3>
+  <p>Dùng bộ câu hỏi có sẵn trong app. Hỏi theo thứ tự, ghi <b>nguyên văn</b> lời họ nói — đừng tóm tắt theo cách hiểu của mình.</p>
+  <p><button class="btn btn-run" data-jump="tsurvey" style="padding:9px 18px">📋 Mở bộ câu hỏi khảo sát</button></p>
+
+  <h3>Bước 2 — Ngồi xem (35 phút)</h3>
+  <div class="warn"><b>⚠️ Luật quan trọng nhất khi ngồi xem: đừng ngắt lời.</b> Ghi câu hỏi vào giấy, hỏi sau khi họ làm xong. Ngắt giữa chừng làm họ chuyển sang <i>giải thích</i> thay vì <i>làm</i> — và anh mất đúng thứ mình cần thấy.</div>
+  <p>Bốn thứ cần để ý:</p>
+  <ol class="steps">
+    <li><b>Bước nào họ không kể lúc trả lời phỏng vấn?</b> Thường có ít nhất một — thao tác quen tay thì không nhớ ra để kể.</li>
+    <li><b>Chỗ nào họ dừng lại suy nghĩ?</b> Đó là chỗ có quyết định, và quyết định thì khó tự động hoá.</li>
+    <li><b>Dữ liệu thật trông thế nào?</b> Chụp màn hình. Kiểm đủ sáu kiểu bẩn.</li>
+    <li><b>Họ làm gì với kết quả?</b> Nhiều khi kết quả không phải đích cuối — nó là đầu vào cho một việc khác.</li>
+  </ol>
+
+  <h3>Bước 3 — Viết lại ngay (15 phút)</h3>
+  <p>Về nhà viết lại ngay trong ngày, đừng để hôm sau. Ghi vào Nhật ký Ngày 76:</p>
+  <ul>
+    <li>Các bước thật, theo đúng thứ tự họ làm</li>
+    <li>Điều anh chỉ biết khi nhìn — <b>bắt buộc phải có ít nhất một</b></li>
+    <li>Các kiểu dữ liệu bẩn đã thấy</li>
+    <li>Phần nào <b>không</b> nên tự động hoá vì cần người quyết định</li>
+  </ul>
+
+  <div class="chk"><b>✅ Xong ngày 76 khi</b>
+    <ul>
+      <li>Có ghi chép phỏng vấn nguyên văn</li>
+      <li>Đã ngồi xem họ làm ít nhất một lần trọn vẹn</li>
+      <li>Có ít nhất một điều chỉ biết được khi nhìn</li>
+      <li>Đã xác định phần nào để người làm, phần nào máy làm</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="76"></div>
+</section>
+
+<!-- ==================== NGÀY 77 ==================== -->
+<section class="lesson" id="d77">
+  <div class="dayhead">
+    <div class="dnum"><b>77</b><span>ngày</span></div>
+    <div class="dt"><h2>Chốt phạm vi</h2><p>Tuần 11 — Làm cho người khác</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>60 phút</b></span><span class="chip">Viết ra trước khi dựng</span></div>
+
+  <div class="goal"><b>🎯 Xong ngày hôm nay anh sẽ có</b> Bản phạm vi công việc đã gửi và được họ xác nhận — trước khi dựng một node nào.</div>
+
+  <h3>Bước 1 — Viết phạm vi (35 phút)</h3>
+  <p>Dùng mẫu có sẵn. Bỏ mục thanh toán vì lần này miễn phí, giữ nguyên các mục còn lại.</p>
+  <p><button class="btn btn-run" data-jump="tscope" style="padding:9px 18px">📄 Mở mẫu phạm vi công việc</button></p>
+  <div class="note">💡 <b>Miễn phí vẫn phải viết phạm vi.</b> Thậm chí còn cần hơn — vì khi không có tiền ràng buộc, người ta dễ coi nhẹ và yêu cầu thêm liên tục. Phạm vi viết ra là thứ duy nhất giữ dự án trong khuôn.</div>
+
+  <h3>Bước 2 — Ba mục dễ sai nhất (15 phút)</h3>
+  <table class="cmp">
+    <tr><th style="width:28%">Mục</th><th>Với ca đầu tiên nên viết gì</th></tr>
+    <tr><td><b>KHÔNG bao gồm</b></td><td>Liệt kê thẳng: không làm sạch dữ liệu cũ · không đổi cách nhập liệu hiện tại · không xử lý các trường hợp đặc biệt chưa bàn tới</td></tr>
+    <tr><td><b>Điều kiện từ họ</b></td><td>Cấp quyền truy cập trước ngày nào · ai là người trả lời câu hỏi của anh</td></tr>
+    <tr><td><b>Số lần chỉnh sửa</b></td><td>Hai lần sau bàn giao. Nghe khắt khe với người quen, nhưng không có giới hạn thì dự án không bao giờ kết thúc</td></tr>
+  </table>
+
+  <h3>Bước 3 — Gửi và chờ xác nhận (10 phút)</h3>
+  <p>Gửi qua tin nhắn hoặc email. Xin họ trả lời một chữ "ok" — thế là đủ cho giai đoạn này.</p>
+  <div class="warn"><b>⚠️ Đừng bắt đầu dựng khi chưa có xác nhận.</b> Nghe cứng nhắc, nhưng đây là thói quen phải tập từ ca miễn phí. Tới ca có tiền mà chưa có thói quen này thì rất dễ mất cả công lẫn tiền.</div>
+
+  <div class="chk"><b>✅ Xong ngày 77 khi</b>
+    <ul>
+      <li>Đã gửi bản phạm vi</li>
+      <li>Có xác nhận bằng chữ của họ</li>
+      <li>Mục "KHÔNG bao gồm" có ít nhất ba dòng</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="77"></div>
+</section>
+
+<!-- ==================== NGÀY 78 ==================== -->
+<section class="lesson" id="d78">
+  <div class="dayhead">
+    <div class="dnum"><b>78</b><span>ngày</span></div>
+    <div class="dt"><h2>Dựng với dữ liệu của người khác</h2><p>Tuần 11 — Làm cho người khác</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>75 phút</b></span><span class="chip hot">Dữ liệu của họ bẩn hơn của anh</span></div>
+
+  <div class="goal"><b>🎯 Xong ngày hôm nay anh sẽ có</b> Nửa đầu quy trình chạy được <b>trên dữ liệu thật của họ</b> — và biết dữ liệu người khác khác dữ liệu mình thế nào.</div>
+
+  <h3>Bước 1 — Sao chép dữ liệu trước khi đụng vào (15 phút)</h3>
+  <div class="warn"><b>⚠️ Không bao giờ thử nghiệm trên dữ liệu gốc của người khác.</b> Sao ra một bản riêng, làm trên bản đó. Xoá nhầm dữ liệu của mình thì tiếc; xoá nhầm dữ liệu của người khác thì mất quan hệ.</div>
+
+  <h3>Bước 2 — Dựng và va vào thực tế (45 phút)</h3>
+  <ol class="steps">
+    <li>Dựng trigger và bước lấy dữ liệu.</li>
+    <li><b>Nhìn kỹ cục JSON trả về.</b> So với những gì anh tưởng khi vẽ bản thiết kế — khớp không?</li>
+    <li>Đếm số kiểu bẩn thật sự có. Ghi vào Nhật ký.</li>
+    <li>Dựng bước làm sạch cho <b>những kiểu bẩn có thật</b>, không phải cho danh sách lý thuyết.</li>
+  </ol>
+  <div class="note">💡 <b>Điều gần như chắc chắn sẽ xảy ra hôm nay:</b> dữ liệu của họ bẩn hơn dữ liệu của anh nhiều. Lý do đơn giản — dữ liệu của anh do một người nhập theo một quy tắc; dữ liệu của họ do nhiều người nhập qua nhiều năm, mỗi người một kiểu. Đây là bài học không thể học bằng cách đọc.</div>
+
+  <h3>Bước 3 — Báo cho họ biết (15 phút)</h3>
+  <p>Nếu phát hiện vấn đề dữ liệu ảnh hưởng tới kết quả, <b>báo ngay hôm nay</b>, đừng để tới lúc bàn giao.</p>
+  <div class="linkbox">
+    <div class="lb-lab">Cách nói</div>
+    <p style="margin:0;font-size:14.8px;line-height:1.8;color:var(--muted)"><i>"Anh/chị ơi, em thấy trong bảng có khoảng [X] dòng bị [vấn đề gì]. Em sẽ để riêng những dòng đó ra để anh/chị xem lại, chứ không tự đoán rồi tính vào. Như vậy con số cuối cùng chắc chắn đúng hơn."</i></p>
+  </div>
+  <p>Cách nói này biến một vấn đề thành một điểm cộng — họ thấy anh cẩn thận, và họ biết được thứ họ chưa từng biết về dữ liệu của chính mình.</p>
+
+  <div class="chk"><b>✅ Xong ngày 78 khi</b>
+    <ul>
+      <li>Đang làm trên bản sao, không đụng dữ liệu gốc</li>
+      <li>Lấy được dữ liệu thật của họ</li>
+      <li>Có danh sách kiểu bẩn thật, so với danh sách dự đoán</li>
+      <li>Đã báo cho họ nếu có vấn đề ảnh hưởng kết quả</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="78"></div>
+</section>
+
+<!-- ==================== NGÀY 79 ==================== -->
+<section class="lesson" id="d79">
+  <div class="dayhead">
+    <div class="dnum"><b>79</b><span>ngày</span></div>
+    <div class="dt"><h2>Hoàn thiện và gia cố</h2><p>Tuần 11 — Làm cho người khác</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>75 phút</b></span><span class="chip">Chuẩn cao hơn khi làm cho người khác</span></div>
+
+  <div class="goal"><b>🎯 Xong ngày hôm nay anh sẽ có</b> Quy trình chạy trọn vẹn, và <b>chịu được sự cố mà không cần anh có mặt</b>.</div>
+
+  <h3>Bước 1 — Nối mảnh cuối (25 phút)</h3>
+  <ol class="steps">
+    <li>Thêm bước đưa kết quả đi — đúng dạng họ cần, không phải dạng anh thấy tiện.</li>
+    <li>Nhìn số items trước khi chạy thật.</li>
+    <li>Chạy thử, rồi <b>tự kiểm tra kết quả bằng tay</b> một lần. Con số máy tính ra có khớp với con số anh tính tay không?</li>
+  </ol>
+  <div class="warn"><b>⚠️ Bước kiểm tra tay là bắt buộc khi làm cho người khác.</b> Với việc của mình, sai thì mình biết. Với việc của họ, họ sẽ tin con số của anh — và nếu sai thì họ ra quyết định sai mà không ai phát hiện.</div>
+
+  <h3>Bước 2 — Gia cố (35 phút)</h3>
+  <p>Chuẩn cao hơn so với quy trình của riêng anh, vì <b>anh không ngồi cạnh nó mỗi ngày</b>:</p>
+  <ol class="steps">
+    <li>Thử phá sáu cách như Ngày 65.</li>
+    <li>Thêm nhánh cảnh báo — nhưng gửi cho <b>anh</b>, không phải cho họ. Họ không biết phải làm gì với thông báo lỗi kỹ thuật.</li>
+    <li>Thêm lớp "báo khi im lặng": quá hai kỳ không có kết quả thì anh phải biết.</li>
+  </ol>
+
+  <h3>Bước 3 — Chạy song song một kỳ (15 phút)</h3>
+  <p>Đề nghị họ <b>vẫn làm tay như cũ</b> thêm một kỳ nữa, song song với hệ thống. Cuối kỳ so hai kết quả.</p>
+  <div class="note">💡 Đây là kỹ thuật chạy song song để đối chiếu — thứ anh sẽ dùng lại nhiều lần trong nghề. Nó tốn của họ thêm một lần làm tay, đổi lại cả hai bên chắc chắn hệ thống đúng trước khi tin vào nó.</div>
+
+  <div class="chk"><b>✅ Xong ngày 79 khi</b>
+    <ul>
+      <li>Quy trình chạy trọn, kết quả đúng dạng họ cần</li>
+      <li>Đã tự kiểm tra bằng tay một lần và khớp</li>
+      <li>Cảnh báo gửi cho anh, không phải cho họ</li>
+      <li>Đã thoả thuận chạy song song một kỳ</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="79"></div>
+</section>
+
+<!-- ==================== NGÀY 80 ==================== -->
+<section class="lesson" id="d80">
+  <div class="dayhead">
+    <div class="dnum"><b>80</b><span>ngày</span></div>
+    <div class="dt"><h2>Bàn giao</h2><p>Tuần 11 — sản phẩm của tuần</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>75 phút</b></span><span class="chip hot">Sản phẩm tuần 11</span></div>
+
+  <div class="goal"><b>🎯 Xong ngày hôm nay anh sẽ có</b> Hệ thống đã bàn giao, người dùng biết cách dùng và biết phải làm gì khi nó hỏng.</div>
+
+  <h3>Bước 1 — Viết tài liệu một trang (30 phút)</h3>
+  <p>Dùng mẫu có sẵn. Viết cho người <b>không biết kỹ thuật</b>.</p>
+  <p><button class="btn btn-run" data-jump="thandover" style="padding:9px 18px">🤝 Mở mẫu bàn giao</button></p>
+  <div class="warn"><b>⚠️ Mục quan trọng nhất là "Những gì KHÔNG nên làm".</b> Phần lớn hệ thống automation chết vì có người đổi tên một cột hoặc xoá một bảng tưởng không dùng. Viết cụ thể tên bảng, tên cột — đừng viết chung chung.</div>
+
+  <h3>Bước 2 — Buổi hướng dẫn 30 phút (30 phút)</h3>
+  <ol class="steps">
+    <li><b>Cho họ tự thao tác</b> trong lúc anh ngồi cạnh. Đừng chỉ trình chiếu — người ta chỉ nhớ thứ tự tay mình làm.</li>
+    <li>Cho họ tự tìm chỗ xem kết quả, tự mở tài liệu khi bí.</li>
+    <li>Hỏi lại: <i>"Nếu tuần sau không thấy báo cáo thì anh/chị làm gì?"</i> Trả lời được thì buổi hướng dẫn đạt.</li>
+  </ol>
+
+  <h3>Bước 3 — Thoả thuận sau bàn giao (15 phút)</h3>
+  <table class="cmp">
+    <tr><th style="width:38%">Thoả thuận</th><th>Nói thế nào</th></tr>
+    <tr><td>Sửa lỗi</td><td>"Có gì sai anh/chị báo em, em sửa miễn phí trong 30 ngày."</td></tr>
+    <tr><td>Thêm việc mới</td><td>"Muốn thêm gì thì mình bàn riêng nhé, em xem có làm được không đã."</td></tr>
+    <tr><td>Sau 30 ngày</td><td>"Sau đó nếu anh/chị muốn em trông coi tiếp thì mình bàn, còn không thì em vẫn hỗ trợ khi có sự cố lớn."</td></tr>
+  </table>
+  <div class="note">💡 Đây là lần đầu anh tập nói về ranh giới hỗ trợ. Với người quen thì hơi ngại — nhưng không nói ra thì ba tháng sau anh vẫn đang sửa miễn phí, và cả hai đều thấy khó xử.</div>
+
+  <div class="chk"><b>✅ Xong ngày 80 khi</b>
+    <ul>
+      <li>Có tài liệu một trang, có mục "KHÔNG nên làm" cụ thể</li>
+      <li>Họ tự thao tác được trước mặt anh</li>
+      <li>Họ trả lời được câu "không thấy kết quả thì làm gì"</li>
+      <li>Đã thoả thuận rõ ba điều sau bàn giao</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="80"></div>
+</section>
+
+<!-- ==================== NGÀY 81 ==================== -->
+<section class="lesson" id="d81">
+  <div class="dayhead">
+    <div class="dnum"><b>81</b><span>ngày</span></div>
+    <div class="dt"><h2>Nhìn lại tuần 11</h2><p>Ngày chốt sổ — có bài kiểm tra</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>45 phút</b></span><span class="chip">Ngày nhẹ</span><span class="chip hot">Có bài kiểm tra</span></div>
+
+  <div class="goal"><b>🎯 Ngày hôm nay để làm gì</b> Rút ra bài học từ ca đầu tiên làm cho người khác — thứ quyết định anh có nhận việc trả tiền được ở tháng 9 hay không.</div>
+
+  <h3>Bước 1 — Bài kiểm tra tuần 11 (20 phút)</h3>
+  <div class="quiz" data-lesson="d81">
+    <div class="qz-item" data-ans="3">
+      <p class="qz-q">1. Vì sao phải ngồi xem khách làm việc đó, thay vì chỉ nghe họ kể?</p>
+      <label><input type="radio"> Để họ thấy mình nghiêm túc và tin tưởng giao việc cho mình hơn</label>
+      <label><input type="radio"> Để đo chính xác thời gian mỗi bước phục vụ việc báo giá sau này</label>
+      <label><input type="radio"> Vì thao tác quen tay thì họ không nhớ ra để kể, và đó là chỗ giấu vấn đề</label>
+      <div class="qz-why">Không phải họ nói dối — người ta thật sự không nhớ ra những bước đã thành phản xạ. Chín trên mười vấn đề nằm ở đó.</div>
+    </div>
+    <div class="qz-item" data-ans="1">
+      <p class="qz-q">2. Đang ngồi xem, thấy họ làm một bước lạ. Nên làm gì?</p>
+      <label><input type="radio"> Ghi câu hỏi vào giấy, để họ làm xong hết rồi mới hỏi</label>
+      <label><input type="radio"> Hỏi ngay lúc đó để khỏi quên mất chi tiết quan trọng</label>
+      <label><input type="radio"> Đề nghị họ làm chậm lại và giải thích từng thao tác một</label>
+      <div class="qz-why">Ngắt giữa chừng làm họ chuyển sang <i>giải thích</i> thay vì <i>làm</i> — và anh mất đúng thứ mình cần thấy.</div>
+    </div>
+    <div class="qz-item" data-ans="2">
+      <p class="qz-q">3. Làm miễn phí cho người quen thì có cần viết phạm vi công việc không?</p>
+      <label><input type="radio"> Không cần, viết ra sẽ làm quan hệ trở nên khách sáo và nặng nề</label>
+      <label><input type="radio"> Cần, thậm chí cần hơn — vì không có tiền ràng buộc thì rất dễ phình việc</label>
+      <label><input type="radio"> Chỉ cần khi dự án kéo dài trên một tháng hoặc có nhiều bên tham gia</label>
+      <div class="qz-why">Phạm vi viết ra là thứ duy nhất giữ dự án trong khuôn. Nó cũng là thói quen phải tập từ ca miễn phí.</div>
+    </div>
+    <div class="qz-item" data-ans="1">
+      <p class="qz-q">4. Nhánh cảnh báo khi hệ thống lỗi nên gửi cho ai?</p>
+      <label><input type="radio"> Cho anh — họ không biết phải làm gì với thông báo lỗi kỹ thuật</label>
+      <label><input type="radio"> Cho khách — hệ thống của họ nên họ phải nắm được tình hình</label>
+      <label><input type="radio"> Cho cả hai để bên nào rảnh trước thì xử lý cho nhanh</label>
+      <div class="qz-why">Gửi lỗi kỹ thuật cho người không hiểu chỉ tạo lo lắng mà không giải quyết được gì. Họ cần biết khi <b>không có kết quả</b>, không phải khi có lỗi.</div>
+    </div>
+    <div class="qz-item" data-ans="3">
+      <p class="qz-q">5. Vì sao đề nghị khách vẫn làm tay thêm một kỳ song song với hệ thống?</p>
+      <label><input type="radio"> Để họ quen dần, tránh cảm giác bị thay thế đột ngột bởi máy móc</label>
+      <label><input type="radio"> Để có dữ liệu dự phòng phòng khi hệ thống mới bị mất dữ liệu</label>
+      <label><input type="radio"> Để so hai kết quả, chắc chắn hệ thống đúng trước khi cả hai tin vào nó</label>
+      <div class="qz-why">Kỹ thuật chạy song song để đối chiếu. Tốn của họ thêm một lần làm tay, đổi lại cả hai yên tâm.</div>
+    </div>
+    <div class="qz-item" data-ans="2">
+      <p class="qz-q">6. Dữ liệu của khách bẩn hơn dữ liệu của anh rất nhiều. Vì sao?</p>
+      <label><input type="radio"> Vì họ ít quan tâm tới chất lượng dữ liệu bằng người làm kỹ thuật</label>
+      <label><input type="radio"> Vì nhiều người nhập qua nhiều năm, mỗi người một kiểu, không ai đặt quy tắc</label>
+      <label><input type="radio"> Vì hệ thống họ đang dùng cũ nên không kiểm soát được dữ liệu đầu vào</label>
+      <div class="qz-why">Dữ liệu của anh do một người nhập theo một quy tắc. Đây là bài học không thể học bằng cách đọc.</div>
+    </div>
+    <div class="qz-actions">
+      <button class="btn qz-grade">✔ Chấm điểm</button>
+      <button class="btn qz-retry">↺ Làm lại</button>
+      <span class="qz-score"></span>
+    </div>
+  </div>
+
+  <h3>Bước 2 — Ghi lại bài học (15 phút)</h3>
+  <p>Vào <b>▤ Nhật ký</b> Ngày 81, trả lời bốn câu:</p>
+  <ol class="steps">
+    <li><b>Điều gì khác nhiều nhất so với làm cho chính mình?</b></li>
+    <li><b>Ước lượng bao nhiêu giờ, thực tế bao nhiêu?</b> Sai bao nhiêu phần trăm?</li>
+    <li><b>Nếu làm lại từ đầu, anh sẽ làm khác chỗ nào?</b></li>
+    <li><b>Có gì làm anh khó chịu trong quá trình?</b> Ghi thật — nó cho biết loại khách nào không hợp với anh.</li>
+  </ol>
+
+  <h3>Bước 3 — Đặt lịch hỏi lại (10 phút)</h3>
+  <p>Đặt nhắc trong lịch: <b>sau một tuần hỏi lại họ còn dùng không</b>. Đây là chỉ số quan trọng nhất — dựng xong mà một tuần sau không ai dùng thì dự án đó thất bại, dù kỹ thuật hoàn hảo.</p>
+
+  <div class="chk"><b>✅ Mốc cuối tuần 11</b>
+    <ul>
+      <li>Bài kiểm tra đạt từ 4/6</li>
+      <li>Đã bàn giao cho một người thật</li>
+      <li>Có bốn bài học ghi trong nhật ký</li>
+      <li>Đã đặt lịch hỏi lại sau một tuần</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="81"></div>
+</section>
+
+<!-- ==================== NGÀY 82 ==================== -->
+<section class="lesson" id="d82">
+  <div class="dayhead">
+    <div class="dnum"><b>82</b><span>ngày</span></div>
+    <div class="dt"><h2>Vì sao nói khó hơn viết</h2><p>Tuần 12 — Tiếng Anh nói</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>60 phút</b></span><span class="chip hot">Bắt đầu sớm hơn cần thiết</span></div>
+
+  <div class="goal"><b>🎯 Xong ngày hôm nay anh sẽ có</b> Dàn ý cho ba câu phỏng vấn quan trọng nhất — và hiểu vì sao phải bắt đầu từ bây giờ chứ không phải năm thứ ba.</div>
+
+  <div class="note">💡 <b>Vì sao bắt đầu ở tháng 3.</b> Viết thì có thời gian nghĩ, tra từ, sửa lại. Nói thì không. Khoảng cách giữa hai kỹ năng này thường là <b>một tới hai năm</b> luyện tập — nghĩa là nếu tháng 34 mới bắt đầu, anh sẽ đến buổi phỏng vấn với kỹ thuật của năm thứ ba và tiếng Anh nói của tháng thứ nhất.</div>
+
+  <h3>Bước 1 — Ba câu quan trọng nhất (20 phút)</h3>
+  <table class="cmp">
+    <tr><th style="width:44%">Câu</th><th>Điều họ thật sự muốn biết</th></tr>
+    <tr><td><i>Walk me through a project you built</i></td><td>Anh có làm thật không, hay chỉ học lý thuyết</td></tr>
+    <tr><td><i>What was the hardest part?</i></td><td>Anh có gặp khó thật không, và giải quyết thế nào</td></tr>
+    <tr><td><i>How do you know it works?</i></td><td><b>Anh có đo không</b> — câu phân biệt lớn nhất</td></tr>
+  </table>
+  <p>Ba câu này chiếm phần lớn giá trị của một buổi phỏng vấn kỹ thuật. Chuẩn bị tốt ba câu hơn chuẩn bị sơ sài mười câu.</p>
+
+  <h3>Bước 2 — Viết dàn ý, không viết kịch bản (30 phút)</h3>
+  <div class="warn"><b>⚠️ Đừng viết thành câu đầy đủ rồi học thuộc.</b> Đọc thuộc lòng nghe ra ngay — nhịp điệu khác hẳn nói tự nhiên, và chỉ cần người ta hỏi chen một câu là anh mất mạch hoàn toàn. Viết <b>gạch đầu dòng</b>, mỗi ý vài từ khoá.</p></div>
+  <p>Khung cho câu đầu tiên:</p>
+  <div class="linkbox">
+    <div class="lb-lab">Dàn ý — mỗi dòng vài từ khoá thôi</div>
+    <p class="mono" style="margin:0;font-size:13.5px;line-height:1.95;color:var(--muted)">
+    <b style="color:var(--ink)">Problem</b> — ai · làm tay gì · mất bao lâu<br>
+    <b style="color:var(--ink)">What I built</b> — trigger gì · lấy dữ liệu từ đâu · gửi đi đâu<br>
+    <b style="color:var(--ink)">Hard part</b> — một khó khăn cụ thể · cách vượt qua<br>
+    <b style="color:var(--ink)">Result</b> — con số trước · con số sau · chạy bao lâu rồi
+    </p>
+  </div>
+
+  <h3>Bước 3 — Nói thử một lần (10 phút)</h3>
+  <p>Nói to câu đầu tiên theo dàn ý. Không quay, không đánh giá. Chỉ để biết cảm giác.</p>
+  <p>Ghi vào Nhật ký: nói được bao lâu trước khi tắc? Tắc ở chỗ nào — thiếu từ, hay không biết nói gì tiếp?</p>
+
+  <div class="chk"><b>✅ Xong ngày 82 khi</b>
+    <ul>
+      <li>Có dàn ý gạch đầu dòng cho cả ba câu</li>
+      <li>Đã nói to thử ít nhất một lần</li>
+      <li>Biết mình tắc vì thiếu từ hay thiếu ý</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="82"></div>
+</section>
+
+<!-- ==================== NGÀY 83 ==================== -->
+<section class="lesson" id="d83">
+  <div class="dayhead">
+    <div class="dnum"><b>83</b><span>ngày</span></div>
+    <div class="dt"><h2>Quay video đầu tiên</h2><p>Tuần 12 — Tiếng Anh nói</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>60 phút</b></span><span class="chip hot">Khó chịu nhưng cần</span></div>
+
+  <div class="goal"><b>🎯 Xong ngày hôm nay anh sẽ có</b> Ba video, mỗi video hai phút. Không cần hay — chỉ cần có, để lần sau so được.</div>
+
+  <div class="warn"><b>⚠️ Không ai xem những video này ngoài anh.</b> Không đăng, không gửi cho ai. Chúng chỉ để đo tiến bộ. Biết vậy rồi thì bấm quay dễ hơn nhiều.</div>
+
+  <h3>Bước 1 — Chuẩn bị (10 phút)</h3>
+  <ol class="steps">
+    <li>Điện thoại dựng đứng, chỗ yên tĩnh.</li>
+    <li>Dàn ý để bên cạnh nhưng <b>không cầm trên tay</b> — liếc được, không đọc được.</li>
+    <li>Đặt hẹn giờ hai phút.</li>
+  </ol>
+
+  <h3>Bước 2 — Quay ba lần (35 phút)</h3>
+  <ol class="steps">
+    <li>Quay câu 1. Tắc thì cứ nói tiếp, đừng quay lại từ đầu.</li>
+    <li>Quay câu 2, câu 3 tương tự.</li>
+    <li><b>Chưa xem lại vội.</b> Xem ngay sau khi quay là lúc tự phê phán nặng nhất và ít khách quan nhất.</li>
+  </ol>
+  <div class="note">💡 <b>Quy tắc "cứ nói tiếp".</b> Trong phỏng vấn thật anh không được quay lại. Kỹ năng cần luyện chính là <b>đi tiếp khi đang tắc</b> — dùng từ đơn giản hơn, diễn đạt vòng, hoặc nói thẳng "let me rephrase that". Quay lại từ đầu mỗi lần vấp là luyện đúng thứ không dùng được.</div>
+
+  <h3>Bước 3 — Ghi cảm giác (15 phút)</h3>
+  <p>Ghi vào Nhật ký trước khi xem lại: cảm giác thế nào, câu nào khó nhất, tắc ở đâu.</p>
+
+  <div class="chk"><b>✅ Xong ngày 83 khi</b>
+    <ul>
+      <li>Có ba video, mỗi cái dưới 2 phút</li>
+      <li>Không quay lại giữa chừng lần nào</li>
+      <li>Đã ghi cảm giác vào nhật ký</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="83"></div>
+</section>
+
+<!-- ==================== NGÀY 84 ==================== -->
+<section class="lesson" id="d84">
+  <div class="dayhead">
+    <div class="dnum"><b>84</b><span>ngày</span></div>
+    <div class="dt"><h2>Xem lại và đếm</h2><p>Tuần 12 — Tiếng Anh nói</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>60 phút</b></span><span class="chip">Đo bằng số, không bằng cảm giác</span></div>
+
+  <div class="goal"><b>🎯 Xong ngày hôm nay anh sẽ có</b> Bốn con số cụ thể về cách nói của mình — thay vì cảm giác chung chung "mình nói dở".</div>
+
+  <div class="note">💡 <b>Vì sao phải đếm.</b> Xem lại video của mình thì cảm giác luôn là "tệ quá". Cảm giác đó không cho anh biết phải sửa gì. Bốn con số thì có — và tuần sau so được.</div>
+
+  <h3>Bước 1 — Đếm bốn thứ (35 phút)</h3>
+  <table class="cmp">
+    <tr><th style="width:34%">Đếm cái gì</th><th>Ngưỡng tạm ổn</th></tr>
+    <tr><td>Số lần "ờ", "à", "ừm"</td><td>Dưới 10 lần trong 2 phút</td></tr>
+    <tr><td>Số lần dừng quá 3 giây</td><td>Dưới 4 lần</td></tr>
+    <tr><td>Số từ phát âm sai hoặc không chắc</td><td>Ghi ra danh sách, chưa cần ngưỡng</td></tr>
+    <tr><td>Nói được bao lâu trước khi tắc hẳn</td><td>Trên 60 giây</td></tr>
+  </table>
+  <p>Xem từng video, đếm thật. Ghi cả bốn con số vào Nhật ký Ngày 84.</p>
+
+  <h3>Bước 2 — Chọn một thứ để sửa (15 phút)</h3>
+  <div class="warn"><b>⚠️ Chỉ chọn <b>một</b>.</b> Sửa cùng lúc bốn thứ thì không sửa được cái nào. Thường nên bắt đầu từ <b>số lần dừng quá lâu</b> — vì nó thường do thiếu ý, không phải thiếu từ, và sửa được bằng cách chuẩn bị dàn ý kỹ hơn.</div>
+
+  <h3>Bước 3 — Thêm từ vào thẻ (10 phút)</h3>
+  <p>Danh sách từ phát âm sai — thêm hết vào bộ thẻ <b>Của tôi</b>. Với mỗi từ, nghe cách phát âm chuẩn và lặp lại năm lần.</p>
+
+  <div class="chk"><b>✅ Xong ngày 84 khi</b>
+    <ul>
+      <li>Có bốn con số cho cả ba video</li>
+      <li>Đã chọn đúng một thứ để sửa</li>
+      <li>Từ phát âm sai đã vào bộ thẻ</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="84"></div>
+</section>
+
+<!-- ==================== NGÀY 85 ==================== -->
+<section class="lesson" id="d85">
+  <div class="dayhead">
+    <div class="dnum"><b>85</b><span>ngày</span></div>
+    <div class="dt"><h2>Hỏi lại khách</h2><p>Tuần 12 — chỉ số quan trọng nhất</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>60 phút</b></span><span class="chip hot">Một tuần sau bàn giao</span></div>
+
+  <div class="goal"><b>🎯 Xong ngày hôm nay anh sẽ biết</b> Người anh làm cho ở tuần 11 <b>có còn dùng không</b> — chỉ số quan trọng hơn mọi thứ kỹ thuật.</div>
+
+  <h3>Bước 1 — Hỏi (20 phút)</h3>
+  <div class="linkbox">
+    <div class="lb-lab">Bốn câu hỏi</div>
+    <p style="margin:0;font-size:14.8px;line-height:1.85;color:var(--muted)">
+    1. Tuần vừa rồi anh/chị có dùng không?<br>
+    2. Có lúc nào nó không chạy hoặc ra kết quả lạ không?<br>
+    3. Có chỗ nào vướng, hoặc muốn khác đi không?<br>
+    4. Anh/chị thấy nó tiết kiệm được khoảng bao nhiêu thời gian?
+    </p>
+  </div>
+  <div class="warn"><b>⚠️ Câu 3 là câu quan trọng nhất, và người ta hay trả lời "ổn cả" cho xong.</b> Hỏi lại cụ thể: <i>"Có gì em làm mà anh/chị thấy chưa tiện không? Em hỏi thật để lần sau làm tốt hơn."</i> Nói rõ anh muốn nghe điều chưa tốt thì họ mới nói.</div>
+
+  <h3>Bước 2 — Đọc kết quả trung thực (25 phút)</h3>
+  <table class="cmp">
+    <tr><th style="width:34%">Câu trả lời</th><th>Nghĩa là gì</th></tr>
+    <tr><td>Dùng đều, không vướng gì</td><td>Ca này thành công. Ghi lại con số để làm case study.</td></tr>
+    <tr><td>Dùng vài lần rồi thôi</td><td><b>Dấu hiệu xấu.</b> Thường vì kết quả không đúng thứ họ cần, hoặc dùng phiền hơn làm tay. Hỏi cho ra lý do — đây là bài học đắt nhất tuần.</td></tr>
+    <tr><td>Chưa dùng lần nào</td><td>Anh đã tự động hoá một việc <b>không ai cần</b>. Đau nhưng cực kỳ giá trị: đó là sai lầm phổ biến nhất của người mới, và biết ở ca miễn phí thì rẻ hơn nhiều so với biết ở ca có tiền.</td></tr>
+  </table>
+
+  <h3>Bước 3 — Ghi lại (15 phút)</h3>
+  <p>Vào Nhật ký Ngày 85, ghi: họ còn dùng không · con số tiết kiệm theo lời họ · điều họ chê · và <b>anh sẽ làm khác gì ở ca sau</b>.</p>
+  <div class="note">💡 Nếu họ khen và còn dùng, xin luôn <b>một câu nhận xét bằng chữ</b>. Anh sẽ dùng nó ở tháng 9 khi bắt đầu nhận việc có trả tiền — lời của khách thuyết phục hơn mọi thứ anh tự nói về mình.</div>
+
+  <div class="chk"><b>✅ Xong ngày 85 khi</b>
+    <ul>
+      <li>Đã hỏi đủ bốn câu</li>
+      <li>Biết chắc họ còn dùng hay không, và vì sao</li>
+      <li>Có ít nhất một điều họ muốn khác đi</li>
+      <li>Nếu thành công: có một câu nhận xét bằng chữ</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="85"></div>
+</section>
+
+<!-- ==================== NGÀY 86 ==================== -->
+<section class="lesson" id="d86">
+  <div class="dayhead">
+    <div class="dnum"><b>86</b><span>ngày</span></div>
+    <div class="dt"><h2>Quay lại lần hai</h2><p>Tuần 12 — sản phẩm của tuần</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>60 phút</b></span><span class="chip hot">Sản phẩm tuần 12</span></div>
+
+  <div class="goal"><b>🎯 Xong ngày hôm nay anh sẽ có</b> Ba video lần hai, và <b>bằng chứng bằng số</b> rằng bốn ngày luyện đã có tác dụng.</div>
+
+  <h3>Bước 1 — Cập nhật dàn ý (15 phút)</h3>
+  <p>Câu <i>"Walk me through a project"</i> giờ nên kể ca ở tuần 11 — làm cho <b>người khác</b>, có phản hồi thật từ Ngày 85. Câu chuyện này mạnh hơn hẳn kể về việc của chính mình.</p>
+  <p>Thêm vào dàn ý con số tiết kiệm theo lời khách nói.</p>
+
+  <h3>Bước 2 — Quay lại ba câu (30 phút)</h3>
+  <ol class="steps">
+    <li>Vẫn hai phút mỗi câu, vẫn không quay lại giữa chừng.</li>
+    <li>Tập trung vào <b>đúng một thứ</b> anh chọn sửa ở Ngày 84.</li>
+    <li>Quay xong đếm lại bốn con số ngay.</li>
+  </ol>
+
+  <h3>Bước 3 — So hai lần (15 phút)</h3>
+  <table class="cmp">
+    <tr><th style="width:40%">Chỉ số</th><th>Ngày 83</th><th>Ngày 86</th></tr>
+    <tr><td>Số lần "ờ"</td><td>___</td><td>___</td></tr>
+    <tr><td>Số lần dừng quá 3 giây</td><td>___</td><td>___</td></tr>
+    <tr><td>Số từ phát âm sai</td><td>___</td><td>___</td></tr>
+    <tr><td>Nói được bao lâu trước khi tắc</td><td>___</td><td>___</td></tr>
+  </table>
+  <p>Ghi bảng này vào Nhật ký. Đây là bảng anh sẽ điền lại mỗi tháng suốt hai năm tới.</p>
+  <div class="note">💡 Cải thiện được <b>một</b> chỉ số trong bốn ngày là kết quả hoàn toàn bình thường và đủ tốt. Nếu cả bốn đều tệ hơn, khả năng cao là hôm nay anh mệt — quay lại vào một ngày khác thay vì kết luận vội.</div>
+
+  <div class="chk"><b>✅ Xong ngày 86 khi</b>
+    <ul>
+      <li>Có ba video lần hai</li>
+      <li>Câu đầu tiên kể về ca làm cho người khác, có số liệu</li>
+      <li>Có bảng so bốn chỉ số giữa hai lần</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="86"></div>
+</section>
+
+<!-- ==================== NGÀY 87 ==================== -->
+<section class="lesson" id="d87">
+  <div class="dayhead">
+    <div class="dnum"><b>87</b><span>ngày</span></div>
+    <div class="dt"><h2>Viết case study thứ ba</h2><p>Tuần 12 — Tiếng Anh viết</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>75 phút</b></span><span class="chip">Lần đầu có khách hàng thật trong câu chuyện</span></div>
+
+  <div class="goal"><b>🎯 Xong ngày hôm nay anh sẽ có</b> Case study đầu tiên kể về việc làm cho <b>người khác</b> — khác hẳn hai bài trước vì có người dùng thật và phản hồi thật.</div>
+
+  <h3>Bước 1 — Viết bản nháp (45 phút)</h3>
+  <p>Vẫn năm phần như Ngày 55, nhưng lần này thêm một mục:</p>
+  <div class="linkbox">
+    <div class="lb-lab">Khung — sáu phần</div>
+    <p class="mono" style="margin:0;font-size:13.5px;line-height:1.95;color:var(--muted)">
+    <b style="color:var(--ink)">1. The problem</b> — ai · làm tay gì · mất bao lâu<br>
+    <b style="color:var(--ink)">2. What I built</b> — chuỗi node, ngắn gọn<br>
+    <b style="color:var(--ink)">3. The hard part</b> — chỗ khó nhất, cụ thể<br>
+    <b style="color:var(--ink)">4. Results</b> — số liệu, kèm lời khách nói<br>
+    <b style="color:var(--ink)">5. What the user said</b> — câu nhận xét nguyên văn của họ<br>
+    <b style="color:var(--ink)">6. What I'd do differently</b> — bài học từ Ngày 81 và 85
+    </p>
+  </div>
+  <p><b>Tự viết trước, AI sửa ngữ pháp sau.</b> Nguyên tắc không đổi từ tháng 1.</p>
+  <div class="warn"><b>⚠️ Xin phép trước khi nhắc tên.</b> Nếu định nêu tên người hoặc tên công ty, hỏi họ một câu. Không xin phép mà đăng lên là cách mất quan hệ rất nhanh — và người ta sẽ ngại giới thiệu anh cho người khác.</div>
+
+  <h3>Bước 2 — Sửa và đối chiếu (20 phút)</h3>
+  <p>Đưa AI sửa ngữ pháp, giữ nguyên cách diễn đạt. So hai bản, ghi ba lỗi hay mắc.</p>
+  <p>So với danh sách lỗi ở Ngày 13, 27 và 56 — có lỗi nào <b>lặp lại lần thứ tư</b> không? Đó là lỗi phải học thuộc quy tắc, không sửa được bằng cách để ý.</p>
+
+  <h3>Bước 3 — Đăng (10 phút)</h3>
+  <p>Đăng lên LinkedIn kèm link GitHub. Mở đầu bằng con số, không phải bằng lời giới thiệu.</p>
+
+  <div class="chk"><b>✅ Xong ngày 87 khi</b>
+    <ul>
+      <li>Case study sáu phần đã đăng</li>
+      <li>Có câu nhận xét của người dùng (nếu họ đồng ý)</li>
+      <li>Đã xin phép trước khi nhắc tên</li>
+      <li>Biết lỗi ngữ pháp nào của mình đã lặp lần thứ tư</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="87"></div>
+</section>
+
+<!-- ==================== NGÀY 88 ==================== -->
+<section class="lesson" id="d88">
+  <div class="dayhead">
+    <div class="dnum"><b>88</b><span>ngày</span></div>
+    <div class="dt"><h2>Nhìn lại tuần 12</h2><p>Ngày chốt sổ</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>60 phút</b></span><span class="chip">Ngày nhẹ</span></div>
+
+  <div class="goal"><b>🎯 Ngày hôm nay để làm gì</b> Chốt tuần cuối, so ba tuần vừa qua, và chuẩn bị cho hai ngày tự chấm.</div>
+
+  <h3>Bước 1 — Kiểm tra mọi thứ đang chạy (15 phút)</h3>
+  <table class="cmp">
+    <tr><th style="width:40%">Kiểm tra</th><th>Cách làm</th></tr>
+    <tr><td>Ba quy trình của anh</td><td>Tab Executions — tuần này chạy mấy lần, lỗi mấy lần</td></tr>
+    <tr><td>Quy trình của người khác</td><td>Vẫn chạy không? Họ có báo gì không?</td></tr>
+    <tr><td>Script Python</td><td>Chạy lại một lần, còn hoạt động không?</td></tr>
+  </table>
+  <p>Điền vào bảng <code class="inline">suc-khoe-quy-trinh</code>.</p>
+
+  <h3>Bước 2 — Ôn nhanh và ôn thẻ (15 phút)</h3>
+  <ol class="steps">
+    <li><b>⟳ Ôn nhanh</b> — hai lượt.</li>
+    <li><b>▣ Thẻ ghi nhớ</b> — chạy hết bộ <b>Của tôi</b>, giờ nó đã dày sau ba tháng.</li>
+  </ol>
+
+  <h3>Bước 3 — So ba tuần vừa qua (15 phút)</h3>
+  <p>Ba tuần của tháng 3 rèn ba thứ hoàn toàn khác nhau. Ghi vào <b>▤ Nhật ký</b> Ngày 88:</p>
+  <table class="cmp">
+    <tr><th style="width:24%">Tuần</th><th style="width:34%">Rèn cái gì</th><th>Câu hỏi tự trả lời</th></tr>
+    <tr><td><b>9</b> — tự dựng</td><td>Nhớ và tự đi, không có hướng dẫn</td><td>Anh nhớ được bao nhiêu phần trăm mà không mở bài cũ?</td></tr>
+    <tr><td><b>10</b> — Python</td><td>Công cụ mới, học từ đầu</td><td>So với lúc học n8n ở tháng 1, học Python dễ hơn hay khó hơn? Vì sao?</td></tr>
+    <tr><td><b>11</b> — người khác</td><td>Làm việc với con người</td><td>Phần nào khiến anh mệt hơn: kỹ thuật hay giao tiếp?</td></tr>
+  </table>
+  <div class="note">💡 Câu cuối quan trọng hơn nó nghe. Nếu phần giao tiếp làm anh mệt hơn hẳn thì từ tháng 7 — khi bắt đầu nhận việc có trả tiền — anh cần chuẩn bị kỹ hơn cho phần đó, chứ không phải học thêm kỹ thuật.</div>
+
+  <h3>Bước 4 — Chuẩn bị tự chấm (15 phút)</h3>
+  <p>Ngày mai anh tự chấm cả tháng 3. Chuẩn bị sẵn ba thứ:</p>
+  <ul>
+    <li>Nhật ký từ Ngày 61 tới 88 — mở sẵn để tra số liệu</li>
+    <li>Bảng bốn chỉ số nói tiếng Anh ở Ngày 86</li>
+    <li>Ghi chép phản hồi khách ở Ngày 85</li>
+  </ul>
+
+  <div class="chk"><b>✅ Mốc cuối tuần 12</b>
+    <ul>
+      <li>Mọi thứ đang chạy đều đã kiểm tra</li>
+      <li>Có sáu video tiếng Anh (ba lần đầu, ba lần hai)</li>
+      <li>Case study thứ ba đã đăng</li>
+      <li>Nhật ký đủ 28 ngày của tháng 3</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="88"></div>
+</section>
+
+<!-- ==================== NGÀY 89 ==================== -->
+<section class="lesson" id="d89">
+  <div class="dayhead">
+    <div class="dnum"><b>89</b><span>ngày</span></div>
+    <div class="dt"><h2>Tự chấm tháng 3</h2><p>Nhìn thẳng vào số liệu</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>60 phút</b></span><span class="chip hot">Chấm trung thực</span></div>
+
+  <div class="goal"><b>🎯 Ngày hôm nay để làm gì</b> Đo xem tháng "tự đi" có thật sự tự đi được không.</div>
+
+  <h3>Bước 1 — Chấm mười hai hạng mục (30 phút)</h3>
+  <table class="cmp">
+    <tr><th style="width:62%">Hạng mục</th><th>Chuẩn đạt</th></tr>
+    <tr><td>Số ngày thực học trong tháng 3</td><td>≥ 22/30</td></tr>
+    <tr><td>Tổng số giờ thực tế</td><td>≥ 20 giờ</td></tr>
+    <tr><td>Quy trình thứ hai tự dựng, không mở lại bài cũ</td><td>đạt / không</td></tr>
+    <tr><td>Số lần phải mở lại bài hướng dẫn cũ trong tuần 9</td><td>≤ 2 lần</td></tr>
+    <tr><td>Dựng nhanh hơn tuần 5 ở độ khó tương đương</td><td>đạt / không</td></tr>
+    <tr><td>Python: đọc ghi file, CSV, JSON, bắt lỗi</td><td>đạt / không</td></tr>
+    <tr><td>Python chạy trên máy, có script giải quyết việc thật</td><td>đạt / không</td></tr>
+    <tr><td>Đã làm cho <b>một người khác</b>, có bàn giao</td><td>đạt / không</td></tr>
+    <tr><td>Người đó <b>còn dùng</b> sau một tuần</td><td>đạt / không</td></tr>
+    <tr><td>Có sáu video tiếng Anh, đã đếm bốn chỉ số hai lần</td><td>đạt / không</td></tr>
+    <tr><td>Cải thiện ít nhất một chỉ số nói giữa hai lần quay</td><td>đạt / không</td></tr>
+    <tr><td>Case study thứ ba đã đăng, có phản hồi khách</td><td>đạt / không</td></tr>
+  </table>
+
+  <h3>Bước 2 — Đọc kết quả (15 phút)</h3>
+  <table class="cmp">
+    <tr><th style="width:20%">Đạt</th><th>Tháng 4 nên làm gì</th></tr>
+    <tr><td><b>10–12</b></td><td><b>Đi đúng lộ trình.</b> Tháng 4 theo khung có sẵn: quy trình thứ ba trong một tuần, nối hệ thống chưa có node, người thứ hai.</td></tr>
+    <tr><td><b>7–9</b></td><td><b>Ổn.</b> Nhìn hai mục không đạt — nếu là "còn dùng sau một tuần" hoặc "làm cho người khác" thì tháng 4 dồn vào đó, đừng học thêm kỹ thuật mới.</td></tr>
+    <tr><td><b>4–6</b></td><td><b>Chậm lại.</b> Lặp lại tháng 3 một lần nữa với việc khác, thay vì sang tháng 4. Ba tháng đầu là nền — nền chưa chắc thì đi tiếp chỉ càng chông chênh.</td></tr>
+    <tr><td><b>Dưới 4</b></td><td><b>Xem lại quỹ thời gian.</b> Nếu số ngày học dưới 15 thì vấn đề không phải năng lực mà là lịch sống. Hạ xuống 30 phút mỗi ngày và kéo dài lộ trình.</td></tr>
+  </table>
+
+  <h3>Bước 3 — Ba câu tự vấn (15 phút)</h3>
+  <ol class="steps">
+    <li><b>Tháng nào trong ba tháng qua anh học đều nhất? Vì sao?</b> Nhân rộng điều kiện đó.</li>
+    <li><b>Việc làm cho người khác khiến anh muốn tiếp hay muốn dừng?</b> Trả lời thật — nó quyết định hướng đi từ tháng 7.</li>
+    <li><b>Sau ba tháng, điều gì anh vẫn thấy khó nhất?</b> Ghi cụ thể.</li>
+  </ol>
+
+  <div class="chk"><b>✅ Xong ngày 89 khi</b>
+    <ul>
+      <li>Bảng 12 mục đã chấm trung thực</li>
+      <li>Đã đọc kết luận tương ứng</li>
+      <li>Có ba câu trả lời trong nhật ký</li>
+    </ul>
+  </div>
+  <div class="daydone" data-day="89"></div>
+</section>
+
+<!-- ==================== NGÀY 90 ==================== -->
+<section class="lesson" id="d90">
+  <div class="dayhead">
+    <div class="dnum"><b>90</b><span>ngày</span></div>
+    <div class="dt"><h2>Chín mươi ngày</h2><p>Ngày cuối tháng 3 — hết một phần tư giai đoạn một</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>60 phút</b></span><span class="chip hot">Mốc lớn</span></div>
+
+  <div class="goal"><b>🎯 Ngày hôm nay để làm gì</b> Chốt ba tháng, lập kế hoạch tháng 4, và nghỉ.</div>
+
+  <h3>Bước 1 — Nhìn lại ba tháng bằng số (20 phút)</h3>
+  <p>Mở <b>▤ Nhật ký</b>, xem biểu đồ 90 ngày. Ghi vào Ngày 90:</p>
+  <table class="cmp">
+    <tr><th style="width:50%">Chỉ số</th><th>Con số của anh</th></tr>
+    <tr><td>Tổng giờ học ba tháng</td><td>___ giờ</td></tr>
+    <tr><td>Số ngày học / 90</td><td>___ ngày</td></tr>
+    <tr><td>Số quy trình đang chạy thật</td><td>___</td></tr>
+    <tr><td>Số người khác đã làm cho</td><td>___</td></tr>
+    <tr><td>Tổng phút tiết kiệm mỗi tuần</td><td>___ phút</td></tr>
+    <tr><td>Case study đã đăng</td><td>___</td></tr>
+  </table>
+
+  <h3>Bước 2 — Ba điều đã đổi (20 phút)</h3>
+  <p>So với chính mình ngày 1:</p>
+  <ol class="steps">
+    <li><b>Kỹ thuật:</b> ngày 1 anh chưa biết automation là gì. Giờ anh dựng được quy trình có xử lý lỗi, viết được script Python, và làm được cho người khác.</li>
+    <li><b>Tiếng Anh:</b> so tốc độ đọc ở Ngày 2, 29, 59 và hôm nay. Và giờ anh đã <b>nói</b> được, không chỉ đọc.</li>
+    <li><b>Cách làm việc:</b> ngày 1 anh cần chỉ từng nút. Tháng 3 anh tự dựng, tự soát thiết kế, tự chấm. Đây là thay đổi lớn nhất, và cũng khó thấy nhất.</li>
+  </ol>
+
+  <h3>Bước 3 — Kế hoạch tháng 4 và nghỉ (20 phút)</h3>
+  <ol class="steps">
+    <li>Mở khung <b>tháng 4–6</b>, đọc bốn mục tiêu tuần của tháng 4.</li>
+    <li>Điều chỉnh theo kết quả tự chấm Ngày 89. Đạt dưới 7 thì lặp lại tháng 3 thay vì sang tháng 4.</li>
+    <li>Sao lưu: vào Nhật ký, bấm cả hai nút xuất file.</li>
+    <li><b>Nghỉ ba ngày.</b> Không mở app, không đụng workflow. Ba tháng liên tục là dài.</li>
+  </ol>
+  <p>
+    <button class="btn btn-run" data-jump="m46" style="padding:10px 20px">▸ Mở khung tháng 4–6</button>
+    <button class="btn qz-retry" data-jump="tjournal" style="padding:10px 20px">▤ Sao lưu nhật ký</button>
+  </p>
+
+  <div class="chk"><b>✅ Hoàn thành 90 ngày</b>
+    <ul>
+      <li>Có bảng sáu chỉ số của ba tháng</li>
+      <li>Đã đọc khung tháng 4 và điều chỉnh theo kết quả tự chấm</li>
+      <li>Đã sao lưu dữ liệu</li>
+      <li>Đã lên lịch nghỉ ba ngày</li>
+    </ul>
+  </div>
+
+  <div class="doing"><b>▶ Một điều đáng nhớ ở mốc này.</b> Phần lớn người bắt đầu học một nghề mới sẽ dừng trong <b>ba tháng đầu</b>. Nếu anh đọc được dòng này với chín mươi ngày ở phía sau, thì thứ khó nhất anh đã qua rồi — không phải kỹ thuật, mà là chứng minh cho chính mình rằng anh giữ được nhịp. Ba mươi ba tháng còn lại chỉ là lặp lại điều đó.</div>
+
+  <div class="daydone" data-day="90"></div>
 </section>
 <section class="lesson" id="mapall">
   <div class="eyebrow">Bản đồ</div>
@@ -5086,12 +6592,12 @@ print(f"Vào {len(dong)} dòng, giữ lại {len(giu_lai)} dòng")
   </div>
   <div class="daymeta"><span class="chip">⏱ <b>6–8 giờ cả tuần</b></span><span class="chip">Cài lên máy thật</span></div>
 
-  <div class="goal"><b>🎯 Mục tiêu tuần</b> Có Python chạy trên máy anh, cài được thư viện, và viết được script mà người khác cài chạy lại được.</div>
+  <div class="goal"><b>🎯 Mục tiêu tuần</b> Nâng từ "script chạy được trên máy mình" lên "dự án người khác cài và chạy lại được" — môi trường ảo, thư viện ngoài, và công cụ gỡ lỗi tử tế.</div>
 
   <h3>Việc cần làm</h3>
   <ol class="steps">
-    <li><b>Cài Python lên máy.</b> Windows nhớ tick "Add python.exe to PATH" — quên là mọi lệnh đều báo lỗi.</li>
-    <li><b>Học năm lệnh terminal:</b> <code class="inline">cd</code>, <code class="inline">ls</code> hoặc <code class="inline">dir</code>, <code class="inline">mkdir</code>, <code class="inline">python file.py</code>, <code class="inline">pip install</code>.</li>
+    <li><b>Ôn lại phần đã cài ở Ngày 72</b> — Python và năm lệnh terminal cơ bản. Chưa cài thì làm lại Ngày 72 trước.</li>
+    <li><b>Học <code class="inline">pip install</code></b> — cài thư viện ngoài, thứ mở ra toàn bộ hệ sinh thái Python.</li>
     <li><b>Môi trường ảo:</b> <code class="inline">python -m venv .venv</code>, bật nó lên, cài thư viện vào đó.</li>
     <li><b>Viết một script thật</b> giải quyết một việc của anh — đọc file, xử lý, xuất kết quả.</li>
     <li><b>Tạo <code class="inline">requirements.txt</code></b> để người khác cài lại được.</li>
@@ -5398,12 +6904,11 @@ print(f"Vào {len(dong)} dòng, giữ lại {len(giu_lai)} dòng")
     <tr><td><b>Tháng 27–36</b><br><span style="color:var(--muted);font-size:13px">Ra thị trường</span></td><td>Agent, eval framework nghiêm túc, phỏng vấn tiếng Anh, apply job remote thật.</td></tr>
   </table>
 
-  <div class="chk"><b>Nhắc lại điều không đổi</b>
+  <div class="chk"><b>Điều dễ mất nhất trong giai đoạn này</b>
     <ul>
-      <li>Mỗi tuần một thứ chạy được.</li>
-      <li>Nhật ký mỗi ngày, kể cả ngày 0 phút.</li>
-      <li>Tiếng Anh mỗi ngày, ít nhất 15 phút.</li>
-      <li>Ba mươi phút mỗi ngày trong ba năm vẫn thắng ba tiếng mỗi ngày trong hai tháng.</li>
+      <li><b>Nhịp học.</b> Khi có khách, việc của khách luôn khẩn cấp hơn việc học — và học sẽ bị đẩy lùi vô hạn. Giữ ít nhất một buổi mỗi tuần chỉ để học, không đụng việc khách.</li>
+      <li><b>Tiếng Anh.</b> Khách Việt Nam không đòi hỏi nó, nên rất dễ bỏ. Bỏ một năm là mất luôn cửa quốc tế.</li>
+      <li><b>Nhật ký.</b> Giờ nó ghi cả số liệu dự án — thứ anh cần khi báo giá và khi viết case study.</li>
     </ul>
   </div>
 </section>
@@ -5440,6 +6945,9 @@ print(f"Vào {len(dong)} dòng, giữ lại {len(giu_lai)} dòng")
   </div>
 
   <div class="warn"><b>⚠️ Cạm bẫy lớn nhất tháng 7: phạm vi phình ra.</b> Khách sẽ hỏi "làm thêm cái này được không?" — và anh sẽ gật vì muốn họ hài lòng. Ba lần gật là dự án gấp đôi công sức. Câu trả lời đúng: <i>"Được, nhưng nằm ngoài phạm vi đã chốt. Xong cái này rồi mình bàn tiếp nhé."</i></div>
+  <div class="doing"><b>▶ Luyện trước khi gặp khách.</b> Bài <b>K7</b> có sáu tình huống thật: khách nhắn tin đòi thêm việc giữa chừng, anh chọn cách trả lời và xem hậu quả.
+  <p style="margin:10px 0 0"><button class="btn btn-run" data-jump="k7" style="padding:8px 16px">→ Luyện giữ phạm vi ở bài K7</button></p></div>
+
   <p>
     <button class="btn btn-run" data-jump="tsurvey" style="padding:9px 18px">📋 Bộ câu hỏi khảo sát</button>
     <button class="btn qz-retry" data-jump="tscope" style="padding:9px 18px">📄 Mẫu phạm vi công việc</button>
@@ -5677,6 +7185,9 @@ print(f"Vào {len(dong)} dòng, giữ lại {len(giu_lai)} dòng")
     <tr><th style="width:28%">Giai đoạn 3<br>tháng 15–26</th><td>Phá trần no-code. Python thật sự, hệ thống phức tạp, đọc hiểu code người khác. Đây là chỗ mức giá tăng gấp mấy lần — và cũng là chỗ phần lớn người làm no-code dừng lại.</td></tr>
     <tr><th>Giai đoạn 4<br>tháng 27–36</th><td>Ra thị trường quốc tế. Agent, eval framework nghiêm túc, phỏng vấn tiếng Anh, apply job remote thật.</td></tr>
   </table>
+  <p><button class="btn btn-run" data-jump="ph3" style="padding:10px 20px">▸ Giai đoạn 3 — Phá trần no-code</button></p>
+  <table class="cmp" style="display:none">
+  </table>
   <div class="daydone" data-id="m1314"></div>
 </section>
 <!-- ==================== KHẢO SÁT ==================== -->
@@ -5785,6 +7296,9 @@ Sau đó tính theo gói bảo trì hoặc theo lần.</p>
     <tr><td><b>6. Số lần chỉnh sửa</b></td><td>Không giới hạn số lần sửa là cách nhanh nhất để một dự án ba ngày kéo dài ba tháng.</td></tr>
   </table>
 
+  <div class="doing"><b>▶ Luyện phản xạ.</b> Đọc cách nói thì dễ, dùng đúng lúc mới khó. Bài <b>K7</b> cho anh sáu tình huống để tập.
+  <p style="margin:10px 0 0"><button class="btn btn-run" data-jump="k7" style="padding:8px 16px">→ Mở bài K7</button></p></div>
+
   <div class="warn"><b>⚠️ Cách nói khi khách đòi thêm việc giữa chừng</b>
     <p style="margin:9px 0 0"><i>"Cái này hay đấy ạ. Nó nằm ngoài phạm vi mình đã chốt nên em chưa tính vào lần này. Em làm xong phần đã thoả thuận trước, rồi mình bàn thêm phần này sau nhé — em sẽ báo giá riêng."</i></p>
     <p style="margin:9px 0 0">Câu này giữ được cả quan hệ lẫn phạm vi. Gật đầu cho xong thì mất cả hai — vì trễ hạn cũng làm khách không hài lòng.</p>
@@ -5880,6 +7394,304 @@ Bảo hành sửa lỗi miễn phí tới ngày: ______</p>
       <li>Họ biết làm sao để phát hiện hệ thống đã ngừng chạy</li>
       <li>Họ biết ba việc không nên làm</li>
       <li>Hai bên rõ: bảo hành tới ngày nào, sau đó thế nào</li>
+    </ul>
+  </div>
+</section>
+<!-- ==================== TỔNG QUAN GIAI ĐOẠN 3 ==================== -->
+<section class="lesson" id="ph3">
+  <div class="eyebrow">Giai đoạn 3</div>
+  <h2>Phá trần no-code</h2>
+  <p style="font-size:15px;color:var(--muted);margin-top:-8px">Tháng 15 tới 26 · mười hai tháng</p>
+
+  <div class="warn"><b>⚠️ Đây là chặng dài nhất, và là chỗ phần lớn người làm no-code dừng lại.</b>
+    <p style="margin:9px 0 0">Không phải vì họ lười. Vì tới đây họ <b>đã có thu nhập</b>. Kéo thả đủ nuôi sống, học code thì khó và không thấy tiền ngay. Dừng lại rất hợp lý trong ngắn hạn — và chính vì thế mà rất nhiều người bị kẹt ở trần đó nhiều năm.</p>
+  </div>
+
+  <div class="goal"><b>🎯 Mốc của mười hai tháng này</b> Nhận được những việc mà người chỉ biết kéo thả <b>phải từ chối</b>. Đó là định nghĩa thực tế của "phá trần" — không phải biết thêm ngôn ngữ, mà là <b>tập khách hàng đổi</b>.</div>
+
+  <h3>Trần no-code trông như thế nào</h3>
+  <p>Anh sẽ nhận ra mình chạm trần khi bắt đầu gặp những câu này:</p>
+  <table class="cmp">
+    <tr><th style="width:48%">Yêu cầu của khách</th><th>Vì sao kéo thả bó tay</th></tr>
+    <tr><td>"Xử lý giúp file 200.000 dòng này"</td><td>Công cụ kéo thả chậm và tốn tiền ở quy mô đó</td></tr>
+    <tr><td>"Nối với hệ thống nội bộ của công ty"</td><td>Không có node sẵn, xác thực phức tạp, dữ liệu dạng lạ</td></tr>
+    <tr><td>"Logic có mười mấy điều kiện lồng nhau"</td><td>Chuỗi node IF thành mê cung không ai bảo trì nổi</td></tr>
+    <tr><td>"Hệ thống cũ của bên tôi có sẵn code, sửa giúp"</td><td>Phải <b>đọc hiểu code người khác</b>, không phải viết mới</td></tr>
+    <tr><td>"Cần chạy trên máy chủ của công ty"</td><td>Cần biết triển khai, không chỉ biết dùng dịch vụ đám mây</td></tr>
+  </table>
+  <div class="note">💡 Mỗi lần từ chối một việc như thế, anh không chỉ mất một hợp đồng — anh mất <b>loại khách</b> đó. Và loại khách đó trả cao hơn hẳn.</div>
+
+  <h3>Bốn chặng</h3>
+  <table class="cmp">
+    <tr><th style="width:24%">Chặng</th><th style="width:34%">Mục tiêu</th><th>Dấu hiệu xong chặng</th></tr>
+    <tr><td><b>Tháng 15–17</b><br><span style="color:var(--muted);font-size:13px">Python thật sự</span></td><td>Từ script rời rạc sang chương trình có cấu trúc</td><td>Viết được chương trình 300 dòng có cấu trúc, người khác đọc hiểu</td></tr>
+    <tr><td><b>Tháng 18–20</b><br><span style="color:var(--muted);font-size:13px">Đọc và sửa code người khác</span></td><td>Nhận được dự án có sẵn code</td><td>Sửa được lỗi trong kho code mình không viết</td></tr>
+    <tr><td><b>Tháng 21–23</b><br><span style="color:var(--muted);font-size:13px">Hệ thống nhiều thành phần</span></td><td>Không chỉ một workflow — nhiều phần nối nhau</td><td>Hệ thống có cơ sở dữ liệu riêng, chạy được khi một phần hỏng</td></tr>
+    <tr><td><b>Tháng 24–26</b><br><span style="color:var(--muted);font-size:13px">Nâng giá và chọn khách</span></td><td>Giá gấp 2–3 lần năm đầu</td><td>Từ chối được việc giá thấp mà không lo đói</td></tr>
+  </table>
+
+  <h3>Ba điều khác hẳn giai đoạn trước</h3>
+  <table class="cmp">
+    <tr><th style="width:30%">Điều</th><th>Nghĩa là</th></tr>
+    <tr><td><b>Học chậm hơn nhiều</b></td><td>Tháng 1 mỗi ngày một khái niệm mới. Từ đây có khi cả tháng chỉ tiến một bước — và vẫn là tiến. Đừng lấy nhịp năm đầu ra so.</td></tr>
+    <tr><td><b>Học xen với làm</b></td><td>Không còn tách "tháng học" và "tháng làm". Mỗi dự án là một dịp học thứ mới, và mỗi thứ học được đưa ngay vào dự án tiếp theo.</td></tr>
+    <tr><td><b>Không ai chấm điểm nữa</b></td><td>Thước đo duy nhất còn lại: <b>loại việc anh nhận được</b> và <b>giá anh báo</b>. Hai con số đó không nói dối.</td></tr>
+  </table>
+
+  <div class="doing"><b>▶ Kỹ năng nền của cả giai đoạn này</b> Biết code rồi thì cám dỗ lớn nhất là viết code cho mọi thứ. Bài <b>K8</b> có sáu yêu cầu thật để tập chọn đúng công cụ — kể cả khi câu trả lời đúng là <b>không tự động hoá</b>.
+    <p style="margin:10px 0 0"><button class="btn btn-run" data-jump="k8" style="padding:8px 16px">→ Luyện chọn công cụ ở bài K8</button></p></div>
+
+  <div class="doing"><b>▶ Trước khi bắt đầu</b> Mở <b>Thang đo năng lực</b> và đánh dấu mình đang ở đâu. Cuối mỗi chặng quay lại đánh dấu lại — đó là cách duy nhất thấy được tiến bộ khi nhịp học đã chậm.
+    <p style="margin:10px 0 0"><button class="btn btn-run" data-jump="tskill" style="padding:8px 16px">📊 Mở Thang đo năng lực</button></p>
+  </div>
+</section>
+
+<!-- ==================== THÁNG 15–17 ==================== -->
+<section class="lesson" id="q15">
+  <div class="dayhead">
+    <div class="dnum"><b>15</b><span>tháng</span></div>
+    <div class="dt"><h2>Python thật sự</h2><p>Giai đoạn 3 · chặng 1 · tháng 15, 16, 17</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>24–32 giờ mỗi tháng</b></span><span class="chip hot">Từ script sang chương trình</span></div>
+
+  <div class="goal"><b>🎯 Mục tiêu ba tháng</b> Từ những script rời rạc sang một <b>chương trình có cấu trúc</b> — nhiều file, có kiểm thử, người khác đọc hiểu và chạy lại được.</div>
+
+  <div class="note">💡 <b>Khác biệt giữa script và chương trình.</b> Script là đoạn code chạy một lần rồi thôi, sửa được vì anh còn nhớ. Chương trình là thứ <b>anh của sáu tháng sau</b> phải đọc lại và sửa được. Toàn bộ chặng này là học cách viết cho người đọc, không phải cho máy chạy.</div>
+
+  <h3>Tháng 15 — Cấu trúc</h3>
+  <ol class="steps">
+    <li><b>Chia file:</b> một file làm một việc. Đọc dữ liệu · xử lý · xuất kết quả nằm ở ba chỗ khác nhau.</li>
+    <li><b>Hàm nhỏ, tên rõ.</b> Hàm quá 30 dòng thì gần như luôn có thể tách đôi.</li>
+    <li><b>Tách cấu hình khỏi code:</b> đường dẫn, khoá, ngưỡng để trong file <code class="inline">.env</code> hoặc file cấu hình riêng.</li>
+    <li><b>Xử lý lỗi có chủ đích:</b> <code class="inline">try/except</code> bắt đúng loại lỗi, không bắt bừa mọi thứ rồi im lặng.</li>
+    <li><b>Ghi log</b> thay cho <code class="inline">print</code>. Chương trình chạy nền không ai nhìn màn hình.</li>
+  </ol>
+
+  <h3>Tháng 16 — Kiểm thử</h3>
+  <ol class="steps">
+    <li><b>Học <code class="inline">pytest</code>.</b> Viết kiểm thử cho các hàm xử lý dữ liệu — đây là chỗ dễ viết kiểm thử nhất và cũng dễ sai nhất.</li>
+    <li><b>Kiểm thử trường hợp biên</b> theo đúng bài K6: rỗng, sai kiểu, quá dài, số âm, trùng lặp.</li>
+    <li><b>Chạy kiểm thử trước mỗi lần commit.</b> Thành phản xạ.</li>
+  </ol>
+  <div class="warn"><b>⚠️ Đừng cố kiểm thử mọi thứ.</b> Người mới học kiểm thử thường viết hàng trăm ca vô nghĩa rồi bỏ vì mệt. Chỉ kiểm thử <b>chỗ dễ sai và hậu quả nặng</b>: xử lý dữ liệu, tính toán tiền, và các trường hợp biên.</div>
+
+  <h3>Tháng 17 — Đưa vào việc thật</h3>
+  <ol class="steps">
+    <li><b>Viết lại một dự án cũ</b> theo cấu trúc mới. So hai bản: bản nào dễ sửa hơn?</li>
+    <li><b>Cho chạy tự động trên máy chủ</b> — thuê một máy chủ rẻ nhất, học <code class="inline">cron</code>, cho script chạy theo lịch.</li>
+    <li><b>Thêm cảnh báo</b> khi script lỗi, gửi về nơi anh thấy được.</li>
+  </ol>
+
+  <div class="chk"><b>✅ Cách tự kiểm tra cuối chặng</b>
+    <ul>
+      <li>Có một dự án Python nhiều file, cấu trúc rõ, có <code class="inline">README</code> và <code class="inline">requirements.txt</code></li>
+      <li>Có ít nhất 10 ca kiểm thử chạy được</li>
+      <li>Không còn khoá nào nằm trong code</li>
+      <li>Một script đang chạy tự động trên máy chủ, có cảnh báo khi lỗi</li>
+      <li><b>Nhờ một người biết code đọc và cho nhận xét</b> — họ hiểu được trong 10 phút không?</li>
+    </ul>
+  </div>
+  <div class="daydone" data-id="q15"></div>
+</section>
+
+<!-- ==================== THÁNG 18–20 ==================== -->
+<section class="lesson" id="q18">
+  <div class="dayhead">
+    <div class="dnum"><b>18</b><span>tháng</span></div>
+    <div class="dt"><h2>Đọc và sửa code người khác</h2><p>Giai đoạn 3 · chặng 2 · tháng 18, 19, 20</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>24–32 giờ mỗi tháng</b></span><span class="chip hot">Kỹ năng bị đánh giá thấp nhất</span></div>
+
+  <div class="goal"><b>🎯 Mục tiêu ba tháng</b> Nhận được dự án <b>đã có sẵn code</b> và sửa được nó. Đây là loại việc chiếm phần lớn thị trường thật — rất ít khi người ta thuê anh viết mới từ đầu.</div>
+
+  <div class="note">💡 <b>Vì sao kỹ năng này bị đánh giá thấp.</b> Vì nó không có gì để khoe. Viết một dự án mới thì có sản phẩm đưa lên portfolio. Sửa một lỗi trong hệ thống của người khác thì không thấy gì cả — chỉ có một hệ thống chạy lại được. Nhưng đó chính là thứ doanh nghiệp trả tiền nhiều nhất.</div>
+
+  <h3>Tháng 18 — Đọc</h3>
+  <ol class="steps">
+    <li><b>Chọn một dự án nguồn mở nhỏ</b> có liên quan tới automation. Clone về, chạy được nó.</li>
+    <li><b>Vẽ sơ đồ ra giấy:</b> file nào gọi file nào, dữ liệu đi đường nào.</li>
+    <li><b>Đọc theo bốn bước ở Ngày 50:</b> vào ra trước · tên biến · vòng lặp và điều kiện · chạy thử với dữ liệu nhỏ.</li>
+    <li><b>Viết một trang tóm tắt</b> dự án đó làm gì và chạy thế nào. Đây là bài tập, không ai đọc — nhưng viết được nghĩa là hiểu được.</li>
+  </ol>
+
+  <h3>Tháng 19 — Sửa</h3>
+  <ol class="steps">
+    <li><b>Tìm một lỗi thật</b> trong dự án đó — hoặc một chỗ có thể cải thiện.</li>
+    <li><b>Sửa, viết kiểm thử chứng minh đã sửa</b>, rồi gửi đóng góp lên kho gốc.</li>
+    <li>Bị từ chối cũng không sao — <b>quá trình mới là thứ cần</b>. Đọc góp ý của người duy trì dự án là bài học đắt giá và miễn phí.</li>
+  </ol>
+  <div class="warn"><b>⚠️ Đóng góp đầu tiên gần như luôn bị góp ý gay gắt.</b> Không phải vì họ khó tính — vì họ giữ chất lượng cho thứ hàng nghìn người dùng. Đọc góp ý, sửa, gửi lại. Đây là lần đầu anh được người có nghề soi code, và không có cách nào rẻ hơn để có điều đó.</div>
+
+  <h3>Tháng 20 — Nhận việc bảo trì</h3>
+  <ol class="steps">
+    <li><b>Nhận một việc sửa hệ thống có sẵn</b> — của khách cũ hoặc khách mới.</li>
+    <li><b>Báo giá riêng cho phần khảo sát.</b> Đọc hiểu hệ thống lạ tốn thời gian thật, và khách hay quên điều đó.</li>
+    <li><b>Đừng viết lại từ đầu.</b> Cám dỗ lớn nhất khi đọc code người khác là "cái này viết dở, để tôi làm lại". Viết lại thường tốn gấp ba và làm hỏng những ca đặc biệt mà anh chưa biết vì sao nó tồn tại.</li>
+  </ol>
+
+  <div class="chk"><b>✅ Cách tự kiểm tra cuối chặng</b>
+    <ul>
+      <li>Đọc hiểu và tóm tắt được một dự án nguồn mở mình không viết</li>
+      <li>Có ít nhất một đóng góp đã gửi lên kho công khai</li>
+      <li>Đã nhận và hoàn thành một việc sửa hệ thống có sẵn</li>
+      <li>Có bảng giá riêng cho phần khảo sát hệ thống lạ</li>
+    </ul>
+  </div>
+  <div class="daydone" data-id="q18"></div>
+</section>
+
+<!-- ==================== THÁNG 21–23 ==================== -->
+<section class="lesson" id="q21">
+  <div class="dayhead">
+    <div class="dnum"><b>21</b><span>tháng</span></div>
+    <div class="dt"><h2>Hệ thống nhiều thành phần</h2><p>Giai đoạn 3 · chặng 3 · tháng 21, 22, 23</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>24–32 giờ mỗi tháng</b></span><span class="chip">Từ workflow sang hệ thống</span></div>
+
+  <div class="goal"><b>🎯 Mục tiêu ba tháng</b> Dựng được thứ có <b>nhiều phần nối nhau</b> — cơ sở dữ liệu riêng, nhiều quy trình phối hợp, và vẫn chạy khi một phần hỏng.</div>
+
+  <h3>Tháng 21 — Cơ sở dữ liệu riêng</h3>
+  <ol class="steps">
+    <li><b>Thôi dùng Google Sheet làm kho dữ liệu.</b> Nó tiện lúc đầu nhưng chậm, dễ hỏng khi nhiều người sửa, và không giữ được ràng buộc.</li>
+    <li><b>Học một cơ sở dữ liệu thật.</b> SQL anh đã biết từ tháng 1 — giờ là lúc dùng nó ở nơi nó sinh ra.</li>
+    <li><b>Thiết kế bảng:</b> khoá chính, quan hệ giữa các bảng, chỉ mục. Đây là kiến thức khác hẳn với việc chỉ biết truy vấn.</li>
+    <li><b>Chuyển một dự án cũ</b> từ Sheet sang cơ sở dữ liệu. So tốc độ và độ ổn định.</li>
+  </ol>
+
+  <h3>Tháng 22 — Nhiều phần phối hợp</h3>
+  <ol class="steps">
+    <li><b>Tách một hệ thống lớn thành nhiều phần nhỏ</b>, mỗi phần làm một việc, nối nhau qua cơ sở dữ liệu hoặc webhook.</li>
+    <li><b>Thiết kế để chịu được hỏng cục bộ:</b> phần A chết thì phần B vẫn chạy, và khi A sống lại thì bắt kịp phần đã lỡ.</li>
+    <li><b>Hàng đợi và thử lại:</b> việc chưa xử lý được thì xếp hàng chờ, không mất.</li>
+    <li><b>Chạy hai lần không hỏng dữ liệu</b> — nếu hệ thống lỡ xử lý trùng một bản ghi thì kết quả vẫn đúng.</li>
+  </ol>
+  <div class="note">💡 Điều cuối cùng có tên riêng và hay bị hỏi khi phỏng vấn. Ví dụ dễ hiểu: nếu quy trình chạy trùng và gửi hoá đơn hai lần thì khách bị tính tiền hai lần. Cách chống: trước khi xử lý, kiểm tra bản ghi này đã xử lý chưa.</div>
+
+  <h3>Tháng 23 — Giám sát ở quy mô hệ thống</h3>
+  <ol class="steps">
+    <li><b>Một bảng theo dõi cho toàn hệ thống</b>, không phải mỗi quy trình một chỗ.</li>
+    <li><b>Cảnh báo phân mức:</b> việc nhỏ thì ghi log, việc lớn thì gửi tin ngay.</li>
+    <li><b>Ghi lại số liệu vận hành:</b> mỗi ngày xử lý bao nhiêu, lỗi bao nhiêu, chậm nhất bao lâu.</li>
+    <li><b>Viết tài liệu vận hành</b> để người khác trực thay được.</li>
+  </ol>
+
+  <div class="chk"><b>✅ Cách tự kiểm tra cuối chặng</b>
+    <ul>
+      <li>Một hệ thống có cơ sở dữ liệu riêng, ít nhất ba thành phần nối nhau</li>
+      <li>Tắt một thành phần, hệ thống không mất dữ liệu và bắt kịp khi bật lại</li>
+      <li>Chạy trùng một bản ghi hai lần, kết quả vẫn đúng</li>
+      <li>Có bảng theo dõi toàn hệ thống và tài liệu vận hành</li>
+    </ul>
+  </div>
+  <div class="daydone" data-id="q21"></div>
+</section>
+
+<!-- ==================== THÁNG 24–26 ==================== -->
+<section class="lesson" id="q24">
+  <div class="dayhead">
+    <div class="dnum"><b>24</b><span>tháng</span></div>
+    <div class="dt"><h2>Nâng giá và chọn khách</h2><p>Giai đoạn 3 · chặng 4 · tháng 24, 25, 26</p></div>
+  </div>
+  <div class="daymeta"><span class="chip">⏱ <b>24–32 giờ mỗi tháng</b></span><span class="chip hot">Khép lại năm thứ hai</span></div>
+
+  <div class="goal"><b>🎯 Mục tiêu ba tháng</b> Giá gấp <b>2–3 lần</b> năm đầu, và <b>từ chối được</b> việc giá thấp mà không lo đói. Đây là lúc năng lực kỹ thuật chuyển thành thu nhập.</div>
+
+  <h3>Vì sao tăng giá khó hơn học kỹ thuật</h3>
+  <p>Kỹ thuật có bài để học. Tăng giá thì không — nó đòi hỏi anh tin rằng công việc của mình đáng giá đó, trong khi không ai xác nhận cho anh.</p>
+  <table class="cmp">
+    <tr><th style="width:44%">Điều anh sợ</th><th>Thực tế thường xảy ra</th></tr>
+    <tr><td>Tăng giá thì mất hết khách</td><td>Mất một số. Số còn lại trả cao hơn, và anh có thêm thời gian cho họ.</td></tr>
+    <tr><td>Khách sẽ nghĩ mình tham</td><td>Khách chuyên nghiệp hiểu giá đi với năng lực. Khách phản ứng gay gắt vì giá thường cũng là khách khó tính ở mọi khâu khác.</td></tr>
+    <tr><td>Mình chưa xứng</td><td>Nếu anh giao đúng hạn, hệ thống chạy bền, khách quay lại — thì anh đã xứng từ lâu.</td></tr>
+  </table>
+
+  <h3>Tháng 24 — Định giá lại</h3>
+  <ol class="steps">
+    <li><b>Tính lại thu nhập mỗi giờ thật</b> của ba dự án gần nhất. Gồm cả thời gian khảo sát, sửa, bàn giao, hỗ trợ sau đó.</li>
+    <li><b>So với mức anh muốn.</b> Chênh bao nhiêu?</li>
+    <li><b>Tăng giá cho khách mới trước</b>, khách cũ giữ giá thêm một kỳ rồi báo trước khi đổi.</li>
+    <li><b>Bỏ hình thức tính theo giờ hoàn toàn.</b> Chuyển sang giá theo giá trị: hệ thống này tiết kiệm cho họ bao nhiêu mỗi năm?</li>
+  </ol>
+
+  <h3>Tháng 25 — Chọn khách</h3>
+  <ol class="steps">
+    <li><b>Viết ra tiêu chí khách phù hợp:</b> loại việc, quy mô, ngân sách tối thiểu.</li>
+    <li><b>Từ chối việc không đạt tiêu chí</b> — lịch sự, và giới thiệu người khác nếu được.</li>
+    <li><b>Xây nguồn khách đều:</b> viết công khai về những gì mình làm, mỗi tháng ít nhất một bài có số liệu.</li>
+  </ol>
+
+  <h3>Tháng 26 — Chốt năm hai</h3>
+  <table class="cmp">
+    <tr><th style="width:60%">Hạng mục</th><th>Chuẩn đạt</th></tr>
+    <tr><td>Giá trung bình mỗi dự án so với năm đầu</td><td>≥ 2 lần</td></tr>
+    <tr><td>Số dự án có thành phần Python thật</td><td>≥ 3</td></tr>
+    <tr><td>Đã sửa được hệ thống mình không viết</td><td>đạt / không</td></tr>
+    <tr><td>Có đóng góp công khai vào dự án nguồn mở</td><td>đạt / không</td></tr>
+    <tr><td>Hệ thống nhiều thành phần đang chạy thật</td><td>đạt / không</td></tr>
+    <tr><td>Đã từ chối việc vì không đạt tiêu chí</td><td>≥ 3 lần</td></tr>
+    <tr><td>Thu nhập từ bảo trì hằng tháng</td><td>&gt; 0</td></tr>
+    <tr><td>Đọc tài liệu kỹ thuật tiếng Anh trôi chảy</td><td>đạt / không</td></tr>
+    <tr><td>Nói tiếng Anh về kỹ thuật trong 10 phút</td><td>đạt / không</td></tr>
+    <tr><td>Số tháng giữ nhịp trong năm hai</td><td>≥ 8/12</td></tr>
+  </table>
+
+  <div class="chk"><b>✅ Cuối tháng 26 anh cần có</b>
+    <ul>
+      <li>Bảng 10 mục đã chấm trung thực</li>
+      <li>Kế hoạch giai đoạn 4 viết ra thành chữ</li>
+      <li>Đã nghỉ ít nhất một tuần</li>
+    </ul>
+  </div>
+
+  <div class="warn"><b>⚠️ Nếu đạt dưới 5/10</b> Đừng sang giai đoạn 4. Thị trường quốc tế đòi hỏi cao hơn hẳn thị trường trong nước, và đi vào khi nền chưa vững thì chỉ nhận được từ chối liên tục — thứ bào mòn động lực nhanh nhất. Dành thêm sáu tháng làm chắc phần yếu nhất.</div>
+  <p><button class="btn btn-run" data-jump="ph4" style="padding:10px 20px">▸ Xem giai đoạn 4 — Ra thị trường</button></p>
+  <div class="daydone" data-id="q24"></div>
+</section>
+
+<!-- ==================== THANG ĐO NĂNG LỰC ==================== -->
+<section class="lesson" id="tskill">
+  <div class="eyebrow">Công cụ · Giai đoạn 3</div>
+  <h2>Thang đo năng lực</h2>
+  <p>Từ giai đoạn 3 trở đi, nhịp học chậm hẳn và không còn ai chấm điểm. Bảng này để anh thấy mình đang ở đâu, và quan trọng hơn — <b>thấy mình đã đi được bao xa</b>.</p>
+
+  <div class="note">💡 <b>Cách dùng:</b> đánh dấu mức hiện tại ở mỗi hàng. Quay lại sau mỗi ba tháng. Khi nhịp học chậm, cảm giác "mình đứng yên" rất dễ xuất hiện — bảng này là bằng chứng ngược lại.</div>
+
+  <div class="toolcard" id="skBox"></div>
+
+  <div class="warn"><b>⚠️ Chấm trung thực, và chấm thấp khi phân vân.</b> Mức 3 nghĩa là <i>làm được mà không cần tra cứu liên tục</i>, không phải <i>đã từng làm một lần</i>. Chấm cao hơn thực tế thì bảng này mất hết ý nghĩa.</div>
+</section>
+<section class="lesson" id="ph4">
+  <div class="eyebrow">Giai đoạn 4</div>
+  <h2>Ra thị trường quốc tế</h2>
+  <p style="font-size:15px;color:var(--muted);margin-top:-8px">Tháng 27 tới 36 · mười tháng cuối</p>
+
+  <div class="warn"><b>⚠️ Trang này cố ý viết ngắn.</b> Còn hơn hai năm nữa mới tới đây, và lĩnh vực này đổi rất nhanh — công cụ, mức lương, cách tuyển dụng năm 2028 sẽ khác hẳn hôm nay. Chi tiết viết bây giờ gần như chắc chắn sai. Cái không đổi là <b>hình dạng</b> của chặng cuối.</div>
+
+  <div class="goal"><b>🎯 Mốc cuối cùng</b> Apply và phỏng vấn được cho vị trí remote quốc tế. Không đảm bảo đỗ — nhưng đủ năng lực để <b>được xét</b>, và đó là điều toàn bộ ba năm nhắm tới.</div>
+
+  <h3>Ba việc của mười tháng cuối</h3>
+  <table class="cmp">
+    <tr><th style="width:26%">Việc</th><th>Nội dung</th></tr>
+    <tr><td><b>Tháng 27–30</b><br><span style="color:var(--muted);font-size:13px">Chiều sâu AI</span></td><td>Agent, quy trình đánh giá nghiêm túc, kiểm soát chi phí và chất lượng ở quy mô lớn. Đây là phần phân biệt "người dùng AI" với "kỹ sư hệ thống AI".</td></tr>
+    <tr><td><b>Tháng 31–33</b><br><span style="color:var(--muted);font-size:13px">Hồ sơ quốc tế</span></td><td>CV theo chuẩn quốc tế, portfolio bằng tiếng Anh, hiện diện công khai đều đặn. Người tuyển dụng phải tìm thấy anh trước khi anh gửi hồ sơ.</td></tr>
+    <tr><td><b>Tháng 34–36</b><br><span style="color:var(--muted);font-size:13px">Phỏng vấn thật</span></td><td>Apply, phỏng vấn, bị từ chối, rút kinh nghiệm, apply tiếp. Vòng lặp này là nội dung chính, không phải phần phụ.</td></tr>
+  </table>
+
+  <h3>Bốn điều nên biết trước</h3>
+  <ol class="steps">
+    <li><b>Bị từ chối là mặc định, không phải thất bại.</b> Tỉ lệ phản hồi cho ứng viên remote quốc tế rất thấp, kể cả với người giỏi. Tính bằng hàng chục lần apply, không phải vài lần.</li>
+    <li><b>Tiếng Anh nói vẫn là điểm nghẽn.</b> Tới đây kỹ thuật của anh đủ rồi. Thứ chặn lại thường là buổi phỏng vấn 45 phút bằng tiếng Anh. Giữ nhịp luyện nói suốt ba năm, đừng để tới tháng 34 mới bắt đầu.</li>
+    <li><b>Làm freelance quốc tế dễ vào hơn làm nhân viên.</b> Nếu cửa nhân viên khó, nhận việc quốc tế theo dự án trước — vừa có thu nhập ngoại tệ, vừa có kinh nghiệm làm việc xuyên múi giờ để đưa vào hồ sơ.</li>
+    <li><b>Thu nhập trong nước vẫn là chỗ dựa.</b> Đừng bỏ khách hiện có để dồn hết vào việc apply. Áp lực tài chính làm hỏng chất lượng phỏng vấn nhanh hơn bất cứ thứ gì.</li>
+  </ol>
+
+  <div class="note">💡 <b>Nếu tới tháng 36 mà chưa vào được thị trường quốc tế</b> — điều đó hoàn toàn có thể xảy ra, và không có nghĩa là ba năm bỏ đi. Lúc đó anh đã có nghề, có khách, có thu nhập, và một bộ kỹ năng dùng được cho chính công việc kinh doanh của mình. Thị trường quốc tế là mục tiêu, không phải điều kiện để ba năm này có giá trị.</div>
+
+  <div class="chk"><b>Ba điều không đổi suốt ba mươi sáu tháng</b>
+    <ul>
+      <li>Mỗi tuần một thứ chạy được.</li>
+      <li>Nhật ký mỗi ngày, kể cả ngày 0 phút.</li>
+      <li>Ba mươi phút mỗi ngày trong ba năm vẫn thắng ba tiếng mỗi ngày trong hai tháng.</li>
     </ul>
   </div>
 </section>
@@ -6068,7 +7880,7 @@ Bảo hành sửa lỗi miễn phí tới ngày: ______</p>
     <tr><th style="width:34%">Con số</th><th>Suy ra từ đâu</th></tr>
     <tr><td><b>1.000–1.500 giờ</b> để đủ sức cạnh tranh ở thị trường remote</td><td>Ước lượng dựa trên khối lượng kỹ năng cần có. Không có nghiên cứu nào đo con số này.</td></tr>
     <tr><td><b>30–42 tháng</b> với 5–10 giờ mỗi tuần</td><td>Phép chia từ con số trên, đã trừ hao hụt do quên và học lại.</td></tr>
-    <tr><td><b>Khách hàng trả tiền đầu tiên: tháng 10–14</b></td><td>Ước lượng theo thời điểm portfolio đủ để thuyết phục người trả tiền. Có thể sớm hơn nhiều nếu anh đã có sẵn quan hệ.</td></tr>
+    <tr><td><b>Khách hàng trả tiền đầu tiên: tháng 9–14</b></td><td>Ước lượng theo thời điểm portfolio đủ để thuyết phục người trả tiền. Có thể sớm hơn nhiều nếu anh đã có sẵn quan hệ.</td></tr>
     <tr><td><b>Tiếng Anh là điểm nghẽn số một</b></td><td>Suy luận từ đặc điểm thị trường remote quốc tế, không phải số liệu.</td></tr>
     <tr><td><b>Quy tắc 20 phút</b> khi bị tắc</td><td>Ngưỡng chọn theo kinh nghiệm chung, không có nghiên cứu. Anh có thể chỉnh thành 15 hay 30 tuỳ mình.</td></tr>
   </table>
@@ -6080,6 +7892,160 @@ Bảo hành sửa lỗi miễn phí tới ngày: ______</p>
     <li><b>Giá gọi AI</b> — thay đổi vài lần mỗi năm, thường là rẻ đi.</li>
     <li><b>Đường dẫn tài liệu</b> — n8n đang tổ chức lại tài liệu. Link chết thì vào trang chủ tài liệu rồi tìm theo tên mục.</li>
   </ul>
+</section>
+<section class="lesson" id="restart">
+  <div class="eyebrow">Quay lại</div>
+  <h2>Bắt đầu lại</h2>
+  <p>Nếu anh bỏ giữa chừng một thời gian rồi quay lại — trang này dành cho anh. Đừng mở Ngày 1 và đọc lại từ đầu; phần lớn người làm vậy sẽ bỏ lần thứ hai trong vòng một tuần.</p>
+
+  <div class="goal"><b>🎯 Trang này làm gì</b> Cho anh biết mình đang ở đâu, cần ôn lại gì, và <b>bắt đầu lại từ đâu</b> — trong khoảng 20 phút.</div>
+
+  <div id="rsState"></div>
+
+  <h3>Bước 1 — Xem lại số liệu của chính mình (5 phút)</h3>
+  <p>Trước khi quyết định gì, nhìn dữ liệu thật:</p>
+  <p>
+    <button class="btn btn-run" data-jump="tjournal" style="padding:9px 18px">▤ Mở Nhật ký</button>
+    <button class="btn qz-retry" data-jump="mapall" style="padding:9px 18px">🗺️ Mở Toàn cảnh</button>
+  </p>
+  <ul>
+    <li>Ngày cuối cùng anh ghi nhật ký là ngày nào?</li>
+    <li>Trước khi dừng, nhịp học đang lên hay đang xuống?</li>
+    <li>Ghi chú cuối cùng viết gì? Thường nó cho biết vì sao anh dừng.</li>
+  </ul>
+
+  <h3>Bước 2 — Kiểm tra thứ đang chạy (5 phút)</h3>
+  <table class="cmp">
+    <tr><th style="width:38%">Kiểm tra</th><th>Nếu hỏng thì sao</th></tr>
+    <tr><td>Tài khoản n8n còn dùng được không?</td><td>Hết hạn thì nạp lại workflow từ file JSON đã tải về</td></tr>
+    <tr><td>Các workflow còn Active không?</td><td>Bật lại cái nào còn hữu ích, tắt hẳn cái không cần</td></tr>
+    <tr><td>Khoá API còn hạn không?</td><td>Tạo khoá mới, cập nhật credential</td></tr>
+    <tr><td>Kho GitHub còn đó không?</td><td>Còn thì tốt — đó là bằng chứng anh đã làm thật</td></tr>
+  </table>
+  <div class="note">💡 Nếu mọi thứ đã chết hết, đừng nản. Việc <b>khôi phục lại một hệ thống đã chết</b> chính là kỹ năng ở Tuần 20 — anh đang làm bài tập thật, sớm hơn lịch.</div>
+
+  <h3>Bước 3 — Chọn cách quay lại (10 phút)</h3>
+  <p>Ba cách, tuỳ anh nghỉ bao lâu. Chọn một, đừng cố làm cả ba.</p>
+  <table class="cmp">
+    <tr><th style="width:20%">Nghỉ bao lâu</th><th style="width:34%">Nên làm gì</th><th>Vì sao</th></tr>
+    <tr><td><b>Dưới 1 tháng</b></td><td>Làm hai lượt <b>⟳ Ôn nhanh</b>, rồi đi tiếp từ đúng chỗ đã dừng</td><td>Kiến thức còn nguyên, chỉ cần khởi động lại</td></tr>
+    <tr><td><b>1–3 tháng</b></td><td>Ôn nhanh + chạy hết bộ <b>▣ Thẻ ghi nhớ</b> + <b>dựng lại một workflow cũ từ đầu</b>, không nhìn hướng dẫn</td><td>Tay nghề rơi nhanh hơn kiến thức. Dựng lại một cái là lấy lại cảm giác</td></tr>
+    <tr><td><b>Trên 3 tháng</b></td><td>Quay lại <b>Ngày 31</b> — chọn một việc thật và dựng lại từ đầu theo tuần 5</td><td>Đừng đọc lại tháng 1. Học lại bằng cách <i>làm</i>, không phải bằng cách đọc</td></tr>
+  </table>
+
+  <h3>Bước 4 — Đặt lại mục tiêu, thấp hơn lần trước</h3>
+  <div class="warn"><b>⚠️ Đây là bước quan trọng nhất, và hay bị bỏ nhất.</b> Người quay lại thường đặt mục tiêu <b>cao hơn</b> lần trước để "bù lại thời gian đã mất". Đó gần như luôn dẫn tới lần bỏ cuộc thứ hai, nhanh hơn lần đầu.
+    <p style="margin:9px 0 0">Cách đúng: nhìn số giờ mỗi tuần <b>thực tế</b> trước khi dừng, rồi đặt mục tiêu bằng <b>một nửa</b> con số đó trong bốn tuần đầu. Đủ bốn tuần không đứt thì mới tăng dần.</p>
+  </div>
+
+  <h3>Nếu lý do dừng vẫn còn nguyên</h3>
+  <p>Nghỉ vì bận một dự án, vì ốm, vì chuyện gia đình — những thứ đó qua đi thì quay lại được. Nhưng nếu lý do là <b>lịch sống không có chỗ cho việc này</b>, thì quay lại với cùng kế hoạch cũ sẽ cho cùng kết quả cũ.</p>
+  <table class="cmp">
+    <tr><th style="width:40%">Lý do dừng</th><th>Phải đổi gì trước khi quay lại</th></tr>
+    <tr><td>Không có thời gian</td><td>Hạ xuống 20–30 phút mỗi ngày và chấp nhận lộ trình dài gấp đôi. Đừng đợi "lúc rảnh hơn" — lúc đó hiếm khi tới.</td></tr>
+    <tr><td>Học tối, tối nào cũng mệt</td><td>Đổi sang sáng sớm, dù chỉ 20 phút. Đây là thay đổi có tác dụng lớn nhất trong các thay đổi nhỏ.</td></tr>
+    <tr><td>Tắc mãi không qua được</td><td>Mở trang <b>Khi bị tắc</b>, dùng khuôn câu hỏi để hỏi cho ra. Tắc một mình quá lâu là lý do bỏ cuộc phổ biến nhất.</td></tr>
+    <tr><td>Thấy chán, không còn hứng</td><td>Trung thực với mình. Đọc lại phần <b>Khi muốn bỏ cuộc</b> — có hai kiểu bỏ, và chúng khác nhau hoàn toàn.</td></tr>
+  </table>
+  <p><button class="btn btn-run" data-jump="stuck" style="padding:9px 18px">🆘 Mở trang Khi bị tắc</button></p>
+
+  <div class="chk"><b>Ba điều nên nhớ khi quay lại</b>
+    <ul>
+      <li><b>Thời gian nghỉ không xoá kiến thức</b> — nó chỉ làm mờ. Ôn lại nhanh hơn học mới rất nhiều.</li>
+      <li><b>Dừng rồi quay lại vẫn hơn không quay lại.</b> Lộ trình ba năm không ai đi liền mạch. Đứt quãng là bình thường.</li>
+      <li><b>Đặt mục tiêu thấp hơn lần trước.</b> Mục tiêu duy nhất của bốn tuần đầu là <i>không đứt</i>, không phải tiến xa.</li>
+    </ul>
+  </div>
+</section>
+<section class="lesson" id="k7">
+  <div class="eyebrow">Kiến thức nền K7</div>
+  <h2>Giữ phạm vi công việc</h2>
+  <div class="goal"><b>🎯 Sau bài này anh sẽ</b> Biết trả lời thế nào khi khách đòi thêm việc giữa chừng — giữ được cả quan hệ lẫn phạm vi. Đây là kỹ năng làm hỏng nhiều dự án hơn bất kỳ lỗi kỹ thuật nào.</div>
+
+  <div class="note">💡 <b>Vì sao bài này quan trọng hơn nó nghe.</b> Dự án hỏng vì lỗi kỹ thuật thì sửa được. Dự án hỏng vì phạm vi phình ra thì kéo dài gấp ba, anh kiệt sức, khách vẫn không hài lòng vì trễ hạn — và cả hai bên đều thấy bên kia sai.</div>
+
+  <h3>Ba câu trả lời, ba kết quả khác nhau</h3>
+  <table class="cmp">
+    <tr><th style="width:22%">Kiểu trả lời</th><th style="width:34%">Nghe như thế nào</th><th>Hậu quả</th></tr>
+    <tr><td><b>Gật đại</b></td><td>"Dạ được ạ, em làm luôn."</td><td>Dự án phình. Trễ hạn. Khách vẫn không vui vì chậm.</td></tr>
+    <tr><td><b>Từ chối cứng</b></td><td>"Cái đó ngoài hợp đồng, em không làm."</td><td>Giữ được phạm vi, mất quan hệ. Khách thấy anh khó tính.</td></tr>
+    <tr><td><b>Ghi nhận và tách ra</b></td><td>"Hay đấy ạ. Nằm ngoài phạm vi đã chốt nên em làm xong phần này trước, rồi báo giá riêng phần kia nhé."</td><td>Giữ được cả hai. Khách thấy được lắng nghe, anh giữ được hạn.</td></tr>
+  </table>
+
+  <h3>Luyện: sáu tình huống thật</h3>
+  <p>Khách nhắn tin giữa dự án. Chọn cách anh trả lời, rồi xem hậu quả.</p>
+
+  <div class="scopesim" data-lesson="k7">
+    <div class="ss-bar">
+      <div class="dots"><span></span><span></span><span></span></div>
+      <span class="ss-title">tình huống <b class="ss-n">1</b>/6 · điểm <b class="ss-score">0</b></span>
+      <button class="btn btn-reset ss-reset">↺ Làm lại từ đầu</button>
+    </div>
+    <div class="ss-msg"></div>
+    <div class="ss-opts"></div>
+    <div class="ss-out"></div>
+  </div>
+
+  <details class="think"><summary>🧭 Quy tắc chung rút ra — bấm để xem sau khi làm hết</summary><div class="dbody">
+    <ol class="steps">
+      <li><b>Luôn ghi nhận trước khi từ chối.</b> "Hay đấy" hoặc "em hiểu ạ" mất một giây và đổi hoàn toàn cảm giác của người nghe.</li>
+      <li><b>Đối chiếu với văn bản, không đối chiếu với trí nhớ.</b> "Theo phạm vi mình chốt ngày X" là câu trung lập; "em nhớ là mình không nói vậy" là câu gây tranh cãi.</li>
+      <li><b>Tách thời gian, đừng tách quan hệ.</b> Không nói "không làm" — nói "làm sau, báo giá riêng".</li>
+      <li><b>Việc nhỏ thật thì cứ làm.</b> Cứng nhắc với một yêu cầu năm phút chỉ làm mình trông khó tính. Ranh giới nằm ở chỗ nó có <b>đẩy lùi hạn</b> hay không.</li>
+      <li><b>Sửa lỗi khác với thêm việc.</b> Thứ anh làm sai so với phạm vi thì sửa miễn phí, đừng tính tiền. Nhầm hai thứ này là mất uy tín nhanh nhất.</li>
+    </ol>
+  </div></details>
+
+  <div class="chk"><b>✅ Nắm được bài này khi</b>
+    <ul>
+      <li>Đạt từ 5/6 điểm trong bộ luyện</li>
+      <li>Phân biệt được "sửa lỗi của mình" và "thêm việc mới"</li>
+      <li>Nói được câu ghi nhận-và-tách bằng lời của mình, không cần đọc mẫu</li>
+    </ul>
+  </div>
+</section>
+<section class="lesson" id="k8">
+  <div class="eyebrow">Kiến thức nền K8</div>
+  <h2>Chọn công cụ cho đúng</h2>
+  <div class="goal"><b>🎯 Sau bài này anh sẽ</b> Nhìn một yêu cầu và biết ngay nên dùng kéo thả, node Code, script riêng — hay <b>không nên tự động hoá</b>. Chọn sai công cụ tốn nhiều thời gian hơn viết code dở.</div>
+
+  <div class="note">💡 <b>Sai lầm của hai phía.</b> Người mới học code có xu hướng viết code cho mọi thứ vì thấy mình vừa giỏi lên. Người quen kéo thả có xu hướng ghép mười lăm node để né việc viết ba dòng. Cả hai đều tốn gấp đôi.</div>
+
+  <h3>Bốn lựa chọn và ranh giới giữa chúng</h3>
+  <table class="cmp">
+    <tr><th style="width:20%">Chọn</th><th style="width:40%">Khi nào</th><th>Dấu hiệu chọn sai</th></tr>
+    <tr><td><b>Kéo thả</b></td><td>Luồng thẳng, ít điều kiện, dịch vụ đã có node sẵn</td><td>Chuỗi node dài quá màn hình, hoặc trên năm node IF lồng nhau</td></tr>
+    <tr><td><b>Node Code</b></td><td>Một bước xử lý mà node sẵn không làm được, dưới 40 dòng</td><td>Node Code quá 100 dòng — lúc đó nó nên là script riêng</td></tr>
+    <tr><td><b>Script riêng</b></td><td>Dữ liệu lớn, logic phức tạp, cần kiểm thử, chạy lâu</td><td>Viết cả chương trình cho việc hai node làm được</td></tr>
+    <tr><td><b>Không tự động hoá</b></td><td>Việc hiếm, quy tắc không rõ, hoặc cần con người quyết định</td><td>Tốn ba ngày dựng cho việc mỗi tháng làm một lần trong năm phút</td></tr>
+  </table>
+
+  <h3>Luyện: sáu yêu cầu thật</h3>
+  <p>Đọc yêu cầu, chọn công cụ. Không có ô nào luôn đúng — mỗi tình huống có một câu trả lời hợp lý nhất.</p>
+
+  <div class="picksim" data-lesson="k8">
+    <div class="pk-bar">
+      <div class="dots"><span></span><span></span><span></span></div>
+      <span class="pk-title">yêu cầu <b class="pk-n">1</b>/6 · đúng <b class="pk-score">0</b></span>
+      <button class="btn btn-reset pk-reset">↺ Làm lại</button>
+    </div>
+    <div class="pk-case"></div>
+    <div class="pk-opts">
+      <button class="pk-opt" data-v="0">🧩 Kéo thả</button>
+      <button class="pk-opt" data-v="1">⌨️ Node Code</button>
+      <button class="pk-opt" data-v="2">🐍 Script riêng</button>
+      <button class="pk-opt" data-v="3">✋ Không tự động hoá</button>
+    </div>
+    <div class="pk-out"></div>
+  </div>
+
+  <div class="chk"><b>✅ Nắm được bài này khi</b>
+    <ul>
+      <li>Đạt từ 5/6 trong bộ luyện</li>
+      <li>Nói được ranh giới giữa node Code và script riêng bằng lời của mình</li>
+      <li>Nhận ra ít nhất một việc trong hệ thống hiện tại của anh đang <b>dùng sai công cụ</b></li>
+    </ul>
+  </div>
 </section>
 <section class="lesson" id="stuck">
   <div class="eyebrow">Tra cứu</div>
@@ -6246,8 +8212,8 @@ Bảo hành sửa lỗi miễn phí tới ngày: ______</p>
   <p>Ghi mỗi tối, mất ba mươi giây. Kể cả hôm bỏ học cũng ghi 0 phút kèm lý do — đó mới là dữ liệu có ích.</p>
 
   <div class="stat-row">
-    <div class="stat"><div class="lab">Ngày đã học</div><div class="stat-num" id="jrDays">0</div><div class="sub">mục tiêu ≥ 24/30</div></div>
-    <div class="stat"><div class="lab">Tổng thời gian</div><div class="stat-num" id="jrHours">0h</div><div class="sub">mục tiêu ≥ 22 giờ</div></div>
+    <div class="stat"><div class="lab">Ngày đã học</div><div class="stat-num" id="jrDays">0</div><div class="sub">trên 90 ngày</div></div>
+    <div class="stat"><div class="lab">Tổng thời gian</div><div class="stat-num" id="jrHours">0h</div><div class="sub">tổng ba tháng</div></div>
     <div class="stat"><div class="lab">Chuỗi hiện tại</div><div class="stat-num" id="jrStreak">0</div><div class="sub">ngày liên tiếp</div></div>
     <div class="stat"><div class="lab">Trung bình</div><div class="stat-num" id="jrAvg">0</div><div class="sub">phút mỗi ngày học</div></div>
   </div>
@@ -6261,6 +8227,7 @@ Bảo hành sửa lỗi miễn phí tới ngày: ______</p>
   <div id="jrTabs" style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap">
     <button class="tm-btn on" data-m="1">Ngày 1–30</button>
     <button class="tm-btn" data-m="2">Ngày 31–60</button>
+    <button class="tm-btn" data-m="3">Ngày 61–90</button>
     <button class="tm-btn" data-m="0">Tất cả</button>
   </div>
   <div style="overflow-x:auto">
@@ -6501,7 +8468,7 @@ Bảo hành sửa lỗi miễn phí tới ngày: ______</p>
     <h3>Nhắc lại mốc thật</h3>
     <table class="cmp">
       <tr><th style="width:26%">Mốc</th><th>Khi nào</th></tr>
-      <tr><td>Khách hàng trả tiền đầu tiên</td><td>Tháng thứ <b>10–14</b></td></tr>
+      <tr><td>Khách hàng trả tiền đầu tiên</td><td>Tháng thứ <b>9–14</b></td></tr>
       <tr><td>Phá trần no-code, bắt đầu Python thật</td><td>Tháng thứ <b>15–26</b></td></tr>
       <tr><td>Apply job remote quốc tế</td><td>Tháng thứ <b>27–36</b></td></tr>
     </table>
@@ -6535,15 +8502,17 @@ Bảo hành sửa lỗi miễn phí tới ngày: ______</p>
    ============================================================ */
 const DAY_IDS = [...Array(30)].map((_, i) => "d" + (i + 1));
 const M2_DAYS = [...Array(30)].map((_, i) => "d" + (i + 31));  // ngày 31–60
-const LESSONS = ["mapall","m46","start","rules","words","k1","k2","k3","k4","k5","k6",
+const M3_DAYS = [...Array(30)].map((_, i) => "d" + (i + 61));  // ngày 61–90
+const LESSONS = ["mapall","m46","start","rules","words","k1","k2","k3","k4","k5","k6","k7","k8",
                  ...DAY_IDS,
-                 "m2start", ...M2_DAYS, "m2done", "m3start",
+                 "m2start", ...M2_DAYS, "m2done", "m3start", ...M3_DAYS,
                  "w13","w14","w15","w16","w17","w18","w19","w20","w21","w22","w23","w24",
                  "ph2","m7","m8","m9","m10","m11","m12","m1314",
                  "tsurvey","tscope","tprice","thandover",
-                 "book","stuck","nguon","tcards","tquiz","tjournal","ttimer","treview","map","done","m2"];
+                 "ph3","q15","q18","q21","q24","tskill","ph4",
+                 "book","stuck","restart","nguon","tcards","tquiz","tjournal","ttimer","treview","map","done","m2"];
 const TOTAL_DAYS = 30;      // tháng 1 — dùng cho đường ống và thanh tiến độ đầu
-const TOTAL_ALL  = 60;      // toàn khoá — dùng cho nhật ký, đồng hồ, thống kê
+const TOTAL_ALL  = 90;      // toàn khoá — dùng cho nhật ký, đồng hồ, thống kê
 
 /* ---------- Lưu trữ ---------- */
 let STORAGE_OK = true;
@@ -6565,7 +8534,7 @@ function asJournal(v){
   const o = asObject(v), out = {};
   Object.keys(o).forEach(k => {
     const n = parseInt(k, 10);
-    if(!(n >= 1 && n <= 60)) return;
+    if(!(n >= 1 && n <= 90)) return;
     const r = asObject(o[k]);
     const m = parseInt(r.m, 10);
     out[n] = { m: (m > 0 && m <= 1440) ? m : 0, n: typeof r.n === "string" ? r.n.slice(0, 500) : "" };
@@ -6620,6 +8589,7 @@ function showLesson(id, push){
   if(push !== false) history.replaceState(null, "", "#" + id);
   sidebar.classList.remove("open"); scrim.classList.remove("show");
   const act = document.querySelector(".lesson-link.active");
+  if(typeof window.__navSync === "function") window.__navSync(id);
   if(act && act.scrollIntoView) { try{ act.scrollIntoView({ block: "nearest" }); }catch(e){} }
   if(typeof clearHighlight === "function") clearHighlight();
   if(id === "tjournal") renderJournal();
@@ -6627,12 +8597,14 @@ function showLesson(id, push){
   if(id === "treview")  renderReview();
   if(id === "m2")       renderM2();
   if(id === "m2start" && typeof paintPipeM2 === "function") paintPipeM2();
+  if(id === "m3start" && typeof paintPipeM3 === "function") paintPipeM3();
   if(id === "tquiz")    rqStats();
   if(id === "done")     renderDone();
   if(id === "m2done")   renderM2Done();
   if(id === "m3start")  renderM3();
   if(id === "mapall")   renderMap();
   if(id === "tprice")   renderPrice();
+  if(id === "tskill")   renderSkill();
 }
 document.querySelectorAll(".lesson-link").forEach(b => b.addEventListener("click", () => showLesson(b.dataset.goto)));
 document.getElementById("btnPrev").addEventListener("click", () => showLesson(LESSONS[LESSONS.indexOf(current()) - 1]));
@@ -6673,6 +8645,7 @@ function paintProgress(){
   document.getElementById("sbBar").style.width = (n / TOTAL_DAYS * 100) + "%";
   paintPipe();
   if(typeof paintPipeM2 === "function") paintPipeM2();
+  if(typeof paintPipeM3 === "function") paintPipeM3();
   document.querySelectorAll(".daydone").forEach(paintDayBtn);
   if(typeof paintResume === "function") paintResume();
   if(typeof checkBackup === "function") checkBackup();
@@ -6744,6 +8717,24 @@ function paintPipeM2(){
         'Làm đủ bốn tuần, nhưng nếu tuần 7 (Python) thấy quá tải thì hoãn nó sang tháng 3 — ' +
         'ưu tiên giữ nhịp hơn là chạy kịp lộ trình.</div>';
     }
+  }
+}
+
+/* ---------- Đường ống tháng 3 ---------- */
+function paintPipeM3(){
+  const rail = document.getElementById("pipeM3");
+  if(!rail) return;
+  let now = 61;
+  for(let n = 61; n <= 90; n++){ if(!DONE.has("d" + n)){ now = n; break; } now = 90; }
+  rail.innerHTML = "";
+  for(let n = 61; n <= 90; n++){
+    const done = DONE.has("d" + n);
+    const b = document.createElement("button");
+    b.className = "pnode" + (done ? " done" : "") + (!done && n === now ? " now" : "");
+    b.textContent = n; b.title = "Ngày " + n;
+    b.addEventListener("click", () => showLesson("d" + n));
+    rail.appendChild(b);
+    if(n < 90){ const w = document.createElement("i"); w.className = "pwire" + (done ? " on" : ""); rail.appendChild(w); }
   }
 }
 
@@ -7063,8 +9054,8 @@ function renderJournal(){
     }));
   }
   if(tabs) tabs.querySelectorAll("button").forEach(b => b.classList.toggle("on", parseInt(b.dataset.m,10) === jrMonth));
-  const from = jrMonth === 2 ? 31 : 1;
-  const to   = jrMonth === 1 ? 30 : 60;
+  const from = jrMonth === 3 ? 61 : jrMonth === 2 ? 31 : 1;
+  const to   = jrMonth === 1 ? 30 : jrMonth === 2 ? 60 : 90;
   tb.innerHTML = "";
   for(let n = from; n <= to; n++){
     const j = JOURNAL[n] || {};
@@ -7304,6 +9295,58 @@ document.querySelectorAll(".runner").forEach(r => {
   r.querySelector(".btn-reset").addEventListener("click", () => { ta.value = orig; out.classList.remove("has"); out.textContent = ""; });
   ta.addEventListener("keydown", e => { if((e.ctrlKey || e.metaKey) && e.key === "Enter"){ e.preventDefault(); run(); } });
 });
+
+/* ============================================================
+   GOM NHÓM MỤC LỤC — 118 mục thì phải gập lại được
+   ============================================================ */
+(function foldNav(){
+  const sb = document.getElementById("sidebar");
+  if(!sb) return;
+  const kids = [...sb.children];
+  let cur = null;
+  kids.forEach(el => {
+    if(el.classList.contains("navtrack")){
+      cur = document.createElement("div");
+      cur.className = "navbody";
+      el.classList.add("navfold");
+      el.setAttribute("role", "button");
+      el.setAttribute("tabindex", "0");
+      el.insertAdjacentElement("afterend", cur);
+      el.addEventListener("click", () => toggle(el));
+      el.addEventListener("keydown", e => {
+        if(e.key === "Enter" || e.key === " "){ e.preventDefault(); toggle(el); }
+      });
+      return;
+    }
+    if(cur && (el.classList.contains("lesson-link") || el.classList.contains("navgroup"))) cur.appendChild(el);
+  });
+  function toggle(head, force){
+    const body = head.nextElementSibling;
+    if(!body || !body.classList.contains("navbody")) return;
+    const open = force !== undefined ? force : !head.classList.contains("open");
+    head.classList.toggle("open", open);
+    body.classList.toggle("open", open);
+    head.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+  window.__navSync = function(activeId){
+    let found = false;
+    sb.querySelectorAll(".navfold").forEach(head => {
+      const body = head.nextElementSibling;
+      if(!body) return;
+      const has = !!body.querySelector('.lesson-link[data-goto="' + activeId + '"]');
+      if(has) found = true;
+      toggle(head, has);
+    });
+    // không thuộc nhóm nào (ví dụ trang Toàn cảnh) thì mở nhóm đầu
+    if(!found){ const f = sb.querySelector(".navfold"); if(f) toggle(f, true); }
+  };
+  // đếm số mục để hiện bên cạnh tên nhóm
+  sb.querySelectorAll(".navfold").forEach(head => {
+    const body = head.nextElementSibling;
+    const n = body ? body.querySelectorAll(".lesson-link").length : 0;
+    if(n){ const b = document.createElement("i"); b.className = "nav-n"; b.textContent = n; head.appendChild(b); }
+  });
+})();
 
 /* ============================================================
    TÌM KIẾM TOÀN BỘ APP
@@ -8327,7 +10370,7 @@ function renderM3(){
    ============================================================ */
 const MAP_GROUPS = [
   { t:"🧭 Bắt đầu",              ids:["start","rules","words"] },
-  { t:"🧠 Kiến thức nền",        ids:["k1","k2","k3","k4","k5","k6"] },
+  { t:"🧠 Kiến thức nền",        ids:["k1","k2","k3","k4","k5","k6","k7","k8"] },
   { t:"📅 Tháng 1 · Tuần 1",     ids:["d1","d2","d3","d4","d5","d6","d7"] },
   { t:"Tuần 2",                  ids:["d8","d9","d10","d11","d12","d13","d14"] },
   { t:"Tuần 3",                  ids:["d15","d16","d17","d18","d19","d20","d21"] },
@@ -8338,14 +10381,19 @@ const MAP_GROUPS = [
   { t:"Tuần 7",                  ids:["d45","d46","d47","d48","d49","d50","d51"] },
   { t:"Tuần 8",                  ids:["d52","d53","d54","d55","d56","d57","d58","d59","d60"] },
   { t:"🏁 Chốt tháng 2",         ids:["m2done"] },
-  { t:"📅 Tháng 3 trở đi",       ids:["m3start"] },
+  { t:"📅 Tháng 3 · Tuần 9",     ids:["m3start","d61","d62","d63","d64","d65","d66","d67"] },
+  { t:"Tuần 10",                 ids:["d68","d69","d70","d71","d72","d73","d74"] },
+  { t:"Tuần 11",                 ids:["d75","d76","d77","d78","d79","d80","d81"] },
+  { t:"Tuần 12",                 ids:["d82","d83","d84","d85","d86","d87","d88","d89","d90"] },
   { t:"📅 Tháng 4 · theo tuần",  ids:["w13","w14","w15","w16"] },
   { t:"📅 Tháng 5",              ids:["w17","w18","w19","w20"] },
   { t:"📅 Tháng 6",              ids:["w21","w22","w23","w24"] },
   { t:"💼 Giai đoạn 2 · tháng 7–14", ids:["ph2","m7","m8","m9","m10","m11","m12","m1314"] },
   { t:"💼 Công cụ thực chiến",   ids:["tsurvey","tscope","tprice","thandover"] },
+  { t:"🔓 Giai đoạn 3 · tháng 15–26", ids:["ph3","q15","q18","q21","q24","tskill"] },
+  { t:"🌏 Giai đoạn 4 · tháng 27–36", ids:["ph4"] },
   { t:"🗺️ Đường dài",            ids:["m46","map"] },
-  { t:"📕 Tra cứu",              ids:["book","stuck","nguon"] },
+  { t:"📕 Tra cứu",              ids:["book","stuck","restart","nguon"] },
   { t:"🛠️ Công cụ",              ids:["tcards","tquiz","tjournal","ttimer","treview"] },
 ];
 function renderMap(){
@@ -8469,6 +10517,320 @@ function calcPrice(){
       ? '<div class="pc-warn">⚠️ Dưới 500.000đ thì phần lớn công sức nằm ở khảo sát và bàn giao chứ không phải dựng. Cân nhắc gộp thêm việc, hoặc nhận như một ca xây quan hệ chứ đừng coi là nguồn thu.</div>'
       : "");
 }
+
+/* ============================================================
+   THANG ĐO NĂNG LỰC (giai đoạn 3+)
+   ============================================================ */
+const SK_ROWS = [
+  ["auto", "Tự động hoá", [
+    "Làm theo hướng dẫn được",
+    "Tự dựng quy trình đơn giản",
+    "Dựng quy trình có xử lý lỗi và giám sát, không cần tra cứu liên tục",
+    "Thiết kế hệ thống nhiều thành phần, chịu được hỏng cục bộ",
+    "Người khác hỏi ý kiến mình về kiến trúc"]],
+  ["py", "Python", [
+    "Chưa viết được",
+    "Sửa được code có sẵn, viết được script ngắn",
+    "Viết được chương trình nhiều file có cấu trúc",
+    "Viết kiểm thử, đọc hiểu code người khác, đóng góp nguồn mở",
+    "Thiết kế được thư viện cho người khác dùng"]],
+  ["debug", "Tìm và sửa lỗi", [
+    "Tắc là bí",
+    "Đọc được thông báo lỗi, biết tìm ở đâu",
+    "Đi ngược từ triệu chứng tới nguyên nhân gốc một cách có hệ thống",
+    "Sửa được lỗi trong hệ thống mình không viết",
+    "Đoán được nguyên nhân trước khi mở log"]],
+  ["data", "Dữ liệu", [
+    "Đọc được bảng tính",
+    "Viết được SQL cơ bản, biết dữ liệu bẩn là gì",
+    "Thiết kế bảng, viết truy vấn phức tạp, xử lý dữ liệu lớn",
+    "Thiết kế được cơ sở dữ liệu cho hệ thống nhiều thành phần",
+    "Tối ưu được hệ thống dữ liệu đang chậm"]],
+  ["ai", "AI trong hệ thống", [
+    "Dùng chat bằng tay",
+    "Gọi được AI trong quy trình, ép khuôn đầu ra",
+    "Có bộ eval, đo được chất lượng, biết khi nào KHÔNG nên dùng AI",
+    "Thiết kế được hệ thống AI có kiểm soát chi phí và chất lượng",
+    "Xây được quy trình đánh giá cho người khác dùng"]],
+  ["eng", "Tiếng Anh", [
+    "Phải dịch mới hiểu",
+    "Đọc tài liệu chậm nhưng không cần dịch",
+    "Đọc trôi chảy, viết được mô tả kỹ thuật",
+    "Trao đổi công việc qua văn bản thoải mái, nói được về dự án",
+    "Họp và phản biện bằng tiếng Anh không chuẩn bị trước"]],
+  ["biz", "Làm việc với khách", [
+    "Chưa làm cho ai",
+    "Làm miễn phí cho người quen",
+    "Khảo sát, chốt phạm vi, báo giá, giao đúng hạn",
+    "Chọn được khách, từ chối được việc, có nguồn thu bảo trì",
+    "Khách tìm tới mình thay vì mình đi tìm"]],
+];
+let SK = DB.get("sk", {});
+function renderSkill(){
+  const box = document.getElementById("skBox");
+  if(!box) return;
+  if(!box.dataset.on){
+    box.dataset.on = "1";
+    box.innerHTML = SK_ROWS.map(r =>
+      '<div class="sk-row" data-k="' + r[0] + '">' +
+        '<div class="sk-name">' + r[1] + '</div>' +
+        '<div class="sk-lv">' + r[2].map((t, i) =>
+          '<button class="sk-b" data-v="' + (i + 1) + '" title="' + t.replace(/"/g, "") + '">' +
+          '<b>' + (i + 1) + '</b><span>' + t + '</span></button>').join("") + '</div>' +
+      '</div>').join("") +
+      '<div class="sk-sum" id="skSum"></div>';
+    box.querySelectorAll(".sk-b").forEach(b => b.addEventListener("click", () => {
+      const k = b.closest(".sk-row").dataset.k, v = parseInt(b.dataset.v, 10);
+      SK[k] = (SK[k] === v) ? 0 : v;      // bấm lại để bỏ chọn
+      DB.set("sk", SK); paintSkill();
+    }));
+  }
+  paintSkill();
+}
+function paintSkill(){
+  const box = document.getElementById("skBox");
+  if(!box) return;
+  box.querySelectorAll(".sk-row").forEach(row => {
+    const v = SK[row.dataset.k] || 0;
+    row.querySelectorAll(".sk-b").forEach(b => {
+      const n = parseInt(b.dataset.v, 10);
+      b.classList.toggle("on", n === v);
+      b.classList.toggle("under", n < v);
+    });
+  });
+  const vals = SK_ROWS.map(r => SK[r[0]] || 0);
+  const done = vals.filter(v => v > 0);
+  const sum = document.getElementById("skSum");
+  if(!done.length){ sum.innerHTML = '<span class="sk-hint">Bấm vào mức tương ứng ở mỗi hàng.</span>'; return; }
+  const tb = done.reduce((a, b) => a + b, 0) / done.length;   // chỉ tính trên mảng đã chấm
+  const weak = SK_ROWS.filter(r => (SK[r[0]] || 0) > 0)
+    .sort((a, b) => (SK[a[0]] || 0) - (SK[b[0]] || 0)).slice(0, 2).map(r => r[1]);
+  let nx = "";
+  if(tb < 2)      nx = "Nền đang hình thành. Đừng dàn đều — dồn vào <b>một</b> mảng yếu nhất cho tới khi lên mức 2.";
+  else if(tb < 3) nx = "Đúng chỗ của giai đoạn 1–2. Mảng yếu nhất thường kéo lùi cả nhóm — ưu tiên nó.";
+  else if(tb < 4) nx = "Đã qua trần no-code ở phần lớn mảng. Giờ giá trị nằm ở việc kéo mảng yếu nhất lên, không phải đẩy mảng mạnh nhất cao thêm.";
+  else            nx = "Mức này đủ để nhắm thị trường quốc tế. Kiểm tra lại mảng <b>Tiếng Anh</b> và <b>Làm việc với khách</b> — kỹ thuật hiếm khi là thứ chặn ở đây.";
+  sum.innerHTML =
+    '<div class="sk-avg">Trung bình <b>' + tb.toFixed(1) + '</b> / 5' +
+    '<span class="sk-n"> · trên ' + done.length + '/' + SK_ROWS.length + ' mảng đã chấm</span></div>' +
+    (done.length < SK_ROWS.length
+      ? '<div class="sk-weak" style="color:var(--pulse)">Còn ' + (SK_ROWS.length - done.length) +
+        ' mảng chưa chấm — con số trên chỉ phản ánh phần đã chấm.</div>' : "") +
+    '<div class="sk-weak">Hai mảng yếu nhất: <b>' + weak.join("</b>, <b>") + '</b></div>' +
+    '<div class="sk-next">' + nx + '</div>';
+}
+
+/* ============================================================
+   LUYỆN GIỮ PHẠM VI CÔNG VIỆC (K7)
+   ============================================================ */
+const SS_CASES = [
+  { msg:"Em ơi, tiện thể làm luôn cho anh cái báo cáo theo tuần nữa nhé. Chắc cũng nhanh thôi mà.",
+    note:"Đang giữa dự án làm báo cáo ngày. Yêu cầu mới sẽ tốn thêm khoảng 6 giờ.",
+    opts:[
+      { t:'"Dạ được ạ, em làm luôn."', ok:false,
+        w:"<b>Hỏng.</b> Sáu giờ là gần một tuần làm việc của anh. \"Chắc cũng nhanh thôi\" là câu khách nói khi họ <b>không biết</b> nó tốn bao lâu — không phải khi họ đã cân nhắc." },
+      { t:'"Cái đó ngoài phạm vi rồi ạ, em không làm được."', ok:false,
+        w:"<b>Giữ được phạm vi nhưng mất điểm.</b> Không có ghi nhận, không có lối mở. Khách nghe thành \"không\" và sẽ ngại nhờ lần sau — kể cả việc trong phạm vi." },
+      { t:'"Hay đấy ạ. Nằm ngoài phạm vi mình chốt nên em làm xong báo cáo ngày trước đã, rồi em báo giá riêng phần tuần nhé."', ok:true,
+        w:"<b>Đúng.</b> Ghi nhận · đối chiếu văn bản · giữ hạn · mở đường cho việc tiếp. Khách thấy được lắng nghe mà anh không mất một tuần." },
+    ]},
+  { msg:"Chỗ tên cột em đặt là 'doanh_thu', anh muốn đổi thành 'Doanh thu' cho dễ đọc.",
+    note:"Việc này tốn khoảng 10 phút và không đẩy lùi hạn.",
+    opts:[
+      { t:'"Dạ, em đổi ngay ạ."', ok:true,
+        w:"<b>Đúng.</b> Ranh giới không nằm ở \"có trong phạm vi hay không\" mà ở <b>có đẩy lùi hạn hay không</b>. Cứng nhắc với việc mười phút chỉ làm mình trông khó tính." },
+      { t:'"Cái này ngoài phạm vi, em báo giá riêng nhé."', ok:false,
+        w:"<b>Sai hướng.</b> Áp dụng quy tắc máy móc. Mười phút mà bắt khách trả thêm thì anh tiết kiệm được chút thời gian và mất rất nhiều thiện chí." },
+      { t:'"Để em ghi nhận, xong dự án mình bàn."', ok:false,
+        w:"<b>Quá cứng cho việc nhỏ.</b> Hoãn một việc mười phút làm khách cảm thấy mọi yêu cầu đều bị đẩy đi. Dành cách nói này cho việc thật sự lớn." },
+    ]},
+  { msg:"Hệ thống chạy ra sai số rồi em. Đơn hôm qua 12 cái mà báo cáo ghi 9.",
+    note:"Kiểm tra lại: đúng là lỗi của anh — bộ lọc loại nhầm ba đơn hợp lệ.",
+    opts:[
+      { t:'"Dạ em kiểm tra và sửa ngay, không tính thêm phí ạ."', ok:true,
+        w:"<b>Đúng.</b> Đây là <b>lỗi của anh so với phạm vi đã hứa</b>, không phải việc mới. Sửa miễn phí, sửa nhanh, và nói rõ nguyên nhân. Nhầm hai thứ này là cách mất uy tín nhanh nhất." },
+      { t:'"Cái này do dữ liệu bên anh bẩn ạ, em xử lý thêm thì tính phí."', ok:false,
+        w:"<b>Sai.</b> Dữ liệu bẩn là thứ anh phải lường trước — bài K6 nói rõ. Đổ lỗi cho dữ liệu khi bộ lọc mình viết sai là mất uy tín ngay lập tức." },
+      { t:'"Em ghi nhận, sẽ sửa ở lần cập nhật sau."', ok:false,
+        w:"<b>Sai mức độ khẩn.</b> Báo cáo đang cho ra số sai — khách có thể đang ra quyết định dựa trên đó. Lỗi ảnh hưởng tới tính đúng đắn phải sửa ngay." },
+    ]},
+  { msg:"Bên anh vừa đổi sang phần mềm bán hàng khác. Em chỉnh lại hệ thống cho khớp nhé.",
+    note:"Nguồn dữ liệu đổi hoàn toàn. Gần như phải làm lại từ đầu.",
+    opts:[
+      { t:'"Dạ em chỉnh lại ạ."', ok:false,
+        w:"<b>Hỏng nặng.</b> \"Chỉnh lại\" nghe nhỏ nhưng đổi nguồn dữ liệu nghĩa là làm lại toàn bộ phần lấy và làm sạch. Gật ở đây là nhận một dự án mới với giá bằng không." },
+      { t:'"Đổi nguồn dữ liệu là làm lại phần lớn hệ thống ạ. Em khảo sát nguồn mới rồi báo giá cho anh nhé — phần đang chạy em vẫn giữ nguyên cho tới khi bên anh chuyển hẳn."', ok:true,
+        w:"<b>Đúng.</b> Nói rõ quy mô thật · đề xuất bước tiếp theo hợp lý · trấn an rằng thứ đang chạy không bị bỏ. Đây cũng là một cơ hội bán hàng, không phải rắc rối." },
+      { t:'"Vậy mình huỷ dự án cũ nhé anh."', ok:false,
+        w:"<b>Phản ứng thái quá.</b> Hệ thống cũ vẫn có giá trị cho tới khi họ chuyển xong. Huỷ là tự bỏ cả tiền lẫn quan hệ." },
+    ]},
+  { msg:"Em ơi cho anh xin mật khẩu tài khoản em dùng để chạy hệ thống nhé, để anh tự vào xem.",
+    note:"Đó là tài khoản n8n của anh, có credential của nhiều khách khác.",
+    opts:[
+      { t:'"Dạ em gửi anh ạ."', ok:false,
+        w:"<b>Rất nguy hiểm.</b> Tài khoản đó chứa khoá của nhiều khách khác. Chia sẻ là vi phạm bảo mật với những khách kia — và nếu lộ, anh chịu trách nhiệm." },
+      { t:'"Cái đó em không đưa được ạ."', ok:false,
+        w:"<b>Đúng về nguyên tắc nhưng thiếu.</b> Khách hỏi vì họ muốn <b>nhìn thấy hệ thống của mình</b> — nhu cầu chính đáng. Từ chối mà không đưa giải pháp thì họ thấy bị giấu giếm." },
+      { t:'"Tài khoản đó em dùng chung cho nhiều khách nên không chia sẻ được ạ. Nhưng em sẽ tạo cho anh một tài khoản riêng chỉ xem được phần của mình, hoặc dựng hệ thống trên tài khoản của bên anh luôn — anh chọn cách nào?"', ok:true,
+        w:"<b>Đúng.</b> Giải thích lý do thật · đưa hai lối thoát · để khách chọn. Đây cũng là dịp bàn chuyện sở hữu hệ thống — nên bàn sớm chứ đừng đợi tới lúc chia tay." },
+    ]},
+  { msg:"Hệ thống chạy tốt lắm em. Mà tháng sau bên anh làm chương trình khuyến mãi, đơn sẽ tăng gấp 10 lần đấy.",
+    note:"Khách không hỏi gì cả — chỉ thông báo. Hiện hệ thống xử lý khoảng 200 đơn mỗi ngày.",
+    opts:[
+      { t:'"Dạ vâng anh, chúc chương trình thành công ạ."', ok:false,
+        w:"<b>Bỏ lỡ tín hiệu.</b> Gấp 10 lần nghĩa là 2.000 đơn mỗi ngày — có thể vượt giới hạn API, tốn tiền gấp 10, hoặc chạy quá lâu. Im lặng ở đây là để hệ thống chết đúng lúc khách cần nhất." },
+      { t:'"Anh ơi, gấp 10 lần là khoảng 2.000 đơn/ngày. Em cần kiểm tra xem hệ thống chịu được không — có thể phải chỉnh phần xử lý theo lô. Em test trước trong tuần này rồi báo anh nhé."', ok:true,
+        w:"<b>Đúng.</b> Chuyển thông tin thành hành động · nêu con số cụ thể · chủ động trước khi hỏng. Đây chính là thứ khách trả tiền bảo trì để có." },
+      { t:'"Vậy chắc phải nâng cấp hệ thống, em báo giá nhé anh."', ok:false,
+        w:"<b>Vội bán khi chưa biết có cần không.</b> Có thể hệ thống chịu được. Kiểm tra trước rồi mới nói chuyện tiền — nếu không, khách sẽ nghĩ anh chỉ chờ dịp để tính thêm." },
+    ]},
+];
+document.querySelectorAll(".scopesim").forEach(ss => {
+  const nEl = ss.querySelector(".ss-n"), scEl = ss.querySelector(".ss-score");
+  const msg = ss.querySelector(".ss-msg"), opts = ss.querySelector(".ss-opts"), out = ss.querySelector(".ss-out");
+  let i = 0, score = 0, answered = false;
+
+  function draw(){
+    const c = SS_CASES[i];
+    answered = false;
+    nEl.textContent = i + 1; scEl.textContent = score;
+    msg.innerHTML = '<div class="ss-bubble">' + c.msg + '</div>' +
+                    '<div class="ss-note">' + c.note + '</div>';
+    // xáo thứ tự để không đoán được đáp án theo vị trí
+    const order = c.opts.map((o, k) => k).sort(() => Math.random() - 0.5);
+    opts.innerHTML = order.map(k =>
+      '<button class="ss-opt" data-k="' + k + '">' + c.opts[k].t + '</button>').join("");
+    out.innerHTML = "";
+    opts.querySelectorAll(".ss-opt").forEach(b => b.addEventListener("click", () => pick(parseInt(b.dataset.k, 10), b)));
+  }
+  function pick(k, btn){
+    if(answered) return;
+    answered = true;
+    const c = SS_CASES[i], o = c.opts[k];
+    opts.querySelectorAll(".ss-opt").forEach(b => b.classList.add("dim"));
+    btn.classList.remove("dim");
+    btn.classList.add(o.ok ? "good" : "bad");
+    if(o.ok) score++;
+    scEl.textContent = score;
+    const last = i === SS_CASES.length - 1;
+    out.innerHTML = '<div class="ss-v ' + (o.ok ? "y" : "n") + '">' + o.w + '</div>' +
+      '<button class="btn btn-run ss-next">' + (last ? "Xem kết quả" : "Tình huống tiếp →") + '</button>';
+    out.querySelector(".ss-next").addEventListener("click", () => {
+      if(last){
+        out.innerHTML = '<div class="ss-final"><b>' + score + ' / ' + SS_CASES.length + '</b><p>' +
+          (score >= 5 ? "Tốt. Anh đã nắm được ranh giới giữa giữ phạm vi và giữ quan hệ."
+           : score >= 3 ? "Tạm được. Đọc lại phần “Quy tắc chung rút ra” bên dưới rồi làm lại."
+           : "Còn thấp. Đây là kỹ năng làm hỏng nhiều dự án hơn bất kỳ lỗi kỹ thuật nào — đáng làm lại vài lượt.") +
+          '</p></div>';
+        if(score >= 5) markAuto(ss.dataset.lesson);
+        return;
+      }
+      i++; draw();
+    });
+  }
+  ss.querySelector(".ss-reset").addEventListener("click", () => { i = 0; score = 0; draw(); });
+  draw();
+});
+
+/* ============================================================
+   CHỌN CÔNG CỤ CHO ĐÚNG (K8)
+   ============================================================ */
+const PK_NAMES = ["🧩 Kéo thả", "⌨️ Node Code", "🐍 Script riêng", "✋ Không tự động hoá"];
+const PK_CASES = [
+  { req:"Mỗi sáng lấy số liệu bán hàng hôm qua từ Google Sheet, tính tổng theo từng cửa hàng, gửi email cho quản lý.",
+    ctx:"Khoảng 200 dòng mỗi ngày · luồng thẳng · các dịch vụ đều có node sẵn.",
+    ans:0,
+    w:{0:"<b>Đúng.</b> Luồng thẳng, ít điều kiện, mọi dịch vụ đều có node sẵn. Viết code ở đây chỉ làm người sau khó bảo trì hơn.",
+       1:"Chưa cần. Node Summarize làm được việc tính tổng theo nhóm — dùng code là thêm thứ phải bảo trì mà không được gì.",
+       2:"Quá tay. Hai trăm dòng và luồng thẳng thì kéo thả nhanh hơn nhiều, và người khác nhìn vào hiểu ngay.",
+       3:"Việc này lặp mỗi ngày, quy tắc rõ, tốn thời gian nếu làm tay — đủ cả ba tiêu chí ở bài K1."} },
+
+  { req:"Chuẩn hoá cột địa chỉ: bỏ khoảng trắng thừa, viết hoa chữ đầu mỗi từ, đổi 'tp' thành 'Thành phố', gộp các cách viết khác nhau của cùng một quận.",
+    ctx:"Một bước duy nhất trong quy trình đang chạy · logic khoảng 25 dòng.",
+    ans:1,
+    w:{0:"Không nổi. Ghép chuỗi node Set và IF để làm việc này sẽ ra một mê cung mười mấy node cho một việc code làm trong 25 dòng.",
+       1:"<b>Đúng.</b> Một bước xử lý, node sẵn không làm được, độ dài vừa phải. Đây chính là chỗ node Code sinh ra để giải quyết.",
+       2:"Quá tay. Tách ra script riêng nghĩa là thêm một chỗ phải triển khai và giám sát, cho một việc 25 dòng nằm gọn trong luồng.",
+       3:"Đây là việc lặp lại và quy tắc rõ ràng — đúng loại nên tự động hoá."} },
+
+  { req:"Xử lý file 300.000 dòng: đối chiếu với cơ sở dữ liệu, phát hiện trùng lặp, xuất báo cáo sai lệch. Chạy mỗi tháng một lần, mất khoảng 20 phút.",
+    ctx:"Dữ liệu lớn · nhiều bước · cần kiểm thử vì kết quả dùng cho quyết toán.",
+    ans:2,
+    w:{0:"Không nổi. Ba trăm nghìn dòng qua công cụ kéo thả sẽ rất chậm, tốn tiền, và dễ hết thời gian chờ giữa chừng.",
+       1:"Không đủ. Node Code chạy trong luồng nên vẫn gánh giới hạn của nền tảng, lại khó viết kiểm thử cho thứ dùng vào quyết toán.",
+       2:"<b>Đúng.</b> Dữ liệu lớn, logic nhiều bước, kết quả quan trọng nên cần kiểm thử. Script riêng chạy trên máy chủ là lựa chọn hợp lý.",
+       3:"Hai mươi phút mỗi tháng nghe ít, nhưng đây là việc quyết toán — rủi ro sai sót khi làm tay mới là lý do chính để tự động hoá."} },
+
+  { req:"Duyệt hồ sơ ứng viên: đọc CV, đánh giá kinh nghiệm có phù hợp không, quyết định gọi phỏng vấn hay từ chối.",
+    ctx:"Khoảng 15 hồ sơ mỗi tuần · tiêu chí thay đổi theo từng vị trí · quyết định ảnh hưởng tới người thật.",
+    ans:3,
+    w:{0:"Không nên. Việc này không có quy tắc cố định — tiêu chí đổi theo vị trí và người tuyển.",
+       1:"Không nên. Vấn đề không nằm ở công cụ mà ở chỗ <b>bản chất việc này cần con người quyết định</b>.",
+       2:"Không nên, vì lý do như trên. Dù code có mạnh tới đâu cũng không giải quyết được việc thiếu quy tắc rõ ràng.",
+       3:"<b>Đúng.</b> Thiếu tiêu chí thứ hai ở bài K1 — quy tắc không rõ ràng. Có thể tự động hoá phần <i>chuẩn bị</i> (gom hồ sơ, trích thông tin), nhưng phần <b>quyết định</b> thì để người làm. Việc ảnh hưởng tới người thật càng phải cẩn thận."} },
+
+  { req:"Khi có đơn hàng mới trên website, tạo bản ghi trong CRM, gửi email xác nhận cho khách, và nhắn vào nhóm chat của đội giao hàng.",
+    ctx:"Ba dịch vụ đều có node sẵn · không có tính toán gì phức tạp · vài chục đơn mỗi ngày.",
+    ans:0,
+    w:{0:"<b>Đúng.</b> Đây là dạng workflow kinh điển của công cụ kéo thả: một sự kiện kích hoạt, ba hành động song song. Code ở đây chỉ làm chậm việc.",
+       1:"Không cần. Không có bước xử lý nào mà node sẵn không làm được.",
+       2:"Quá tay, và còn tệ hơn: script riêng phải tự lo phần nhận sự kiện từ website, thứ mà node webhook làm sẵn.",
+       3:"Việc này lặp lại nhiều lần mỗi ngày và quy tắc hoàn toàn rõ ràng — nên tự động hoá."} },
+
+  { req:"Mỗi quý, gom số liệu từ bốn hệ thống khác nhau, đối chiếu, phát hiện chênh lệch, rồi làm báo cáo cho ban giám đốc.",
+    ctx:"Mỗi quý một lần · làm tay mất khoảng 3 giờ · quy tắc đối chiếu thay đổi gần như mỗi quý vì cơ cấu công ty đổi.",
+    ans:3,
+    w:{0:"Cẩn thận. Quy tắc đổi mỗi quý nghĩa là workflow phải sửa lại mỗi quý — chi phí bảo trì có thể vượt 3 giờ tiết kiệm được.",
+       1:"Cùng vấn đề. Công cụ không phải điều đang chặn ở đây.",
+       2:"Cùng vấn đề. Viết script cho quy tắc đổi liên tục là cách chắc chắn nhất để có một thứ luôn lỗi thời.",
+       3:"<b>Đúng — và đây là ca khó nhất.</b> Bốn lần một năm × 3 giờ = 12 giờ. Dựng hệ thống nối bốn nguồn mất nhiều hơn thế, và còn phải sửa mỗi quý. <br><br>Nhưng đừng bỏ hoàn toàn: tự động hoá <b>phần ổn định</b> (gom dữ liệu từ bốn nguồn về một chỗ) và để <b>phần hay đổi</b> (quy tắc đối chiếu) làm tay. Chia đôi như vậy thường là câu trả lời đúng cho những việc kiểu này."} },
+];
+document.querySelectorAll(".picksim").forEach(pk => {
+  const nEl = pk.querySelector(".pk-n"), scEl = pk.querySelector(".pk-score");
+  const cs = pk.querySelector(".pk-case"), out = pk.querySelector(".pk-out");
+  const btns = [...pk.querySelectorAll(".pk-opt")];
+  let i = 0, score = 0, answered = false;
+
+  function draw(){
+    const c = PK_CASES[i];
+    answered = false;
+    nEl.textContent = i + 1; scEl.textContent = score;
+    cs.innerHTML = '<div class="pk-req">' + c.req + '</div><div class="pk-ctx">' + c.ctx + '</div>';
+    btns.forEach(b => { b.className = "pk-opt"; b.disabled = false; });
+    out.innerHTML = "";
+  }
+  function pick(v, btn){
+    if(answered) return;
+    answered = true;
+    const c = PK_CASES[i], ok = v === c.ans;
+    btns.forEach(b => { b.classList.add("dim"); b.disabled = true; });
+    btn.classList.remove("dim");
+    btn.classList.add(ok ? "good" : "bad");
+    if(!ok) btns[c.ans].classList.remove("dim"), btns[c.ans].classList.add("good");
+    if(ok) score++;
+    scEl.textContent = score;
+    const last = i === PK_CASES.length - 1;
+    out.innerHTML = '<div class="pk-v ' + (ok ? "y" : "n") + '">' +
+      (ok ? "" : '<div class="pk-you">Anh chọn <b>' + PK_NAMES[v] + '</b> — ' + c.w[v] + '</div>') +
+      '<div class="pk-right"><b>' + PK_NAMES[c.ans] + ':</b> ' + c.w[c.ans] + '</div></div>' +
+      '<button class="btn btn-run pk-next">' + (last ? "Xem kết quả" : "Yêu cầu tiếp →") + '</button>';
+    out.querySelector(".pk-next").addEventListener("click", () => {
+      if(last){
+        out.innerHTML = '<div class="ss-final"><b>' + score + ' / ' + PK_CASES.length + '</b><p>' +
+          (score >= 5 ? "Tốt. Anh phân biệt được ranh giới giữa bốn lựa chọn."
+           : score >= 3 ? "Tạm được. Đọc lại bảng bốn lựa chọn ở trên rồi làm lại — chú ý hai ca “không tự động hoá”."
+           : "Còn thấp. Chọn sai công cụ tốn nhiều thời gian hơn viết code dở — đáng làm lại vài lượt.") +
+          '</p></div>';
+        if(score >= 5) markAuto(pk.dataset.lesson);
+        return;
+      }
+      i++; draw();
+    });
+  }
+  btns.forEach(b => b.addEventListener("click", () => pick(parseInt(b.dataset.v, 10), b)));
+  pk.querySelector(".pk-reset").addEventListener("click", () => { i = 0; score = 0; draw(); });
+  draw();
+});
 
 /* ============================================================
    KHỞI ĐỘNG
