@@ -1,0 +1,6 @@
+TÀI LIỆU GIẢ LẬP — cửa hàng Mây (không phải chính sách thật).
+P01 | Túi M01 giá 300.000 VND. Tồn kho chỉ được xác nhận bởi nhân viên.
+P02 | Đơn từ 500.000 VND được miễn phí vận chuyển nội địa. Đơn thấp hơn chưa có biểu phí trong tài liệu.
+P03 | Đổi hàng chưa sử dụng trong 7 ngày kể từ nhận hàng, cần hóa đơn.
+P04 | Yêu cầu hoàn tiền và ngoại lệ phải được nhân viên xem xét; không tự cam kết.
+P05 | Chỉ hỗ trợ đơn nội địa. Tài liệu không nêu thời gian giao hàng.

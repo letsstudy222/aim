@@ -1,0 +1,22 @@
+[
+  {
+    "event_id": "E01",
+    "lead_id": "L01",
+    "source": "ads"
+  },
+  {
+    "event_id": "E01",
+    "lead_id": "L01",
+    "source": "ads"
+  },
+  {
+    "event_id": "E02",
+    "lead_id": "",
+    "source": "email"
+  },
+  {
+    "event_id": "E03",
+    "lead_id": "L02",
+    "source": "email"
+  }
+]

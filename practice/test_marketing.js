@@ -1,0 +1,15 @@
+const assert=require('node:assert/strict');const {summarize,contribution}=require('../js/marketing');const data=require('../js/marketing-fixtures');let n=0;const test=(name,fn)=>{fn();n++;console.log('PASS',name)};const r=summarize(data),a=r.channels[0];
+test('cohort totals',()=>assert.deepEqual([r.total.leads,r.total.qualified,r.total.buyers,r.total.orders,r.total.revenue,r.total.cost],[8,4,3,4,1150000,400000]));
+test('ads repeat order does not duplicate buyer',()=>assert.deepEqual([a.leads,a.buyers,a.orders,a.revenue,a.cac,a.roas],[3,1,2,500000,250000,2.5]));
+test('zero ad spend not ROAS zero',()=>assert.equal(r.channels[1].roas,null));
+test('conversion distinct buyers',()=>assert.equal(r.total.conversion,3/8));
+test('margin 35%',()=>assert.equal(contribution(r.total,35),2500));
+test('margin 20%',()=>assert.equal(contribution(r.total,20),-170000));
+test('invalid margin',()=>assert.throws(()=>contribution(a,101)));
+test('duplicate leads',()=>assert.throws(()=>summarize({...data,leads:[...data.leads,data.leads[0]]})));
+test('duplicate order',()=>assert.throws(()=>summarize({...data,orders:[...data.orders,data.orders[0]]})));
+test('orphan order',()=>assert.throws(()=>summarize({...data,orders:[{...data.orders[0],lead_id:'x'}]})));
+test('bad cost',()=>assert.throws(()=>summarize({...data,costs:[{...data.costs[0],ad_spend_vnd:-1}]})));
+test('zero buyers',()=>assert.equal(summarize({...data,orders:[]}).total.cac,null));
+test('empty cohort',()=>assert.equal(summarize({leads:[],orders:[],costs:[]}).total.conversion,null));
+console.log(`${n}/${n} tests passed`);

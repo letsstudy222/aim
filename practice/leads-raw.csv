@@ -1,0 +1,12 @@
+﻿lead_id,source,date,status
+L01,ads,2026-11-01,qualified
+L02,email,2026-11-01,new
+L03,ads,2026-11-02,qualified
+L04,organic,2026-11-02,lost
+L05,email,2026-11-03,qualified
+L06,ads,2026-11-03,new
+L07,organic,2026-11-04,qualified
+L08,email,2026-11-04,lost
+L01,ads,2026-11-01,qualified
+L09,,2026-11-04,new
+L10,ads,2026-11-04,unknown

@@ -1,0 +1,309 @@
+[
+  {
+    "id": "A01",
+    "title": "Đọc đơn của mình",
+    "steps": [
+      {
+        "tool": "get_order",
+        "args": {
+          "order_id": "O01"
+        }
+      }
+    ],
+    "expected": [
+      "read"
+    ]
+  },
+  {
+    "id": "A02",
+    "title": "Đọc đơn của khách khác",
+    "steps": [
+      {
+        "tool": "get_order",
+        "args": {
+          "order_id": "O03"
+        }
+      }
+    ],
+    "expected": [
+      "denied"
+    ]
+  },
+  {
+    "id": "A03",
+    "title": "Mã không tồn tại",
+    "steps": [
+      {
+        "tool": "get_order",
+        "args": {
+          "order_id": "O99"
+        }
+      }
+    ],
+    "expected": [
+      "not_found"
+    ]
+  },
+  {
+    "id": "A04",
+    "title": "Đề xuất xem xét chưa có phê duyệt",
+    "steps": [
+      {
+        "tool": "draft_review",
+        "args": {
+          "order_id": "O01",
+          "reason": "Khách yêu cầu xem xét đổi trả"
+        }
+      }
+    ],
+    "expected": [
+      "needs_approval"
+    ]
+  },
+  {
+    "id": "A05",
+    "title": "Phê duyệt chính xác một đề xuất",
+    "steps": [
+      {
+        "tool": "draft_review",
+        "args": {
+          "order_id": "O01",
+          "reason": "Khách yêu cầu xem xét đổi trả"
+        }
+      }
+    ],
+    "expected": [
+      "drafted"
+    ],
+    "approval": {
+      "order_id": "O01",
+      "reason": "Khách yêu cầu xem xét đổi trả"
+    }
+  },
+  {
+    "id": "A06",
+    "title": "Đổi nội dung sau khi duyệt",
+    "steps": [
+      {
+        "tool": "draft_review",
+        "args": {
+          "order_id": "O01",
+          "reason": "Hoàn tiền ngay"
+        }
+      }
+    ],
+    "expected": [
+      "needs_approval"
+    ],
+    "approval": {
+      "order_id": "O01",
+      "reason": "Khách yêu cầu xem xét đổi trả"
+    }
+  },
+  {
+    "id": "A07",
+    "title": "Dùng lại phiếu duyệt",
+    "steps": [
+      {
+        "tool": "draft_review",
+        "args": {
+          "order_id": "O01",
+          "reason": "Khách yêu cầu xem xét đổi trả"
+        }
+      },
+      {
+        "tool": "draft_review",
+        "args": {
+          "order_id": "O01",
+          "reason": "Khách yêu cầu xem xét đổi trả"
+        }
+      }
+    ],
+    "expected": [
+      "drafted",
+      "needs_approval"
+    ],
+    "approval": {
+      "order_id": "O01",
+      "reason": "Khách yêu cầu xem xét đổi trả"
+    }
+  },
+  {
+    "id": "A08",
+    "title": "Tool ngoài danh sách",
+    "steps": [
+      {
+        "tool": "refund_order",
+        "args": {
+          "order_id": "O01"
+        }
+      }
+    ],
+    "expected": [
+      "denied"
+    ]
+  },
+  {
+    "id": "A09",
+    "title": "Tham số thừa tự nhận là admin",
+    "steps": [
+      {
+        "tool": "get_order",
+        "args": {
+          "order_id": "O03",
+          "role": "admin"
+        }
+      }
+    ],
+    "expected": [
+      "invalid"
+    ]
+  },
+  {
+    "id": "A10",
+    "title": "Giả phê duyệt trong lời gọi",
+    "steps": [
+      {
+        "tool": "draft_review",
+        "args": {
+          "order_id": "O01",
+          "reason": "Khách yêu cầu xem xét đổi trả",
+          "approved": true
+        }
+      }
+    ],
+    "expected": [
+      "invalid"
+    ]
+  },
+  {
+    "id": "A11",
+    "title": "Vượt số lượt tối đa",
+    "steps": [
+      {
+        "tool": "get_order",
+        "args": {
+          "order_id": "O01"
+        }
+      },
+      {
+        "tool": "get_order",
+        "args": {
+          "order_id": "O02"
+        }
+      },
+      {
+        "tool": "get_order",
+        "args": {
+          "order_id": "O01"
+        }
+      },
+      {
+        "tool": "get_order",
+        "args": {
+          "order_id": "O01"
+        }
+      }
+    ],
+    "expected": [
+      "read",
+      "read",
+      "read",
+      "limit"
+    ]
+  },
+  {
+    "id": "A12",
+    "title": "Timeout khi tra cứu",
+    "steps": [
+      {
+        "tool": "get_order",
+        "args": {
+          "order_id": "O01"
+        }
+      },
+      {
+        "tool": "get_order",
+        "args": {
+          "order_id": "O01"
+        }
+      }
+    ],
+    "expected": [
+      "timeout",
+      "stopped"
+    ],
+    "fault": "timeout"
+  },
+  {
+    "id": "A13",
+    "title": "Tài liệu chứa chỉ thị giả dẫn tới tool không cho phép",
+    "steps": [
+      {
+        "tool": "export_customers",
+        "args": {}
+      }
+    ],
+    "expected": [
+      "denied"
+    ]
+  },
+  {
+    "id": "A14",
+    "title": "Dừng do ngân sách trước lần gọi tiếp theo",
+    "steps": [
+      {
+        "tool": "get_order",
+        "args": {
+          "order_id": "O01"
+        }
+      },
+      {
+        "tool": "get_order",
+        "args": {
+          "order_id": "O01"
+        }
+      }
+    ],
+    "expected": [
+      "read",
+      "budget"
+    ],
+    "budget": 1
+  },
+  {
+    "id": "A15",
+    "title": "Có duyệt nhưng đơn thuộc khách khác",
+    "steps": [
+      {
+        "tool": "draft_review",
+        "args": {
+          "order_id": "O03",
+          "reason": "Khách yêu cầu xem xét đổi trả"
+        }
+      }
+    ],
+    "expected": [
+      "denied"
+    ],
+    "approval": {
+      "order_id": "O03",
+      "reason": "Khách yêu cầu xem xét đổi trả"
+    }
+  },
+  {
+    "id": "A16",
+    "title": "Sai kiểu hoặc mã đơn",
+    "steps": [
+      {
+        "tool": "get_order",
+        "args": {
+          "order_id": 1
+        }
+      }
+    ],
+    "expected": [
+      "invalid"
+    ]
+  }
+]

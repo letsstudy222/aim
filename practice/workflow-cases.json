@@ -1,0 +1,12 @@
+[
+ {"event_id":"E01","lead_id":"L01","source":"ads","fault":"none","expected":"created"},
+ {"event_id":"E01","lead_id":"L01","source":"ads","fault":"none","expected":"duplicate"},
+ {"event_id":"E01","lead_id":"L01","source":"email","fault":"none","expected":"conflict"},
+ {"event_id":"E02","lead_id":"","source":"email","fault":"none","expected":"invalid"},
+ {"event_id":"E03","lead_id":"L02","source":"email","fault":"temporary","expected":"created"},
+ {"event_id":"E04","lead_id":"L03","source":"ads","fault":"timeout_after_write","expected":"reconciled"},
+ {"event_id":"E05","lead_id":"L04","source":"organic","fault":"persistent","expected":"review"},
+ {"event_id":"E06","lead_id":"L05","source":"email","fault":"unauthorized","expected":"review"},
+ {"event_id":"E07","lead_id":"L06","source":"ads","fault":"none","expected":"created"},
+ {"event_id":"E04","lead_id":"L03","source":"ads","fault":"none","expected":"duplicate"}
+]

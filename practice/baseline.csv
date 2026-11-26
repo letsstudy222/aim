@@ -1,0 +1,6 @@
+﻿case_id,manual_minutes,review_minutes,expected_route
+C01,3,1,sales
+C02,4,1,sales
+C03,2,1,support
+C04,5,2,review
+C05,6,3,review
